@@ -4,3 +4,6 @@
     color: #212529;
     text-align: left;
 }
+ul li {
+  list-style-type: none;
+}

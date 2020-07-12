@@ -1,0 +1,16 @@
+.latest {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 50px;
+}
+.latest-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 0;
+}

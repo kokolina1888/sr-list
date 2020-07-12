@@ -1,0 +1,21 @@
+.nav {
+    position: relative;
+    width: 100%;
+    z-index: 100;   
+}
+
+.navbar {
+    padding: 0;
+     margin-top: 10px;
+}
+
+.navbar a {
+    float: left;    
+}
+.logo {
+    color: #ccc;
+    font-weight: bold;
+    font-size: 52px;
+    font-style: italic;
+    line-height: 52px;
+}

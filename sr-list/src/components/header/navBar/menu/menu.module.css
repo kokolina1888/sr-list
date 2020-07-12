@@ -1,0 +1,27 @@
+.list-item a {
+  text-transform: uppercase;
+  padding: 12px 18px 11px;
+  background-color: transparent;
+  border-bottom: 3px solid transparent;
+  line-height: 1;
+  color: #474747;
+  font-weight: 600;
+}
+
+.list-item a:hover, .list-item a.active  {
+  color: #fff;
+  background-color: #40ba37;
+  border-bottom: 3px solid #1c8314;
+}
+.list-item {
+  display: inline-block;
+  clear: both;
+}
+.nav {
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  /* display: inline-block; */
+  margin: 20px;
+  float: right;
+}

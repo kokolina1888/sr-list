@@ -1,16 +1,17 @@
 import React from 'react';
 import './app.module.css';
-import Header from './header/header';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-
-
+import Header from './components/header/header';
+import Banner from './components/banner';
+import LatestRecipes from './components/latestRecipes';
+import Footer from './components/footer';
 
 function App() {
   return (
     <div className={StyleSheet.app}>
-      <Header />
-      <FontAwesomeIcon icon={faCoffee} />;
+      <Header />     
+      <Banner/>
+      <LatestRecipes/>
+      <Footer/>
     </div>
   );
 }
