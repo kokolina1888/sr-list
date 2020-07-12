@@ -1,0 +1,12 @@
+.socials {
+  width: 100%;
+  text-align: left;
+  position: relative;
+  overflow: hidden; 
+}
+
+.socials a {
+ font-size: 14px;
+  color:#424141;
+  font-style: italic;
+}

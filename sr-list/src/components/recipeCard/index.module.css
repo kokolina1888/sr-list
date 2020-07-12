@@ -1,0 +1,42 @@
+.recipe-container {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 30px
+}
+
+.recipe-container img {
+  border-bottom: 3px solid #40ba37;
+  height: auto;
+  max-width: 100%;
+}
+
+.recipe-content {
+  padding-top: 15px;
+  text-align: center;
+}
+
+.recipe-content h5 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  text-align: center;
+}
+.btn a {
+  color: #3ffd05;
+  float: right;
+  position: relative;
+}
+.rating-container{
+    position: relative;
+    top: -25px
+}
+.ratings {
+  width: 20px;
+  color: #fbb710;
+  display: inline-block;
+  padding: 0 1px;
+  position: relative;
+
+}

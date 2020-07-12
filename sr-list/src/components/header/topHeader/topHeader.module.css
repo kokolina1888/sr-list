@@ -1,0 +1,22 @@
+.top-header {
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  border-bottom: 1px solid #dddee9;
+}
+
+.news {
+  position: relative;
+  z-index: 1;
+}
+
+
+.profile a {
+  display: inline-block;
+  color: #b6b6b6;
+  font-size: 13px;
+ 
+  font-size: 14px;
+  color: #424141;
+  font-style: italic;  
+}

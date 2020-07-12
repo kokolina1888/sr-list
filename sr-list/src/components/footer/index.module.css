@@ -1,0 +1,21 @@
+.footer {
+  position: relative;
+  z-index: 1;
+  width: 80%;
+  height: 140px;
+  margin: 0 auto;
+  border-top: 1px solid #ccc;
+}
+.logo span{
+  color: #ccc;
+  font-weight: bold;
+  font-size: 52px;
+  font-style: italic;
+  line-height: 52px;
+}
+.footer-bottom div {
+  display: inline-block;
+}
+.socials {
+  width: 15%;
+}
