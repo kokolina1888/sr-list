@@ -1,33 +1,31 @@
 import React from 'react';
-import Search from '../../UI/search';
+import Search from '../../UI/search/search';
 import Link from '../../UI/link/link';
+import styles from './menu.module.css';
 
 const Menu = () => {
     return (
-      <div class="classy-menu">
-        <div class="classynav">
+      <div class={styles.nav}>
           <ul>
-            <li>
-              <Link  href="/">Home</Link>
+            <li className={styles["list-item"]}>
+              <Link href="/">Home</Link>
             </li>
-            <li>
+            <li className={styles["list-item"]}>
               <Link href="/">Info</Link>
             </li>
-            <li>
+            <li className={styles["list-item"]}>
               <Link href="/">Recipes</Link>
             </li>
-            <li>
+            <li className={styles["list-item"]}>
               <Link href="/">Blog</Link>
             </li>
-            <li>
+            <li className={styles["list-item"]}>
               <Link href="/">Shopping List</Link>
             </li>
-            <li>
+            <li className={styles["list-item"]}>
               <Link href="/">Add Recipe</Link>
             </li>
           </ul>
-          <Search />
-        </div>
       </div>
     );
 };
