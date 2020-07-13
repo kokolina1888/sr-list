@@ -1,0 +1,16 @@
+.container {
+    position: relative;
+    z-index: 10;
+    width: 92%;
+    height: 190px;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-bottom: 60px;
+    background-image: url(../../images/banner/breadcumb4.jpg);
+}
+
+.breadcumb-title {
+    font-size: 30px;
+    margin-bottom: 0;
+    color: #ffffff;
+}

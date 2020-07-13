@@ -1,0 +1,31 @@
+.img {
+  display: inline-block;
+  width: 90%;
+  margin-bottom: 20px
+}
+
+.headline {
+    font-size: 36px;
+    color: #474747;
+    margin-bottom: 30px;
+}
+.prep {
+    border-left: 3px solid #40ba37;
+    padding: 15px;
+    margin-bottom: 15px
+}
+
+.desc {
+    color: #4d4a4a;
+    font-size: 14px;
+    line-height: 2;
+    font-weight: 400;
+
+}
+
+.ingredients h4 {
+    color: #474747;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #40ba37;
+
+}
