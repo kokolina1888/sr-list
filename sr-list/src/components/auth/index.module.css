@@ -1,0 +1,15 @@
+.delicious-tabs-content {
+    padding: 40px 100px;
+    background-color: #cccccc67;
+}
+
+.btn-container {
+    width: 50%;
+    display: inline-block
+}
+
+.wrapper {
+    width: 95%;
+    margin: 0 auto;
+}
+
