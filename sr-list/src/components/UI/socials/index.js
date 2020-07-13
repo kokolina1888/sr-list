@@ -9,7 +9,9 @@ import {
   faLaravel,
   faPinterest
 } from "@fortawesome/free-brands-svg-icons";
+
 import styles from './index.module.css';
+
 
 
 const Socials = () => {

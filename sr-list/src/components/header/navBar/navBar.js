@@ -1,6 +1,6 @@
 import React from 'react';
 import Menu from './menu/menu';
-import Link from '../UI/link/link';
+import Link from '../../UI/link/link';
 
 import styles from './navBar.module.css';
 
