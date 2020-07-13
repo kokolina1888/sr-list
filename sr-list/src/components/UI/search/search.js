@@ -8,7 +8,7 @@ import Link from '../link/link';
 
 const Search = () => {
     return (
-      <div class={styles.search}>
+      <div className={styles.search}>
         <Link href="/">
           <FontAwesomeIcon icon={faSearch} />
         </Link>

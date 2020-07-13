@@ -1,11 +1,10 @@
 import React from 'react';
-import Search from '../../../UI/search/search';
 import Link from '../../../UI/link/link';
 import styles from './menu.module.css';
 
 const Menu = () => {
     return (
-      <div class={styles.nav}>
+      <div className={styles.nav}>
           <ul>
             <li className={styles["list-item"]}>
               <Link href="/">Home</Link>

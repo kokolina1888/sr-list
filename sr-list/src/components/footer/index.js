@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="h-100 d-flex flex-wrap align-items-center justify-content-between">
         <div className={styles.logo}>
           <Link href="/">
-            <span classNameName={styles.logo}>SR list</span>
+            <span className={styles.logo}>SR list</span>
           </Link>
         </div>
         <div className={styles.socials}>

@@ -12,12 +12,12 @@ const TopHeader = () => {
     //    <!-- Top Header Area -->
     <div className={styles["top-header"]}>
       <div className="container h-100">
-        <div class="row h-100 align-items-center justify-content-between">
+        <div className="row h-100 align-items-center justify-content-between">
           <div className="col-12 col-sm-6">
             <Socials/>
           </div>
           {/* <!-- Top Social Info --> */}
-          <div class="col-12 col-sm-6">
+          <div className="col-12 col-sm-6">
             <div className={styles.profile + " text-right"}>
               <Search />
               <Link href="/">Log In / Register</Link>

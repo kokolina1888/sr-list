@@ -4,7 +4,7 @@ import NavBar from "./navBar/navBar";
 import styles from './header.module.css';
 const Header = () => {
   return (
-    <header class={styles.header}>
+    <header className={styles.header}>
       <TopHeader />
       <NavBar />
     </header>
