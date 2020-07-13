@@ -6,6 +6,7 @@ import Footer from './components/footer';
 import RecipesList from './components/recipesList';
 import Recipes from './components/recipes';
 import Recipe from './components/recipe';
+import Auth from './components/auth'
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
 
       {/* <Recipes title="Latest Recipes" /> */}
       {/* <RecipesList/> */}
-      <Recipe/>
+      {/* <Recipe/> */}
+      <Auth/>
       <Footer />
     </div>
   );
