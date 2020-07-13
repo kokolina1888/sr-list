@@ -7,7 +7,7 @@ import {
   faYoutube,
   faInstagram,
   faLaravel,
-  faPinterest
+  faPinterest,
 } from "@fortawesome/free-brands-svg-icons";
 
 import styles from './index.module.css';

@@ -6,10 +6,10 @@ import styles from './navBar.module.css';
 
 const NavBar = () => {
     return (
-      <div class={styles.nav}>
-        <div class="classy-nav-container breakpoint-off">
-          <div class="container">
-            <nav class={styles.navbar + " justify-content-between"}>
+      <div className={styles.nav}>
+        <div className="classy-nav-container breakpoint-off">
+          <div className="container">
+            <nav className={styles.navbar + " justify-content-between"}>
               <Link href="/">
                 <span className={styles.logo}>SR list</span>
                 {/* <img src={logo} /> */}

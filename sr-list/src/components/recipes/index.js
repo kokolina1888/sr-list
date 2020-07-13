@@ -3,14 +3,14 @@ import RecipeCard from "../recipeCard";
 
 import styles from "./index.module.css";
 
-const index = () => {
+const Recipes = (props) => {
   return (
     <section className={styles.latest}>
       <div className="container">
         <div className="row">
           <div className="col-12">
             <div className={styles["latest-header"]}>
-              <h3 className={ styles.title}>Latest Recepies</h3>
+  <h3 className={ styles.title}>{ props.title }</h3>
             </div>
           </div>
         </div>
@@ -42,4 +42,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Recipes;
