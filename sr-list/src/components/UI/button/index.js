@@ -1,5 +1,5 @@
 import React from "react";
-import Aux from "../../hoc/Aux";
+import DocFrag from "../../hoc/docFrag";
 import styles from './index.module.css';
 
 
@@ -9,9 +9,9 @@ const Input = (props) => {
     addClass = props.type;
   }
   return (
-    <Aux>
+    <DocFrag>
       <button className={styles.btn + ' ' + styles[addClass]} >{props.children}</button>
-    </Aux>
+    </DocFrag>
   );
  
 };

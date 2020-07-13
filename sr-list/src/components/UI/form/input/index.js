@@ -1,5 +1,5 @@
 import React from "react";
-import Aux from "../../../hoc/Aux";
+import DocFrag from "../../../hoc/docFrag";
 import styles from "./index.module.css";
 
 
@@ -10,14 +10,14 @@ const Button = (props) => {
    }
 
   return (
-    <Aux>
+    <DocFrag>
       <input
         type={props.type}
         name={props.name}
         placeholder={props.placeholder}
         className={ styles.input + ' ' + styles[addClass] }
       />
-    </Aux>
+    </DocFrag>
   );
  
 };
