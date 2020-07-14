@@ -1,0 +1,15 @@
+.title {
+    color: #676565;
+    font-weight: bold;
+    margin-bottom: 20px
+}
+.container {
+    border-left: 3px solid #40ba37;
+}
+
+.recipe {
+    color: #40ba37;
+    font-weight: bold;
+    display: inline-block;
+    padding: 2px
+}
