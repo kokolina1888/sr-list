@@ -8,6 +8,7 @@ import Recipes from './components/recipes';
 import Recipe from './components/recipe';
 import Auth from './components/auth'
 import ShoppingList from './components/shoppingList';
+import InfoPage from './components/infoPage';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
       {/* <RecipesList/> */}
       {/* <Recipe/> */}
       {/* <Auth/> */}
-      <ShoppingList/>
+      {/* <ShoppingList/> */}
+      <InfoPage/>
       <Footer />
     </div>
   );
