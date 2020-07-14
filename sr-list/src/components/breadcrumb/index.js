@@ -2,9 +2,13 @@ import React from "react";
 
 import styles from "./index.module.css";
 
-const Recipe = (props) => {
+const Breadcrumb = (props) => {
+  let addClass = "";
+  if (props.type) {
+    addClass = props.type;
+  }
   return (
-    <div className={styles.container + " bg-img bg-overlay"}>
+    <div className={styles.container + " " + styles[addClass] + "bg-img bg-overlay"}>
       <div className="container h-100">
         <div className="row h-100 align-items-center">
           <div className="col-12">
@@ -18,4 +22,4 @@ const Recipe = (props) => {
   );
 };
 
-export default Recipe;
+export default Breadcrumb;

@@ -16,9 +16,6 @@ const Menu = () => {
               <Link href="/">Recipes</Link>
             </li>
             <li className={styles["list-item"]}>
-              <Link href="/">Blog</Link>
-            </li>
-            <li className={styles["list-item"]}>
               <Link href="/">Shopping List</Link>
             </li>
             <li className={styles["list-item"]}>

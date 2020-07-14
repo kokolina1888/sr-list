@@ -1,0 +1,17 @@
+.textarea {
+  width: 100%;
+  background-color: #f3f5f8;
+  font-size: 12px;
+  font-style: italic;
+  margin: 20px 0;
+  border: none;
+  border-left-color: currentcolor;
+  border-left-style: none;
+  border-left-width: medium;
+  border-left: 3px solid #f3f5f8;
+  border-radius: 0;
+  padding: 15px 30px;
+  height: 200px;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+}
