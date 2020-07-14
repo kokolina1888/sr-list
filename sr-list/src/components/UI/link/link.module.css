@@ -51,3 +51,13 @@
     width: 100%;
     text-align: center
 }
+
+.shopping-list {
+    cursor: ponter;
+    color: #10942c;
+}
+
+.shopping-list:hover {
+    text-decoration: underline;
+    color: #10942c;
+}
