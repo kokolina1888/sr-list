@@ -4,7 +4,7 @@ import image from "../../images/recipes/r1.jpg";
 
 import styles from "./index.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faHeart, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const RecipeCard = () => {
   return (
@@ -12,9 +12,11 @@ const RecipeCard = () => {
       <img src={image} alt="Vegan Smoothie" />
       <div className={styles.btn}>
         <Link>
-          favorites
+          <FontAwesomeIcon className={styles.fav} icon={faHeart} />
         </Link>
-        <Link>Add to SL</Link>
+        <Link>       
+          <FontAwesomeIcon className={styles.plus} icon={faPlus} />
+        </Link>
       </div>
       <div className={styles["recipe-content"]}>
         <Link>

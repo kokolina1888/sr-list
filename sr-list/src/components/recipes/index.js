@@ -10,7 +10,7 @@ const Recipes = (props) => {
         <div className="row">
           <div className="col-12">
             <div className={styles["latest-header"]}>
-  <h3 className={ styles.title}>{ props.title }</h3>
+              <h3 className={ styles.title}>{ props.title }</h3>
             </div>
           </div>
         </div>

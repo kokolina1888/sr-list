@@ -7,6 +7,7 @@ import RecipesList from './components/recipesList';
 import Recipes from './components/recipes';
 import Recipe from './components/recipe';
 import Auth from './components/auth'
+import ShoppingList from './components/shoppingList';
 
 function App() {
   return (
@@ -14,11 +15,13 @@ function App() {
       <Header />
       {/* <Banner type="home" /> */}
       {/* <Banner type="recipes" /> */}
+      {/* <Banner type="shopping" /> */}
 
       {/* <Recipes title="Latest Recipes" /> */}
       {/* <RecipesList/> */}
       {/* <Recipe/> */}
-      <Auth/>
+      {/* <Auth/> */}
+      <ShoppingList/>
       <Footer />
     </div>
   );
