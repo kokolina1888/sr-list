@@ -10,7 +10,7 @@ const InfoPage = () => {
       <Breadcrumb type="info">Info</Breadcrumb>
       <section className={styles.about}>
         <div className="container">
-          <h3 className={styles.title}>Who we are and what we do?</h3>
+          <h3 className={styles.title}>Who we are and what we do</h3>
           <h6 className={styles["sub-title"]}>
             Donec quis metus ac arcu luctus accumsan. Nunc in justo tincidunt,
             sodales nunc id, finibus nibh. className aptent taciti sociosqu ad

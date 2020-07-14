@@ -10,7 +10,12 @@ const Input = (props) => {
   }
   return (
     <DocFrag>
-      <button className={styles.btn + ' ' + styles[addClass]} >{props.children}</button>
+      <button className={styles[addClass]}>
+        {props.children}
+      </button>
+      {/* <button className={styles.btn + " " + styles[addClass]}> */}
+        {/* {props.children} */}
+      {/* </button> */}
     </DocFrag>
   );
  

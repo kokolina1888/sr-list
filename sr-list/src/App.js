@@ -9,6 +9,7 @@ import Recipe from './components/recipe';
 import Auth from './components/auth'
 import ShoppingList from './components/shoppingList';
 import InfoPage from './components/infoPage';
+import AddRecipe from './components/addRecipe';
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
       {/* <Recipe/> */}
       {/* <Auth/> */}
       {/* <ShoppingList/> */}
-      <InfoPage/>
+      {/* <InfoPage/> */}
+      <AddRecipe/>
       <Footer />
     </div>
   );

@@ -7,7 +7,7 @@ import Link from "../UI/link/link";
 class Auth extends Component {
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <div className="col-lg-8 offset-2">
           <div className={styles["delicious-tabs-content"]}>
             <div className={styles["wrapper"]}>
