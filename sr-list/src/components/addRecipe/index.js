@@ -71,7 +71,10 @@ class AddRecipe extends Component {
                   placeholder="Recipe description"
                 />
               </div>
-              <div className="col-12 col-lg-12">Upload image</div>
+              <div className="col-12 col-lg-12">
+                  <span className={styles.img}>Upload image</span>
+                  <Input type="file" name="image"/>
+                </div>
               <div className="col-12 text-center">
                 <Button type="add-recipe">Save</Button>
               </div>
