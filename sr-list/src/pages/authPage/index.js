@@ -1,12 +1,15 @@
 import React, { Component } from "react";
-import Input from "../UI/form/input";
+
+import UserLayout from "../../components/layouts/userLayout";
+import Input from "../../components/UI/form/input";
 import styles from "./index.module.css";
-import Button from "../UI/button";
-import Link from "../UI/link/link";
+import Button from "../../components/UI/button";
+import Link from "../../components/UI/link";
 
 class Auth extends Component {
   render() {
     return (
+      <UserLayout>
       <div className="container">
         <div className="col-lg-8 offset-2">
           <div className={styles["delicious-tabs-content"]}>
@@ -57,6 +60,7 @@ class Auth extends Component {
           </div>
         </div>
       </div>
+      </UserLayout>
     );
   }
 }

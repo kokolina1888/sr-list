@@ -1,5 +1,4 @@
-import React from "react";
-import DocFrag from "../../../hoc/docFrag";
+import React, { Fragment } from "react";
 import styles from "./index.module.css";
 
 
@@ -10,14 +9,14 @@ const Button = (props) => {
    }
 
   return (
-    <DocFrag>
+    <Fragment>
       <input
         type={props.type}
         name={props.name}
         placeholder={props.placeholder}
         className={ styles.input + ' ' + styles[addClass] }
       />
-    </DocFrag>
+    </Fragment>
   );
  
 };

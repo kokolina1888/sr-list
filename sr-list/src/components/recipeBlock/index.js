@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./index.module.css";
-import Link from "../UI/link/link";
+import Link from "../UI/link";
 
 const RecipeBlock = () => {
     return (

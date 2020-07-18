@@ -1,12 +1,14 @@
 import React from "react";
-import Breadcrumb from "../breadcrumb";
+import UserLayout from "../../components/layouts/userLayout";
+
+import Breadcrumb from "../../components/breadcrumb";
 import image from "../../images/recipes/bg5.jpg";
 
 import styles from "./index.module.css";
 
 const Recipe = (props) => {
   return (
-    <div>
+    <UserLayout>
       <Breadcrumb>Recipe</Breadcrumb>
       <div className="receipe-content-area">
         <div className="container">
@@ -23,7 +25,7 @@ const Recipe = (props) => {
           <div className="row">
             <div className="col-8 col-md-8">
               <div className="col-12">
-                <img className={styles.img} src={image} />
+                <img className={styles.img} src={image} alt=""/>
               </div>
               <div className="col-12">
                 <div className={styles.desc + " d-flex"}>
@@ -33,31 +35,31 @@ const Recipe = (props) => {
                     ac pellentesque tortor. Aenean congue sed metus in iaculis.
                     Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget
                     lobortis purus. Orci varius natoque penatibus et magnis dis
-                    parturient montes, nascetur ridiculus mus. Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit. Vestibulum nec
-                    varius dui. Suspendisse potenti. Vestibulum ac pellentesque
-                    tortor. Aenean congue sed metus in iaculis. Cras a tortor
-                    enim. Phasellus posuere vestibulum ipsum, eget lobortis
-                    purus. Orci varius natoque penatibus et magnis dis
-                    parturient montes, nascetur ridiculus mus. Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit. Vestibulum nec
-                    varius dui. Suspendisse potenti. Vestibulum ac pellentesque
-                    tortor. Aenean congue sed metus in iaculis. Cras a tortor
-                    enim. Phasellus posuere vestibulum ipsum, eget lobortis
-                    purus. Orci varius natoque penatibus et magnis dis
-                    parturient montes, nascetur ridiculus mus. Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit. Vestibulum nec
-                    varius dui. Suspendisse potenti. Vestibulum ac pellentesque
-                    tortor. Aenean congue sed metus in iaculis. Cras a tortor
-                    enim. Phasellus posuere vestibulum ipsum, eget lobortis
-                    purus. Orci varius natoque penatibus et magnis dis
-                    parturient montes, nascetur ridiculus mus. Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit. Vestibulum nec
-                    varius dui. Suspendisse potenti. Vestibulum ac pellentesque
-                    tortor. Aenean congue sed metus in iaculis. Cras a tortor
-                    enim. Phasellus posuere vestibulum ipsum, eget lobortis
-                    purus. Orci varius natoque penatibus et magnis dis
-                    parturient montes, nascetur ridiculus mus.{" "}
+                    parturient montes, nascetur ridiculus mus. Lorem ipsum dolor
+                    sit amet, consectetur adipiscing elit. Vestibulum nec varius
+                    dui. Suspendisse potenti. Vestibulum ac pellentesque tortor.
+                    Aenean congue sed metus in iaculis. Cras a tortor enim.
+                    Phasellus posuere vestibulum ipsum, eget lobortis purus.
+                    Orci varius natoque penatibus et magnis dis parturient
+                    montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Vestibulum nec varius dui.
+                    Suspendisse potenti. Vestibulum ac pellentesque tortor.
+                    Aenean congue sed metus in iaculis. Cras a tortor enim.
+                    Phasellus posuere vestibulum ipsum, eget lobortis purus.
+                    Orci varius natoque penatibus et magnis dis parturient
+                    montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Vestibulum nec varius dui.
+                    Suspendisse potenti. Vestibulum ac pellentesque tortor.
+                    Aenean congue sed metus in iaculis. Cras a tortor enim.
+                    Phasellus posuere vestibulum ipsum, eget lobortis purus.
+                    Orci varius natoque penatibus et magnis dis parturient
+                    montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Vestibulum nec varius dui.
+                    Suspendisse potenti. Vestibulum ac pellentesque tortor.
+                    Aenean congue sed metus in iaculis. Cras a tortor enim.
+                    Phasellus posuere vestibulum ipsum, eget lobortis purus.
+                    Orci varius natoque penatibus et magnis dis parturient
+                    montes, nascetur ridiculus mus.{" "}
                   </p>
                 </div>
               </div>
@@ -111,7 +113,7 @@ const Recipe = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </UserLayout>
   );
 };
 

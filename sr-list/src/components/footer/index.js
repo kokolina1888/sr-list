@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./index.module.css";
 import Socials from "../UI/socials";
-import Link from "../UI/link/link";
+import Link from "../UI/link";
 
 const Footer = () => {
   return (
