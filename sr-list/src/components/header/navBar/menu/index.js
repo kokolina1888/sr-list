@@ -1,6 +1,6 @@
 import React from 'react';
-import Link from '../../../UI/link/link';
-import styles from './menu.module.css';
+import Link from '../../../UI/link';
+import styles from './index.module.css';
 
 const Menu = () => {
     return (
@@ -10,16 +10,16 @@ const Menu = () => {
               <Link href="/">Home</Link>
             </li>
             <li className={styles["list-item"]}>
-              <Link href="/">Info</Link>
+              <Link href="/info">Info</Link>
             </li>
             <li className={styles["list-item"]}>
-              <Link href="/">Recipes</Link>
+              <Link href="/recipes">Recipes</Link>
             </li>
             <li className={styles["list-item"]}>
-              <Link href="/">Shopping List</Link>
+              <Link href="/shopping-list">Shopping List</Link>
             </li>
             <li className={styles["list-item"]}>
-              <Link href="/">Add Recipe</Link>
+              <Link href="/add-recipe">Add Recipe</Link>
             </li>
           </ul>
       </div>

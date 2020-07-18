@@ -1,8 +1,8 @@
 import React from 'react';
-import Menu from './menu/menu';
-import Link from '../../UI/link/link';
+import Menu from './menu';
+import Link from '../../UI/link';
 
-import styles from './navBar.module.css';
+import styles from './index.module.css';
 
 const NavBar = () => {
     return (

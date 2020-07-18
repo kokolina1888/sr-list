@@ -1,11 +1,6 @@
 import React from 'react';
-import DocFrag from '../hoc/docFrag';
-import Button from '../UI/button';
 import Select from "../UI/form/select";
 import Input from "../UI/form/input";
-
-
-import styles from "./index.module.css";
 
 
 const AddIngredient = () => {

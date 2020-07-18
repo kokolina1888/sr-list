@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "./search.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
-import Link from '../link/link';
+import Link from '../link';
 
 
 

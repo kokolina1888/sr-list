@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./topHeader.module.css";
-import Link from "../../UI/link/link";
-import Search from "../../UI/search/search";
+import styles from "./index.module.css";
+import Link from "../../UI/link";
+import Search from "../../UI/search";
 
 import Socials from '../../UI/socials';
 
@@ -20,7 +20,7 @@ const TopHeader = () => {
           <div className="col-12 col-sm-6">
             <div className={styles.profile + " text-right"}>
               <Search />
-              <Link href="/">Log In / Register</Link>
+              <Link href="/auth">Log In / Register</Link>
             </div>
           </div>
         </div>

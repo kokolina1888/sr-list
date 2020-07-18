@@ -3,6 +3,7 @@ import RecipeFiltersBlock from "../recipeFiltersBlock";
 import Recipes from "../recipes";
 
 class RecipesList extends Component {
+  
   render() {
     return (
       <div>

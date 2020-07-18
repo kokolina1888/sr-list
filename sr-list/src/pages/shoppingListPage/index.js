@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import UserLayout from '../../components/layouts/userLayout'
+import Breadcrumb from '../../components/breadcrumb'
+import Link from '../../components/UI/link';
 import styles from "./index.module.css";
-import Breadcrumb from '../breadcrumb'
-import Link from '../UI/link/link';
 
 class ShoppingList extends Component {
     render() {
         return (
-          <div>
+          <UserLayout>
             <Breadcrumb>Shopping List</Breadcrumb>
             <div className="receipe-content-area">
               <div className="container">
@@ -17,7 +18,7 @@ class ShoppingList extends Component {
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Vestibulum nec varius dui.
-                        <Link href="/" type="shopping-list">
+                        <Link href="/recipe/:recipe" type="shopping-list">
                           See recipe...
                         </Link>
                       </p>
@@ -27,7 +28,7 @@ class ShoppingList extends Component {
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Vestibulum nec varius dui.
-                        <Link href="/" type="shopping-list">
+                        <Link href="/recipe/:recipe" type="shopping-list">
                           See recipe...
                         </Link>
                       </p>
@@ -37,7 +38,7 @@ class ShoppingList extends Component {
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Vestibulum nec varius dui.{" "}
-                        <Link href="/" type="shopping-list">
+                        <Link href="/recipe/:recipe" type="shopping-list">
                           See recipe...
                         </Link>
                       </p>
@@ -91,7 +92,7 @@ class ShoppingList extends Component {
                 </div>
               </div>
             </div>
-          </div>
+          </UserLayout>
         );
     }
 }

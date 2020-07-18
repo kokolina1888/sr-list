@@ -22,13 +22,51 @@ vertical-align: middle;
     background-color: #40ba37;
 }
 
-.recipe-search {
-  /* height: calc(1.5em + .75rem + 2px); */
-  
+.recipe-search { 
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  display: inline-block;
+    min-width: 160px;
+    height: 60px;
+    color: #ffffff;
+    border: none;
+    border-left-color: currentcolor;
+        border-left-style: none;
+        border-left-width: medium;
+    border-left: 3px solid #1c8314;
+    border-radius: 0;
+    padding: 0 30px;
+    font-size: 16px;
+    line-height: 58px;
+    font-weight: 600;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    text-transform: capitalize;
+    background-color: #40ba37;
 }
 
 .recipe-filter {
-  /* height: calc(1.5em + .75rem + 2px);   */
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  display: inline-block;
+    min-width: 160px;
+    height: 60px;
+    color: #ffffff;
+    border: none;
+    border-left-color: currentcolor;
+        border-left-style: none;
+        border-left-width: medium;
+    border-left: 3px solid #1c8314;
+    border-radius: 0;
+    padding: 0 30px;
+    font-size: 16px;
+    line-height: 58px;
+    font-weight: 600;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    text-transform: capitalize;
   background-color: #429de7;
 }
 

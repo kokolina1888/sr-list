@@ -1,7 +1,7 @@
 import React from "react";
-import TopHeader from "./topHeader/topHeader";
-import NavBar from "./navBar/navBar";
-import styles from './header.module.css';
+import TopHeader from "./topHeader";
+import NavBar from "./navBar";
+import styles from './index.module.css';
 const Header = () => {
   return (
     <header className={styles.header}>

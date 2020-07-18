@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "../UI/link/link";
+import Link from "../UI/link";
 import image from "../../images/recipes/r1.jpg";
 
 import styles from "./index.module.css";
@@ -11,15 +11,15 @@ const RecipeCard = () => {
     <div className={styles["recipe-container"]}>
       <img src={image} alt="Vegan Smoothie" />
       <div className={styles.btn}>
-        <Link>
+        <Link href="/">
           <FontAwesomeIcon className={styles.fav} icon={faHeart} />
         </Link>
-        <Link>       
+        <Link href="/">       
           <FontAwesomeIcon className={styles.plus} icon={faPlus} />
         </Link>
       </div>
       <div className={styles["recipe-content"]}>
-        <Link>
+        <Link href="/">
           <h5>Vegan Smoothie</h5>
         </Link>
         <div className={styles["rating-container"]}>

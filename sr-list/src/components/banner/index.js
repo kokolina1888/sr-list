@@ -7,7 +7,7 @@ const Banner = ({ type }) => {
       <section className={styles["banner-container"]}>
         <div className={styles.slides}>          
           <div className={styles[type  + "-single-slide"]}>
-    { type === "home" ? <RecipeBlock/> : null }
+           { type === "home" ? <RecipeBlock/> : null }
           </div>
         </div>
       </section>
