@@ -1,49 +1,49 @@
-.btn {  
-  text-align: center;
-white-space: nowrap;
-vertical-align: middle;
-    display: inline-block;
-    min-width: 160px;
-    height: 60px;
-    color: #ffffff;
-    border: none;
-    border-left-color: currentcolor;
-        border-left-style: none;
-        border-left-width: medium;
-    border-left: 3px solid #1c8314;
-    border-radius: 0;
-    padding: 0 30px;
-    font-size: 16px;
-    line-height: 58px;
-    font-weight: 600;
-    -webkit-transition-duration: 500ms;
-    transition-duration: 500ms;
-    text-transform: capitalize;
-    background-color: #40ba37;
-}
-
-.recipe-search { 
+.btn {
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   display: inline-block;
-    min-width: 160px;
-    height: 60px;
-    color: #ffffff;
-    border: none;
-    border-left-color: currentcolor;
-        border-left-style: none;
-        border-left-width: medium;
-    border-left: 3px solid #1c8314;
-    border-radius: 0;
-    padding: 0 30px;
-    font-size: 16px;
-    line-height: 58px;
-    font-weight: 600;
-    -webkit-transition-duration: 500ms;
-    transition-duration: 500ms;
-    text-transform: capitalize;
-    background-color: #40ba37;
+  min-width: 160px;
+  height: 60px;
+  color: #ffffff;
+  border: none;
+  border-left-color: currentcolor;
+  border-left-style: none;
+  border-left-width: medium;
+  border-left: 3px solid #1c8314;
+  border-radius: 0;
+  padding: 0 30px;
+  font-size: 16px;
+  line-height: 58px;
+  font-weight: 600;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  text-transform: capitalize;
+  background-color: #40ba37;
+}
+
+.recipe-search {
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  display: inline-block;
+  min-width: 160px;
+  height: 60px;
+  color: #ffffff;
+  border: none;
+  border-left-color: currentcolor;
+  border-left-style: none;
+  border-left-width: medium;
+  border-left: 3px solid #1c8314;
+  border-radius: 0;
+  padding: 0 30px;
+  font-size: 16px;
+  line-height: 58px;
+  font-weight: 600;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  text-transform: capitalize;
+  background-color: #40ba37;
 }
 
 .recipe-filter {
@@ -51,22 +51,22 @@ vertical-align: middle;
   white-space: nowrap;
   vertical-align: middle;
   display: inline-block;
-    min-width: 160px;
-    height: 60px;
-    color: #ffffff;
-    border: none;
-    border-left-color: currentcolor;
-        border-left-style: none;
-        border-left-width: medium;
-    border-left: 3px solid #1c8314;
-    border-radius: 0;
-    padding: 0 30px;
-    font-size: 16px;
-    line-height: 58px;
-    font-weight: 600;
-    -webkit-transition-duration: 500ms;
-    transition-duration: 500ms;
-    text-transform: capitalize;
+  min-width: 160px;
+  height: 60px;
+  color: #ffffff;
+  border: none;
+  border-left-color: currentcolor;
+  border-left-style: none;
+  border-left-width: medium;
+  border-left: 3px solid #1c8314;
+  border-radius: 0;
+  padding: 0 30px;
+  font-size: 16px;
+  line-height: 58px;
+  font-weight: 600;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  text-transform: capitalize;
   background-color: #429de7;
 }
 
@@ -91,28 +91,29 @@ vertical-align: middle;
   background-color: #40ba37;
   width: 100%
 }
+
 .auth-login {
   display: inline-block;
-min-width: 160px;
-height: 60px;
-color: #ffffff;
-border: none;
-border-left-color: currentcolor;
-border-left-style: none;
-border-left-width: medium;
-border-left: 3px solid #1c8314;
-border-radius: 0;
-padding: 0 30px;
-font-size: 16px;
-line-height: 58px;
-font-weight: 600;
--webkit-transition-duration: 500ms;
-transition-duration: 500ms;
-text-transform: capitalize;
-background-color: #429de7;
-width: 100%
-  
+  min-width: 160px;
+  height: 60px;
+  color: #ffffff;
+  border: none;
+  border-left-color: currentcolor;
+  border-left-style: none;
+  border-left-width: medium;
+  border-left: 3px solid #1c8314;
+  border-radius: 0;
+  padding: 0 30px;
+  font-size: 16px;
+  line-height: 58px;
+  font-weight: 600;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  text-transform: capitalize;
+  background-color: #429de7;
+  width: 100%
 }
+
 .add-ing {
   display: inline-block;
   color: #ffffff;
@@ -121,37 +122,36 @@ width: 100%
   border-left-style: none;
   border-left-width: medium;
   border-left: 3px solid #1c8314;
-font-size: 16px;
-line-height: 16px;
-font-weight: 600;
--webkit-transition-duration: 500ms;
-transition-duration: 500ms;
-text-transform: capitalize;
-background-color: #429de7;
-width: 100%;
-border-radius: 3px;
-padding: 10px
-  
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 600;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  text-transform: capitalize;
+  background-color: #429de7;
+  width: 100%;
+  border-radius: 3px;
+  padding: 10px
 }
+
 .add-recipe {
-display: inline-block;
-min-width: 160px;
-height: 60px;
-color: #ffffff;
-border: none;
-border-left-color: currentcolor;
-border-left-style: none;
-border-left-width: medium;
-border-left: 3px solid #1c8314;
-border-radius: 0;
-padding: 0 30px;
-font-size: 16px;
-line-height: 58px;
-font-weight: 600;
--webkit-transition-duration: 500ms;
-transition-duration: 500ms;
-text-transform: capitalize;
-background-color: #40ba37;
-width: 100%
-  
+  display: inline-block;
+  min-width: 160px;
+  height: 60px;
+  color: #ffffff;
+  border: none;
+  border-left-color: currentcolor;
+  border-left-style: none;
+  border-left-width: medium;
+  border-left: 3px solid #1c8314;
+  border-radius: 0;
+  padding: 0 30px;
+  font-size: 16px;
+  line-height: 58px;
+  font-weight: 600;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  text-transform: capitalize;
+  background-color: #40ba37;
+  width: 100%
 }

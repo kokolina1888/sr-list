@@ -12,6 +12,7 @@
   margin-bottom: 30px;
   font-weight: 600;
 }
+
 .info {
   font-size: 16px;
   margin-bottom: 50px;
@@ -21,6 +22,7 @@
 .inner {
   width: 45%;
 }
+
 .content a {
   display: inline-block;
   min-width: 160px;
@@ -43,5 +45,5 @@
 }
 
 .content a:hover {
-    background-color: #14610f;
+  background-color: #14610f;
 }

@@ -23,15 +23,18 @@
   transition-duration: 500ms;
   text-align: center;
 }
+
 .btn a {
   color: #3ffd05;
   float: right;
   position: relative;
 }
-.rating-container{
-    position: relative;
-    top: -25px
+
+.rating-container {
+  position: relative;
+  top: -25px
 }
+
 .ratings {
   width: 20px;
   color: #fbb710;
@@ -45,9 +48,10 @@
   height: 25px;
   margin: 5px
 }
+
 .plus {
   color: rgb(41, 97, 252);
-   height: 25px;
-   width: 25px;
+  height: 25px;
+  width: 25px;
   margin: 5px
 }
