@@ -1,27 +1,35 @@
 import React, { Component } from "react";
-import RecipeCard from "../recipeCard";
-
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
+
+import RecipeCard from "../recipeCard";
+
 import Spinner from "../UI/spinner";
 
 import styles from "./index.module.css";
 
 class Recipes extends Component {
-
   componentDidMount() {
-    console.log(this.props);
-    this.props.onFetchRecipes(this.props.nums);
+    console.log(this.props)
+    switch (this.props.type) {
+      case "latest":
+        this.props.onFetchLatestRecipes(this.props.nums);
+        break;
+      case "recipe-list":
+        this.props.onFetchRecipesList(this.props.nums, this.props.startAt );
+        break;
+    }
   }
 
+ 
   render() {
-    let recipes = <Spinner/>
-    if( !this.props.loading ){
-    recipes = this.props.recipes.map((recipe) => (
-      <div key={recipe.id}  className="col-12 col-sm-6 col-lg-4">
-        <RecipeCard title={recipe.name} />
-      </div>
-    ));
+    let recipes = <Spinner />;
+    if (!this.props.loading) {
+      recipes = this.props.recipesList.map((recipe) => (
+        <div key={recipe.id} className="col-12 col-sm-6 col-lg-4">
+          <RecipeCard title={recipe.name} />
+        </div>
+      ));
     }
     return (
       <section className={styles.latest}>
@@ -33,7 +41,7 @@ class Recipes extends Component {
               </div>
             </div>
           </div>
-          <div className="row">{ recipes }</div>
+          <div className="row">{recipes}</div>
         </div>
       </section>
     );
@@ -42,13 +50,16 @@ class Recipes extends Component {
 
 const mapsStateToProps = (state) => {
   return {
-    recipes: state.recipes,
-    loading: state.loading,
+    recipesList: state.recipes.recipes,
+    loading: state.recipes.loading,
+    total: state.recipes.total_recipes,
+    startAt: state.pagination.key
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    onFetchRecipes: (num) => dispatch(actions.fetchRecipes(num)),    
+    onFetchLatestRecipes: (num) => dispatch(actions.fetchLatestRecipes(num)),
+    onFetchRecipesList: (perPage, start ) => dispatch(actions.fetchRecipesList( perPage, start )),
   };
 };
 export default connect(mapsStateToProps, mapDispatchToProps)(Recipes);

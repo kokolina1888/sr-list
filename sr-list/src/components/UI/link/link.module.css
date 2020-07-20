@@ -1,6 +1,6 @@
 .link {
     text-decoration: none;
-    margin: 0 10px
+    margin: 0 10px;
 }
 
 .link:hover {
@@ -58,4 +58,23 @@
 .shopping-list:hover {
     text-decoration: underline;
     color: #10942c;
+}
+
+.recipe {
+    color: #423d3d;
+    font-weight: bold;
+}
+
+.pagination {
+    text-decoration: none;
+    margin: 0 10px;
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #007bff;
+    margin: 0;
+}
+
+.pagination:hover {
+    background-color: #007bff;
+    color: #fff
 }
