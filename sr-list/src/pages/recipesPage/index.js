@@ -8,7 +8,7 @@ const InfoPage = () => {
     return (
       <UserLayout>
         <Banner type="recipes" />
-        <RecipesList/>
+        <RecipesList />
       </UserLayout>
     );
 };
