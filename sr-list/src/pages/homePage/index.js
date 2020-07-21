@@ -7,7 +7,7 @@ const HomePage = () => {
     return (
       <UserLayout>
         <Banner type="home" />
-        <Recipes title="Latest Recipes" nums="9"/>
+        <Recipes title="Latest Recipes" perPage="9" type="latest"/>
       </UserLayout>
     );
 };

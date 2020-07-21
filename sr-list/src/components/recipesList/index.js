@@ -8,7 +8,7 @@ class RecipesList extends Component {
     return (
       <div>
         <RecipeFiltersBlock />
-        <Recipes title="Recipes" nums="12"/>
+        <Recipes title="Recipes" perPage="3" type="recipe-list"/>
       </div>
     );
   }

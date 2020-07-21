@@ -9,13 +9,12 @@ import recipesReducer from './store/reducers/recipes'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const rootReducer = combineReducers({
- 
+const rootReducer = combineReducers({ 
   recipes: recipesReducer
 });
 
 const store = createStore(
-  recipesReducer,
+  rootReducer,
   composeEnhancers(applyMiddleware(thunk))
 );
 

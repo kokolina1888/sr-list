@@ -19,7 +19,7 @@ const RecipeCard = ({title}) => {
         </Link>
       </div>
       <div className={styles["recipe-content"]}>
-        <Link href="/">
+        <Link href="/" type="recipe">
           <h5>{title}</h5>
         </Link>
         <div className={styles["rating-container"]}>

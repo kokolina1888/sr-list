@@ -4,13 +4,13 @@ import Banner from '../../components/banner'
 import RecipesList from '../../components/recipesList'
 
 
-const InfoPage = () => {
+const RecipesPage = (props) => {
     return (
       <UserLayout>
         <Banner type="recipes" />
-        <RecipesList />
+        <RecipesList page={props.match.params.page} />
       </UserLayout>
     );
 };
 
-export default InfoPage;
+export default RecipesPage;
