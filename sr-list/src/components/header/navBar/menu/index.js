@@ -13,7 +13,7 @@ const Menu = () => {
               <Link href="/info">Info</Link>
             </li>
             <li className={styles["list-item"]}>
-              <Link href="/recipes/1">Recipes</Link>
+              <Link href="/recipes">Recipes</Link>
             </li>
             <li className={styles["list-item"]}>
               <Link href="/shopping-list">Shopping List</Link>

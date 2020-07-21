@@ -1,6 +1,7 @@
-export { fetchLatestRecipes, fetchRecipesList } from "./recipes";
 export {
-  countTotalRecipes,
-  loadNextPage,
-  setInitPaginationKey,
-} from "./pagination";
+  fetchLatestRecipes,
+  fetchInitRecipesList,
+  fetchNextRecipesList,
+  fetchInitKey,
+  fetchNextKey
+} from "./recipes";

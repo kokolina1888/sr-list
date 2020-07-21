@@ -6,13 +6,11 @@ import { Provider } from "react-redux";
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import recipesReducer from './store/reducers/recipes'
-import paginationReducer from './store/reducers/pagination'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({ 
-  recipes: recipesReducer,
-  pagination: paginationReducer
+  recipes: recipesReducer
 });
 
 const store = createStore(

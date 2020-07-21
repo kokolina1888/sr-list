@@ -4,7 +4,7 @@ const initialState = {
   recipes: [],
   error: false,
   loading: false,
-  recipes_per_page: 0
+  lastKey: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -15,9 +15,11 @@ const reducer = (state = initialState, action) => {
       return { ...state, recipes: action.recipes, loading: false };
     case actionTypes.FETCH_RECIPES_FAIL:
       return { ...state, loading: false, error: action.error };
-    case actionTypes.SET_RECIPES_PER_PAGE:
-      return { ...state, recipes_per_page: action.recipes_per_page };    
-      
+    case actionTypes.SET_KEY:
+      return { ...state, lastKey: action.lastKey };
+    case actionTypes.SET_KEY_ERROR:
+      return { ...state, error: action.error };
+
     default:
       return state;
   }
