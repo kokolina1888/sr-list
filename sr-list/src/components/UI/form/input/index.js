@@ -15,6 +15,7 @@ const Button = (props) => {
         name={props.name}
         placeholder={props.placeholder}
         className={ styles.input + ' ' + styles[addClass] }
+        onChange={props.changed}
       />
     </Fragment>
   );

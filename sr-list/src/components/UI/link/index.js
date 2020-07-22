@@ -1,20 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
-import styles from './link.module.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./link.module.css";
 
-const LinkComponent = ({type, href, children, active}) => {
-    let addClass = "";
-    if (type) {
-      addClass = type;
-    }
+const LinkComponent = (props) => {
+  let addClass = "";
+  if (props.type) {
+    addClass = props.type;
+  }
 
-    return (        
-            <Link className={styles.link + ' ' + styles[addClass]} to={href}>
-               {children}
-            </Link>                      
-
-       
-    );
+  return (
+    <Link
+      className={styles.link + " " + styles[addClass]}
+      to={props.href}
+      onClick={props.onClick}
+      action={props.action}
+      type={props.type}
+    >
+      {props.children}
+    </Link>
+  );
 };
 
 export default LinkComponent;

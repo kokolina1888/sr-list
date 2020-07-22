@@ -5,7 +5,8 @@ const initialState = {
   userId: null,
   error: false,
   loading: false,
-  redirectPath: null
+  redirectPath: null,
+  isSignUp: true
 };
 
 const reducer = (state = initialState, action) => {
@@ -33,6 +34,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         redirectPath: action.path
       };
+    case actionTypes.SET_USER_AUTH_TYPE:
+    return {
+      ...state,
+      isSignUp: action.isSignUp
+    }
 
     default:
       return state;
