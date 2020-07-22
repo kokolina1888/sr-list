@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import { firebase } from '../../firebase'
+import axios from 'axios'
 
 export const setUserAuthType = (type) => {
   return {
@@ -30,35 +30,72 @@ export const authFail = (error) => {
 
 export const auth = (data, isSignUp) => {
   return (dispatch) => {
-    dispatch(authStart());
-var res = firebase
-  .auth()
-  .createUserWithEmailAndPassword(data.email, data.password)
-  console.log(res)
-  // .then((response) => {
-  //   const expirationDate = new Date(
-  //     new Date().getTime() + +response.data.expiresIn
-  //   );
-  //   console.log(response.user.uid)
-  //   localStorage.setItem("token", response.data.idToken);
-  //   localStorage.setItem("expirationDate", expirationDate);
-  //   localStorage.setItem("userId", response.data.localId);
-  //   dispatch(authSuccess(response.data.idToken, response.data.localId));
-  //   // dispatch(checkAuthTimeout(response.data.expiresIn));
-  // })
-  // .catch(function (error) {
-  //   // var errorCode = error.code;
-  //   // var errorMessage = error.message;
-  //   dispatch(authFail(error.message));
-  // });
-   
-  //   var user = firebase.auth().currentUser;
-
-  //   if (user) {
-  //     console.log(user.uid)
-  //   } else {
-  //     // No user is signed in.
-  //   }
-
+    dispatch(authStart());    
+    let url =
+      "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyCdyatDFn9wxITHtMHCAl17HjpV4jCstT4";
+    if (!isSignUp) {
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCdyatDFn9wxITHtMHCAl17HjpV4jCstT4";
+    }
+    axios
+      .post(url, data)
+      .then((response) => {
+        const expirationDate = new Date(
+          new Date().getTime() + +response.data.expiresIn
+        );
+        localStorage.setItem("token", response.data.idToken);
+        localStorage.setItem("expirationDate", expirationDate);
+        localStorage.setItem("userId", response.data.localId);
+        dispatch(authSuccess(response.data.idToken, response.data.localId));
+        // dispatch(checkAuthTimeout(response.data.expiresIn));
+      })
+      .catch((err) => {
+        dispatch(authFail(err.response.data.error.message));
+      });
   };
 };
+export const setAuthRedirectPath = (path) => {
+  return {
+    type: actionTypes.SET_AUTH_REDIRECT_PATH,
+    path: path,
+  };
+};
+
+// export const checkAuthTimeout = (expirationTime) => {
+//   return (dispatch) => {
+//     setTimeout(() => {
+//       dispatch(logout());
+//     }, expirationTime * 1000);
+//   };
+// };
+
+// export const authCheckState = () => {
+//   return (dispatch) => {
+//     const token = localStorage.getItem("token");
+//     if (!token) {
+//       dispatch(logout());
+//     } else {
+//       const expirationDate = new Date(localStorage.getItem("expirationDate"));
+//       if (expirationDate < new Date() || expirationDate === new Date()) {
+//         dispatch(logout());
+//       } else {
+//         const userId = localStorage.getItem("userId");
+//         dispatch(authSuccess(token, userId));
+//         dispatch(
+//           checkAuthTimeout(
+//             (expirationDate.getTime() - new Date().getTime()) / 1000
+//           )
+//         );
+//       }
+//     }
+//   };
+// };
+
+// export const logout = () => {
+//   localStorage.removeItem("token");
+//   localStorage.removeItem("expirationDate");
+//   localStorage.removeItem("userId");
+//   return {
+//     type: actionTypes.AUTH_LOGOUT,
+//   };
+// };
