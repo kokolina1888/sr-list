@@ -23,7 +23,7 @@ const reducer = (state = initialState, action) => {
         userId: action.userId,
         authRedirectPath: "/",
       };
-    case actionTypes.USER_LOGOUT:
+    case actionTypes.USER_AUTH_LOGOUT:
       return {
         ...state,
         token: null,

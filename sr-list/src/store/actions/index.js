@@ -7,5 +7,5 @@ export {
 } from "./recipes";
 
 export {
-  setUserAuthType, auth
+  setUserAuthType, auth, logout
 } from "./auth";

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import * as actions from "../../store/actions";
 
 import UserLayout from "../../components/layouts/userLayout";
@@ -29,7 +30,6 @@ class Auth extends Component {
   };
   submitHandler = (e) => {
     e.preventDefault();
-    console.log(this.state.controls);
     const dataAuth = {
       email: this.state.controls.email.value,
       password: this.state.controls.password.value
@@ -38,7 +38,6 @@ class Auth extends Component {
   };
 
   inputChangedHandler = (event, controlName) => {
-    console.log(controlName);
     const updatedControls = {
       ...this.state.controls,
       [controlName]: {
@@ -49,6 +48,11 @@ class Auth extends Component {
     this.setState({ controls: updatedControls });
   };
   render() {
+    console.log(this.props.redirectPath);
+    let authRedirect = null;
+    if (this.props.isAuth) {
+      authRedirect = <Redirect to={this.props.redirectPath} />;
+    }
     let loginClasses = styles["btn-container"];
     let signUpClasses = styles["btn-container"];
     let form = null;
@@ -144,6 +148,7 @@ class Auth extends Component {
         <div className="container">
           <div className="col-lg-8 offset-2">
             <div className={styles["delicious-tabs-content"]}>
+              {authRedirect}
               {btns}
               {form}
             </div>
@@ -158,6 +163,8 @@ const mapsStateToProps = (state) => {
     error: state.auth.error,
     loading: state.auth.loading,
     isSignUp: state.auth.isSignUp,
+    redirectPath: state.auth.redirectPath,
+    isAuth: state.auth.token !== null,
   };
 };
 const mapDispatchToProps = (dispatch) => {

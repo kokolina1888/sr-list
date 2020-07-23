@@ -13,6 +13,7 @@ class Recipes extends Component {
   componentDidMount() {
     switch (this.props.type) {
       case "latest":
+        console.log('LATEST')
         this.props.onFetchLatestRecipes(this.props.perPage);
         break;
       case "recipe-list":
