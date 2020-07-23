@@ -9,7 +9,6 @@ import * as actions from "../../../store/actions";
 import Socials from "../../UI/socials";
 
 const TopHeader = (props) => {
-  console.log(props);
   const logOutHandler = () => props.onLogOut()
   return (
     <div className={styles["top-header"]}>

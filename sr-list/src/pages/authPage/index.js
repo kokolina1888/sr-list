@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import * as actions from "../../store/actions";
 
 import UserLayout from "../../components/layouts/userLayout";
@@ -11,8 +11,7 @@ import Button from "../../components/UI/button";
 import Link from "../../components/UI/link";
 
 import {
-  checkFormElementValidity,
-  checkFormValidity,
+  checkFormElementValidity
 } from "../../shared/validation";
 
 class Auth extends Component {
@@ -76,8 +75,7 @@ class Auth extends Component {
     e.preventDefault();
     const dataAuth = {
       email: this.state.controls.email.value,
-      password: this.state.controls.password.value,
-      passwordConfirm: this.props.isSignUp ? this.state.controls.passwordConfirm : null,
+      password: this.state.controls.password.value
     };
     //enable submit button if all fields are valid and required are non empty
     this.props.onAuth(dataAuth, this.props.isSignUp);

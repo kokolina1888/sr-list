@@ -13,27 +13,25 @@ class Recipes extends Component {
   componentDidMount() {
     switch (this.props.type) {
       case "latest":
-        console.log('LATEST')
         this.props.onFetchLatestRecipes(this.props.perPage);
         break;
       case "recipe-list":
         this.props.onFetchInitList(this.props.perPage);
-        this.props.onFetchInitKey(this.props.perPage)
+        this.props.onFetchInitKey(this.props.perPage);
         break;
       default:
-      break;
+        break;
     }
   }
   handleLoadRecipesList = (event) => {
-    event.preventDefault()
-    if(event.target.attributes.dir.value === "prev"){
-      this.props.onFetchFirstList(this.props.perPage)
+    event.preventDefault();
+    if (event.target.attributes.dir.value === "prev") {
+      this.props.onFetchFirstList(this.props.perPage);
     } else {
       this.props.onFetchNextList(this.props.perPage, this.props.lastKey);
       this.props.onFetchNextKey(this.props.perPage, this.props.lastKey);
-
     }
-  }
+  };
   render() {
     let recipes = <Spinner />;
     if (!this.props.loading) {
@@ -42,6 +40,12 @@ class Recipes extends Component {
           <RecipeCard title={recipe.name} />
         </div>
       ));
+    }
+    let pagination = null;
+    if (this.props.type !== "latest") {
+      pagination = (
+        <Pagination onClick={(event) => this.handleLoadRecipesList(event)} />
+      );
     }
     return (
       <section className={styles.latest}>
@@ -54,7 +58,7 @@ class Recipes extends Component {
             </div>
           </div>
           <div className="row">{recipes}</div>
-          <Pagination onClick={(event) => this.handleLoadRecipesList(event)} />
+          {pagination}
         </div>
       </section>
     );
@@ -77,8 +81,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.fetchInitRecipesList(num)),
     onFetchNextList: (num, lastKey) =>
       dispatch(actions.fetchNextRecipesList(num, lastKey)),
-    onFetchInitKey: ( num ) => dispatch(actions.fetchInitKey(num)),
-    onFetchNextKey: (num, lastKey) => dispatch(actions.fetchNextKey(num, lastKey))
+    onFetchInitKey: (num) => dispatch(actions.fetchInitKey(num)),
+    onFetchNextKey: (num, lastKey) =>
+      dispatch(actions.fetchNextKey(num, lastKey)),
   };
 };
 export default connect(mapsStateToProps, mapDispatchToProps)(Recipes);

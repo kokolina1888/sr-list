@@ -15,6 +15,7 @@ export const checkFormElementValidity = (value, rule) => {
           message: "Enter valid email!",
         });
       }
+    break;
     case "minLength":
       if (value.trim().length < validationArr[1]) {
         return (validationResult = {
@@ -22,8 +23,7 @@ export const checkFormElementValidity = (value, rule) => {
           message: "Enter at least " + validationArr[1] + " long!",
         });
       }
-    
-
+    break;
     default:
       return validationResult;
   }
