@@ -10,13 +10,11 @@ export const firebaseLooper = (snapshot) => {
   return data;
 };
 export const reverseArray = (actualArray) => {
-  console.log(actualArray)
   let reversedArray = [];
 
   for (let i = actualArray.length - 1; i >= 0; i--) {
     
     reversedArray.push(actualArray[i]);
   }
-  console.log(reversedArray)
   return reversedArray;
 };

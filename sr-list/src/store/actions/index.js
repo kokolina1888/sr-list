@@ -6,6 +6,4 @@ export {
   fetchNextKey
 } from "./recipes";
 
-export {
-  setUserAuthType, auth, logout
-} from "./auth";
+export { setUserAuthType, auth, logout, authCheckState } from "./auth";

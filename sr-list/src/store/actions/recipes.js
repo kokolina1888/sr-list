@@ -110,7 +110,6 @@ export const fetchInitRecipesList = (num) => {
 
 
 export const fetchNextRecipesList = (num, lastKey) => {
-  console.log(num, lastKey);
   return (dispatch) => {
     dispatch(fetchRecipesStart());
     firebaseRecipes
