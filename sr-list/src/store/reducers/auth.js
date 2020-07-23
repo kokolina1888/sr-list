@@ -5,7 +5,7 @@ const initialState = {
   userId: null,
   error: false,
   loading: false,
-  redirectPath: null,
+  redirectPath: '/',
   isSignUp: true
 };
 

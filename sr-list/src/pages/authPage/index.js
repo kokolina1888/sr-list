@@ -51,7 +51,7 @@ class Auth extends Component {
     console.log(this.props.redirectPath);
     let authRedirect = null;
     if (this.props.isAuth) {
-      authRedirect = <Redirect to={this.props.redirectPath} />;
+      authRedirect = <Redirect to={ this.props.redirectPath } />;
     }
     let loginClasses = styles["btn-container"];
     let signUpClasses = styles["btn-container"];
