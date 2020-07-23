@@ -7,36 +7,34 @@ import RecipeCard from "../recipeCard";
 import Spinner from "../UI/spinner";
 
 import styles from "./index.module.css";
-import Button from "../UI/button";
 import Pagination from "../pagination";
 
 class Recipes extends Component {
   componentDidMount() {
     switch (this.props.type) {
       case "latest":
+        console.log('LATEST')
         this.props.onFetchLatestRecipes(this.props.perPage);
         break;
       case "recipe-list":
         this.props.onFetchInitList(this.props.perPage);
         this.props.onFetchInitKey(this.props.perPage)
         break;
+      default:
+      break;
     }
   }
   handleLoadRecipesList = (event) => {
     event.preventDefault()
-    // console.log(event.target.attributes.dir.value);
     if(event.target.attributes.dir.value === "prev"){
-      console.log('prev')
       this.props.onFetchFirstList(this.props.perPage)
     } else {
-      console.log('next')
       this.props.onFetchNextList(this.props.perPage, this.props.lastKey);
       this.props.onFetchNextKey(this.props.perPage, this.props.lastKey);
 
     }
   }
   render() {
-    console.log(this.props.lastKey);
     let recipes = <Spinner />;
     if (!this.props.loading) {
       recipes = this.props.recipesList.map((recipe) => (

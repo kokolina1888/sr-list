@@ -82,8 +82,8 @@ export const fetchLatestRecipes = (num) => {
       .once("value")
       .then((snapshot) => {
         const fetchedRecipes = firebaseLooper(snapshot);
-        fetchedRecipes = reverseArray(fetchedRecipes);
-        dispatch(fetchRecipesSuccess(fetchedRecipes));
+        const revRecipes = reverseArray(fetchedRecipes);
+        dispatch(fetchRecipesSuccess(revRecipes));
       })
       .catch((err) => {
         dispatch(fetchRecipesError(err));

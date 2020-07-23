@@ -3,24 +3,30 @@ import styles from "./index.module.css";
 import Link from "../../UI/link";
 import Search from "../../UI/search";
 
-import Socials from '../../UI/socials';
+import { connect } from "react-redux";
+import * as actions from "../../../store/actions";
 
+import Socials from "../../UI/socials";
 
-
-const TopHeader = () => {
+const TopHeader = (props) => {
+  console.log(props);
+  const logOutHandler = () => props.onLogOut()
   return (
-    //    <!-- Top Header Area -->
     <div className={styles["top-header"]}>
       <div className="container h-100">
         <div className="row h-100 align-items-center justify-content-between">
           <div className="col-12 col-sm-6">
-            <Socials/>
+            <Socials />
           </div>
           {/* <!-- Top Social Info --> */}
           <div className="col-12 col-sm-6">
             <div className={styles.profile + " text-right"}>
               <Search />
-              <Link href="/auth">Log In / Register</Link>
+              {props.isAuth ? (
+                <Link href="" onClick={()=>logOutHandler()}>User, Logout</Link>
+              ) : (
+                <Link href="/auth">Log In / Register</Link>
+              )}
             </div>
           </div>
         </div>
@@ -28,5 +34,14 @@ const TopHeader = () => {
     </div>
   );
 };
-
-export default TopHeader;
+const mapsStateToProps = (state) => {
+  return {
+    isAuth: state.auth.token !== null,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogOut: () => dispatch(actions.logout())
+  };
+};
+export default connect(mapsStateToProps, mapDispatchToProps)(TopHeader);

@@ -9,7 +9,7 @@ const Input = (props) => {
   }
   return (
     <Fragment>
-      <button className={styles[addClass]}>
+      <button className={styles[addClass]} disabled={props.disabled}>
         {props.children}
       </button>
       {/* <button className={styles.btn + " " + styles[addClass]}> */}
