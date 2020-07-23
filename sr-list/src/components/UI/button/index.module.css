@@ -114,6 +114,10 @@
   width: 100%
 }
 
+.auth-login:disabled, .auth-register {
+  cursor: not-allowed;
+} 
+
 .add-ing {
   display: inline-block;
   color: #ffffff;
