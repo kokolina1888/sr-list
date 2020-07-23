@@ -83,6 +83,7 @@ class Auth extends Component {
 
   inputChangedHandler = (event, controlName) => {
     let rules = this.state.controls[controlName].validation;
+   
     let result = {};
     let validationArr = rules.split(":");
     result = checkFormElementValidity(event.target.value, rules);
