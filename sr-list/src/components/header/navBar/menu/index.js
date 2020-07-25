@@ -16,6 +16,9 @@ const Menu = (props) => {
           <li className={styles["list-item"]}>
             <Link href="/recipes">Recipes</Link>
           </li>
+          <li className={styles["list-item"]}>
+            <Link href="/add-recipe">Add Recipe</Link>
+          </li>
           {props.isAuth ? (
             <Fragment>
               <li className={styles["list-item"]}>

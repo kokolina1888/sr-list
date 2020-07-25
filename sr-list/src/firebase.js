@@ -17,6 +17,9 @@ firebase.initializeApp(firebaseConfig);
 
 const firebaseDB = firebase.database();
 const firebaseRecipes = firebaseDB.ref("recipes");
+const firebaseUnits = firebaseDB.ref("units");
+const firebaseCategories = firebaseDB.ref("categories");
+const firebaseProducts = firebaseDB.ref("products");
 // const firebaseUsers = firebaseDB.ref("users");
 
-export { firebase, firebaseDB, firebaseRecipes };
+export { firebase, firebaseDB, firebaseRecipes, firebaseCategories, firebaseProducts, firebaseUnits };

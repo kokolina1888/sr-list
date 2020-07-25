@@ -11,6 +11,7 @@ const Textarea = (props) => {
         cols={props.cols}
         rows={props.rows}
         placeholder={props.placeholder}
+        onChange={props.changed}
       ></textarea>
     );
 };

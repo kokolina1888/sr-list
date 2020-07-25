@@ -17,6 +17,8 @@ function Routing(props) {
       <Route path="/info" component={InfoPage} />
       <Route path="/recipes" component={RecipesPage} />
       <Route path="/auth" component={AuthPage} />
+      <Route path="/add-recipe" component={AddRecipePage} />
+
       <Redirect to="/" />
     </Switch>
   );

@@ -1,27 +1,33 @@
 import React, { Component } from "react";
 import styles from "./index.module.css";
 
-class Select extends Component {
-  
-  render() {
-    let addClass = "";
-    if (this.props.place) {
-      addClass = this.props.place;
-    }
-    return (
-      <select
-        className={styles.select + " " + styles[addClass]}
-        name={this.props.name}
-      >
-        {/* options are to be retrieved dynamically */}
-        <option value="">--{this.props.placeholder}--</option>
-        <option value="1">All Receipies Categories 2</option>
-        <option value="1">All Receipies Categories 3</option>
-        <option value="1">All Receipies Categories 4</option>
-        <option value="1">All Receipies Categories 5</option>
-      </select>
-    );
+const Select = (props) => {
+
+  let addClass = "";
+  let selectOptions = "";
+  if (props.place) {
+    addClass = props.place;
   }
-}
+
+  selectOptions = props.ops.map((opt) => {
+   
+    return (
+      <option key={opt.id} value={opt.id}>
+        {opt.name}
+      </option>
+    );
+  });
+
+  return (
+    <select
+      className={styles.select + " " + styles[addClass]}
+      name={props.name}
+      onChange={props.changed}
+    >
+      <option>-- {props.placeholder} --</option>
+      {selectOptions}
+    </select>
+  );
+};
 
 export default Select;
