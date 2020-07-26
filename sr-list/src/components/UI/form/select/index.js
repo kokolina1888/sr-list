@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styles from "./index.module.css";
 
 const Select = (props) => {
@@ -12,7 +12,7 @@ const Select = (props) => {
   selectOptions = props.ops.map((opt) => {
    
     return (
-      <option key={opt.id} value={opt.id}>
+      <option key={opt.id} value={opt.id +'--'+ opt.name}>
         {opt.name}
       </option>
     );
