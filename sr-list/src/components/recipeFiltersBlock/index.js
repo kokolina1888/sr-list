@@ -12,7 +12,7 @@ class RecipeFiltersBlock extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-12 col-lg-4">
-                  <Select name="category" placeholder="Select a category" place="recipe-filter"/>
+                  <Select placeholder="Select a category" place="recipe-filter" ops={this.props.categories}/>
                 </div>
                 <div className="col-12 col-lg-2 text-right">
                   <Button type="recipe-filter">
