@@ -37,7 +37,7 @@ class Recipes extends Component {
     if (!this.props.loading) {
       recipes = this.props.recipesList.map((recipe) => (
         <div key={recipe.id} className="col-12 col-sm-6 col-lg-4">
-          <RecipeCard title={recipe.name} image={recipe.image} />
+          <RecipeCard title={recipe.name} image={recipe.image} recipeId={recipe.id}/>
         </div>
       ));
     }
@@ -71,6 +71,8 @@ const mapsStateToProps = (state) => {
     loading: state.recipes.loading,
     error: state.recipes.error,
     lastKey: state.recipes.lastKey,
+    userId: state.auth.userId,
+    isAuth: state.auth.token !== null
   };
 };
 const mapDispatchToProps = (dispatch) => {

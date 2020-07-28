@@ -15,6 +15,7 @@ const LinkComponent = (props) => {
       onClick={props.onClick}
       action={props.action}
       type={props.type}
+      title={props.title}
     >
       {props.children}
     </Link>
