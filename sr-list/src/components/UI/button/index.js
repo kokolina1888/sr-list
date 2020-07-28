@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import styles from './index.module.css';
 
 
-const Input = (props) => {
+const Button = (props) => {
   let addClass = '';
   if(props.type){
     addClass = props.type;
@@ -20,4 +20,4 @@ const Input = (props) => {
  
 };
 
-export default Input;
+export default Button;

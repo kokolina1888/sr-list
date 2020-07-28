@@ -12,7 +12,6 @@ const NavBar = () => {
             <nav className={styles.navbar + " justify-content-between"}>
               <Link href="/">
                 <span className={styles.logo}>SR list</span>
-                {/* <img src={logo} /> */}
               </Link>
               <Menu />
             </nav>

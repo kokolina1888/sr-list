@@ -32,7 +32,7 @@ class FavoritesPage extends Component {
         return (
           <div key={fav.id} className="col-12 col-lg-4">
             <div className="col-12 col-lg-12">
-              <img src={fav.image} className={styles.image} />
+              <img src={fav.image} className={styles.image} alt="{fav.name}"/>
             </div>
             <div className={styles.favtitle}>
               {fav.name}
