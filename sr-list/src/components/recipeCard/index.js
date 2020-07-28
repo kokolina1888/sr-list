@@ -30,10 +30,8 @@ class RecipeCard extends Component {
         console.log(res.data)
         for (let key in res.data) {
           recipeInFb.push({ ...res.data[key], id: key });
-        }
-        
-        if (!recipeInFb) {
-          
+        }        
+        if (!recipeInFb) {          
           axios
             .post("https://sr-list-ccafe.firebaseio.com/favorites.json", data)
             .then((response) => {})
