@@ -7,6 +7,7 @@ import image from "../../images/recipes/bg5.jpg";
 import styles from "./index.module.css";
 
 const Recipe = (props) => {
+  
   return (
     <UserLayout>
       <Breadcrumb>Recipe</Breadcrumb>
