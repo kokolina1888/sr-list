@@ -37,7 +37,7 @@ class Recipes extends Component {
     if (!this.props.loading) {
       recipes = this.props.recipesList.map((recipe) => (
         <div key={recipe.id} className="col-12 col-sm-6 col-lg-4">
-          <RecipeCard title={recipe.name} image={recipe.image} />
+          <RecipeCard title={recipe.name} image={recipe.image} recipeId={recipe.id}/>
         </div>
       ));
     }

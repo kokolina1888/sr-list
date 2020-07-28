@@ -69,42 +69,42 @@ const Recipe = (props) => {
               <div className={styles.ingredients}>
                 <h4>Ingredients</h4>
                 <div className="custom-control custom-checkbox">
-                  <span className="custom-control-span" for="customCheck1">
+                  <span className="custom-control-span" htmlFor="customCheck1">
                     4 Tbsp (57 gr) butter
                   </span>
                 </div>
                 <div className="custom-control custom-checkbox">
-                  <span className="custom-control-span" for="customCheck2">
+                  <span className="custom-control-span" htmlFor="customCheck2">
                     2 large eggs
                   </span>
                 </div>
                 <div className="custom-control custom-checkbox">
-                  <span className="custom-control-span" for="customCheck3">
+                  <span className="custom-control-span" htmlFor="customCheck3">
                     2 yogurt containers granulated sugar
                   </span>
                 </div>
                 <div className="custom-control custom-checkbox">
-                  <span className="custom-control-span" for="customCheck4">
+                  <span className="custom-control-span" htmlFor="customCheck4">
                     1 vanilla or plain yogurt, 170g container
                   </span>
                 </div>
                 <div className="custom-control custom-checkbox">
-                  <span className="custom-control-span" for="customCheck5">
+                  <span className="custom-control-span" htmlFor="customCheck5">
                     2 yogurt containers unbleached white flour
                   </span>
                 </div>
                 <div className="custom-control custom-checkbox">
-                  <span className="custom-control-span" for="customCheck6">
+                  <span className="custom-control-span" htmlFor="customCheck6">
                     1.5 yogurt containers milk
                   </span>
                 </div>
                 <div className="custom-control custom-checkbox">
-                  <span className="custom-control-span" for="customCheck7">
+                  <span className="custom-control-span" htmlFor="customCheck7">
                     1/4 tsp cinnamon
                   </span>
                 </div>
                 <div className="custom-control custom-checkbox">
-                  <span className="custom-control-span" for="customCheck8">
+                  <span className="custom-control-span" htmlFor="customCheck8">
                     1 cup fresh blueberries{" "}
                   </span>
                 </div>

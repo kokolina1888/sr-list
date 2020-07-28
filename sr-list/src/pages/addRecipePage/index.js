@@ -144,6 +144,8 @@ class AddRecipe extends Component {
           userId: this.props.userId,
           name: this.state.controls.name.value,
           image: this.state.image,
+          //needed for filtering
+          userRecipe: this.props.userId + response.data.name,
         };
         axios
           .post(
@@ -153,12 +155,12 @@ class AddRecipe extends Component {
           //  .post("/recipes.json?auth=" + this.props.token, recipeData)
           .then((response) => {})
           .catch((error) => {
-            console.log(error);
+            
           });
         this.props.history.push("/");
       })
       .catch((error) => {
-        console.log(error);
+        
       });
   };
 
@@ -168,7 +170,7 @@ class AddRecipe extends Component {
       //  .post("/recipes.json?auth=" + this.props.token, recipeData)
       .then((response) => {})
       .catch((error) => {
-        console.log(error);
+        
       });
   };
   addRecipeToFavoritesList = (data) => {};

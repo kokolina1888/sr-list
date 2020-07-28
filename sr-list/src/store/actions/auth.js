@@ -46,9 +46,8 @@ export const auth = (data, isSignUp) => {
       .post(url, dataAuth)
       .then((response) => {
         const expirationDate = new Date(
-          new Date().getTime() + (+response.data.expiresIn*1000)
+          new Date().getTime() + (+response.data.expiresIn)
         );
-        console.log(new Date().getTime()+(3600*1000));
         localStorage.setItem("token", response.data.idToken);
         localStorage.setItem("expirationDate", expirationDate);
         localStorage.setItem("userId", response.data.localId);
