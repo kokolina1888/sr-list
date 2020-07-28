@@ -21,3 +21,15 @@
     font-weight: bold;
     color: #252525
 }
+
+.placeholder {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(226, 223, 223);
+    border: 2px solid #ccc;
+    margin-top: 10px
+}
+
+.table {
+    margin-top: 20px;
+}
