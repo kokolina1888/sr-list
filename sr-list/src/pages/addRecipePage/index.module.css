@@ -33,3 +33,8 @@
 .table {
     margin-top: 20px;
 }
+
+.upload-label {
+    font-weight: bold;
+    color: #fff;
+}

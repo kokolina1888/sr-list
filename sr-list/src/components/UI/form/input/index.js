@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import styles from "./index.module.css";
 
-const Button = (props) => {
+const Input = (props) => {
   let addClass = "";
   if (props.place) {
     addClass = props.place;
@@ -21,9 +21,10 @@ const Button = (props) => {
         className={styles.input + " " + styles[addClass]}
         onChange={props.changed}
         onMouseLeave={props.blurred}
+        value={props.value}
       />
     </Fragment>
   );
 };
 
-export default Button;
+export default Input;

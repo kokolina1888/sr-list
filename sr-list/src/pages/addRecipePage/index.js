@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import axios from "axios";
-import { Redirect } from "react-dom";
 
 import UserLayout from "../../components/layouts/userLayout";
 import Input from "../../components/UI/form/input";
-import Button from "../../components/UI/button";
 import Breadcrumb from "../../components/breadcrumb";
 import Select from "../../components/UI/form/select";
 import Textarea from "../../components/UI/form/textarea";
@@ -16,6 +14,7 @@ import styles from "./index.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Spinner from "../../components/UI/spinner";
+import Link from "../../components/UI/link"
 
 class AddRecipe extends Component {
   state = {
@@ -267,7 +266,7 @@ class AddRecipe extends Component {
                         className="cloudinary-button"
                         onClick={this.widgetOpen}
                       >
-                        Upload image
+                        <span className={styles['upload-label']}>Upload image</span>
                       </a>
                     </div>
                   </div>
@@ -282,12 +281,12 @@ class AddRecipe extends Component {
                     <tbody>{addIngredients}</tbody>
                   </table>
 
-                  <a
+                  <Link
                     type="add-ing"
                     onClick={(event) => this.addIngredientInputsHandler(event)}
                   >
                     <FontAwesomeIcon className={styles.plus} icon={faPlus} />
-                  </a>
+                  </Link>
 
                   <div className="col-12">
                     <Textarea
@@ -302,7 +301,7 @@ class AddRecipe extends Component {
                   </div>
 
                   <div className="col-12 text-center">
-                    <input type="submit" value="Submit" />
+                    <Input type="submit" value="ADD RECIPE" place="add-recipe"/>
                   </div>
                 </div>
               </form>
