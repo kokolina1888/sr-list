@@ -71,6 +71,8 @@ const mapsStateToProps = (state) => {
     loading: state.recipes.loading,
     error: state.recipes.error,
     lastKey: state.recipes.lastKey,
+    userId: state.auth.userId,
+    isAuth: state.auth.token !== null
   };
 };
 const mapDispatchToProps = (dispatch) => {
