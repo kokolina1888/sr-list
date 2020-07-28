@@ -28,7 +28,7 @@ class RecipeCard extends Component {
         <img src={this.props.image} alt={this.props.title} />
         <div className={styles.btn}>{addToBtns}</div>
         <div className={styles["recipe-content"]}>
-          <Link href="/" type="recipe">
+          <Link href="/recipe/:recipe" type="recipe">
             <h5>{this.props.title}</h5>
           </Link>
           <div className={styles["rating-container"]}>
