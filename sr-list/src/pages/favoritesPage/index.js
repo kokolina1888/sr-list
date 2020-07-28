@@ -36,7 +36,7 @@ class FavoritesPage extends Component {
             </div>
             <div className={styles.favtitle}>
               {fav.name}
-              <Link href="/recipe/fav.recipeId" type="shopping-list">
+              <Link href={"/recipe/" + fav.recipeId} type="shopping-list">
                 See recipe...
               </Link>
             </div>

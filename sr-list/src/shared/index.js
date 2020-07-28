@@ -19,3 +19,13 @@ export const reverseArray = (actualArray) => {
   return reversedArray;
 };
 
+export const plainObject = (actualArray) => {
+  
+  let newObj = {};
+  for(let ind in actualArray){
+    newObj[actualArray[ind].id] = actualArray[ind].name
+  }
+  return newObj
+ 
+};
+
