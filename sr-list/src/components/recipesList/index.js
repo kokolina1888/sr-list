@@ -7,7 +7,7 @@ class RecipesList extends Component {
   render() {
     return (
       <div>
-        <RecipeFiltersBlock />
+        <RecipeFiltersBlock categories={this.props.categories}/>
         <Recipes title="Recipes" perPage="9" type="recipe-list"/>
       </div>
     );
