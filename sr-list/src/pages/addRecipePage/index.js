@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
+import axios from "axios";
+import { Redirect } from "react-dom";
+
 import UserLayout from "../../components/layouts/userLayout";
 import Input from "../../components/UI/form/input";
 import Button from "../../components/UI/button";
@@ -122,7 +125,58 @@ class AddRecipe extends Component {
     );
     widget.open();
   };
+  submitFormHandler = (event) => {
+    event.preventDefault();
+    const recipeData = {
+      userId: this.props.userId,
+      name: this.state.controls.name.value,
+      description: this.state.controls.description.value,
+      servings: this.state.controls.servings.value,
+      prepTime: this.state.controls.prepTime.value,
+      categoryName: this.state.controls.category.value,
+      ingredients: this.state.ingredients,
+      image: this.state.image,
+    };
 
+    axios
+      .post("https://sr-list-ccafe.firebaseio.com/recipes.json", recipeData)
+      //  .post("/recipes.json?auth=" + this.props.token, recipeData)
+      .then((response) => {
+        const favoritesData = {
+          recipeId: response.data.name,
+          userId: this.props.userId,
+          name: this.state.controls.name.value,
+          image: this.state.image,
+        };
+        axios
+          .post(
+            "https://sr-list-ccafe.firebaseio.com/favorites.json",
+            favoritesData
+          )
+          //  .post("/recipes.json?auth=" + this.props.token, recipeData)
+          .then((response) => {})
+          .catch((error) => {
+            console.log(error);
+          });
+           this.props.history.push("/");
+       
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      
+  };
+
+  addRecipeToRecipesList = (data) => {
+    axios
+      .post("https://sr-list-ccafe.firebaseio.com/recipes.json", data)
+      //  .post("/recipes.json?auth=" + this.props.token, recipeData)
+      .then((response) => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  addRecipeToFavoritesList = (data) => {};
   render() {
     let categoriesSelect = <Input placeholder="Select a category ..." />;
     if (this.props.categories) {
@@ -167,87 +221,91 @@ class AddRecipe extends Component {
               </div>
             </div>
             <div className={styles.form}>
-              <div className="row">
-                <div className="col-12">
-                  <Input
-                    type="text"
-                    placeholder="Recipe name ..."
-                    changed={(event) => this.inputChangedHandler(event, "name")}
-                  />
-                </div>
-                <div className="col-12 col-lg-3">
-                  {imageUrl ? (
-                    <div>
-                      <img src={imageUrl} width="200" />
+              <form onSubmit={(event) => this.submitFormHandler(event)}>
+                <div className="row">
+                  <div className="col-12">
+                    <Input
+                      type="text"
+                      placeholder="Recipe name ..."
+                      changed={(event) =>
+                        this.inputChangedHandler(event, "name")
+                      }
+                    />
+                  </div>
+                  <div className="col-12 col-lg-3">
+                    {imageUrl ? (
+                      <div>
+                        <img src={imageUrl} width="200" />
+                      </div>
+                    ) : (
+                      <div className={styles.placeholder}></div>
+                    )}
+                  </div>
+                  <div className="col-12 col-lg-9">
+                    <div className="col-12 col-lg-12">{categoriesSelect}</div>
+                    <div className="col-12 col-lg-6">
+                      <Input
+                        type="text"
+                        placeholder="Preparation time /min/..."
+                        changed={(event) =>
+                          this.inputChangedHandler(event, "prepTime")
+                        }
+                      />
                     </div>
-                  ) : (
-                    <div className={styles.placeholder}></div>
-                  )}
-                </div>
-                <div className="col-12 col-lg-9">
-                  <div className="col-12 col-lg-12">{categoriesSelect}</div>
-                  <div className="col-12 col-lg-6">
-                    <Input
-                      type="text"
-                      placeholder="Preparation time /min/..."
+                    <div className="col-12 col-lg-6">
+                      <Input
+                        type="text"
+                        placeholder="Servings ..."
+                        changed={(event) =>
+                          this.inputChangedHandler(event, "servings")
+                        }
+                      />
+                    </div>
+                    <div className="col-12 col-lg-6">
+                      <a
+                        id="upload_widget"
+                        className="cloudinary-button"
+                        onClick={this.widgetOpen}
+                      >
+                        Upload image
+                      </a>
+                    </div>
+                  </div>
+                  <table className={styles.table + " table table-striped"}>
+                    <thead>
+                      <tr>
+                        <th>Ingredient</th>
+                        <th>Quantity</th>
+                        <th>Units</th>
+                      </tr>
+                    </thead>
+                    <tbody>{addIngredients}</tbody>
+                  </table>
+
+                  <a
+                    type="add-ing"
+                    onClick={(event) => this.addIngredientInputsHandler(event)}
+                  >
+                    <FontAwesomeIcon className={styles.plus} icon={faPlus} />
+                  </a>
+
+                  <div className="col-12">
+                    <Textarea
+                      className="form-control"
+                      cols="30"
+                      rows="10"
+                      placeholder="Recipe description"
                       changed={(event) =>
-                        this.inputChangedHandler(event, "prepTime")
+                        this.inputChangedHandler(event, "description")
                       }
                     />
                   </div>
-                  <div className="col-12 col-lg-6">
-                    <Input
-                      type="text"
-                      placeholder="Servings ..."
-                      changed={(event) =>
-                        this.inputChangedHandler(event, "servings")
-                      }
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6">
-                    <button
-                      id="upload_widget"
-                      className="cloudinary-button"
-                      onClick={this.widgetOpen}
-                    >
-                      Upload image
-                    </button>
+
+                  <div className="col-12 text-center">
+                    <input type="submit" value="Submit" />
                   </div>
                 </div>
-                <table className={styles.table + " table table-striped"}>
-                  <thead>
-                    <tr>
-                      <th>Ingredient</th>
-                      <th>Quantity</th>
-                      <th>Units</th>
-                    </tr>
-                  </thead>
-                  <tbody>{addIngredients}</tbody>
-                </table>
-
-                <Button
-                  type="add-ing"
-                  clicked={(event) => this.addIngredientInputsHandler(event)}
-                >
-                  <FontAwesomeIcon className={styles.plus} icon={faPlus} />
-                </Button>
-
-                <div className="col-12">
-                  <Textarea
-                    className="form-control"
-                    cols="30"
-                    rows="10"
-                    placeholder="Recipe description"
-                    changed={(event) =>
-                      this.inputChangedHandler(event, "description")
-                    }
-                  />
-                </div>
-
-                <div className="col-12 text-center">
-                  <Button type="add-recipe">Save</Button>
-                </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -258,6 +316,8 @@ class AddRecipe extends Component {
 const mapsStateToProps = (state) => {
   return {
     categories: state.categories.categories,
+    userId: state.auth.userId,
+    token: state.auth.token,
   };
 };
 const mapDispatchToProps = (dispatch) => {

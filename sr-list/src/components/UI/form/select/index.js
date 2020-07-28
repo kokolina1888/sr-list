@@ -9,14 +9,14 @@ const Select = (props) => {
     addClass = props.place;
   }
 
-  selectOptions = props.ops.map((opt) => {
-   
+ if ( props.ops) { selectOptions = props.ops.map((opt) => {   
     return (
-      <option key={opt.id} value={opt.id +'--'+ opt.name}>
+      <option key={opt.id} value={opt.id}>
         {opt.name}
       </option>
     );
   });
+}
 
   return (
     <select

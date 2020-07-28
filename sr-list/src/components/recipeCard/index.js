@@ -6,10 +6,10 @@ import styles from "./index.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart, faPlus } from "@fortawesome/free-solid-svg-icons";
 
-const RecipeCard = ({title}) => {
+const RecipeCard = ({title, image}) => {
   return (
     <div className={styles["recipe-container"]}>
-      <img src={image} alt="Vegan Smoothie" />
+      <img src={image} alt={title} />
       <div className={styles.btn}>
         <Link href="/">
           <FontAwesomeIcon className={styles.fav} icon={faHeart} />
