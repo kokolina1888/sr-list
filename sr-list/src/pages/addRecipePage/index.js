@@ -4,17 +4,16 @@ import * as actions from "../../store/actions";
 import axios from "axios";
 
 import UserLayout from "../../components/layouts/userLayout";
-import Input from "../../components/UI/form/input";
+import AddIngredient from "../../components/addIngredient";
 import Breadcrumb from "../../components/breadcrumb";
+import Input from "../../components/UI/form/input";
 import Select from "../../components/UI/form/select";
 import Textarea from "../../components/UI/form/textarea";
-import AddIngredient from "../../components/addIngredient";
-
+import Spinner from "../../components/UI/spinner";
+import Link from "../../components/UI/link";
 import styles from "./index.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import Spinner from "../../components/UI/spinner";
-import Link from "../../components/UI/link"
 
 class AddRecipe extends Component {
   state = {
@@ -117,7 +116,6 @@ class AddRecipe extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          console.log("Done! Here is the image info: ", result.info.secure_url);
           this.setState({ image: result.info.secure_url });
         }
       }
@@ -157,13 +155,11 @@ class AddRecipe extends Component {
           .catch((error) => {
             console.log(error);
           });
-           this.props.history.push("/");
-       
+        this.props.history.push("/");
       })
       .catch((error) => {
         console.log(error);
       });
-      
   };
 
   addRecipeToRecipesList = (data) => {
@@ -234,7 +230,7 @@ class AddRecipe extends Component {
                   <div className="col-12 col-lg-3">
                     {imageUrl ? (
                       <div>
-                        <img src={imageUrl} width="200" />
+                        <img src={imageUrl} width="200" alt="" />
                       </div>
                     ) : (
                       <div className={styles.placeholder}></div>
@@ -266,7 +262,9 @@ class AddRecipe extends Component {
                         className="cloudinary-button"
                         onClick={this.widgetOpen}
                       >
-                        <span className={styles['upload-label']}>Upload image</span>
+                        <span className={styles["upload-label"]}>
+                          Upload image
+                        </span>
                       </a>
                     </div>
                   </div>
@@ -301,7 +299,11 @@ class AddRecipe extends Component {
                   </div>
 
                   <div className="col-12 text-center">
-                    <Input type="submit" value="ADD RECIPE" place="add-recipe"/>
+                    <Input
+                      type="submit"
+                      value="ADD RECIPE"
+                      place="add-recipe"
+                    />
                   </div>
                 </div>
               </form>

@@ -32,12 +32,11 @@ const InfoPage = () => {
             sociosqu ad litora torquent per conubia nostra, per inceptos
             himenaeos.
           </p>
-
           <div className="row align-items-center mt-70">
             <Statistics />
           </div>
           <div>
-            <img src={about} alt="" className={styles.image}/>
+            <img src={about} alt="sr-list" className={styles.image}/>
             <p className={styles.description}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac
