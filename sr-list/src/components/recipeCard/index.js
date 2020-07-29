@@ -11,10 +11,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 class RecipeCard extends Component {
-  addToShoppinglistHandler = (event) => {
+
+ async addToShoppinglistHandler(event) {
     event.preventDefault()
-    console.log('add to shopping list')
+    let recipeData = []    
+    //fetch recipe ingredients
+    let searchBy = this.props.recipeId
+    const queryParams = '?orderBy="$key"&equalTo="' + searchBy + '"';
+    const result = await  axios
+      .get("https://sr-list-ccafe.firebaseio.com/recipes.json" + queryParams)
+      .then((res) => {
+        for (let key in res.data) {
+          recipeData.push({ ...res.data[key], id: key });
+        }
+        return (recipeData[0]);
+      })
+      .catch((err) => {});
+      if(result){
+       this.props.onAddToShoppingList(result, this.props.userId);
+      }
+      
+      console.log('added to shopping list')
   }
+
+
   addToFavoritesHandler = (event) => {
     event.preventDefault();
     let recipeInFb = null;
@@ -25,14 +45,12 @@ class RecipeCard extends Component {
       image: this.props.image,
       userRecipe: this.props.userId + this.props.recipeId,
     };
-
     //check if recipe is alreay in firebase
     const searchBy = this.props.userId + this.props.recipeId;
     const queryParams = '?orderBy="userRecipe"&equalTo="' + searchBy + '"';
     axios
       .get("https://sr-list-ccafe.firebaseio.com/favorites.json" + queryParams)
-      .then((res) => {
-        console.log(res.data);
+      .then((res) => {       
         for (let key in res.data) {
           recipeInFb.push({ ...res.data[key], id: key });
         }
@@ -101,7 +119,7 @@ const mapsStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddToShoppingList: (num) => dispatch(actions.addRecipeToShoppingList(num)),
+    onAddToShoppingList: (data, userId) => dispatch(actions.addRecipeToShoppingList(data, userId))
   };
 };
 

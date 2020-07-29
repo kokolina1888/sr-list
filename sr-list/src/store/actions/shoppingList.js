@@ -17,11 +17,27 @@ import { firebaseLooper } from "../../shared";
 //     default:
 //       return state;
 // recipes list
-export const addRecipeToShoppingList = ( data ) => {
+export const addRecipeToShoppingList = (data, userId) => {
+  console.log(data, userId);
+  // get user shopping list from db
+  //add recipe name, recipeId
+  //add product, increase product quantity
+  return (dispatch) => {
+    // dispatch(fetchCategoriesStart());
+    // firebaseShoppingLists
+    //   .orderByChild("name")
+    //   .once("value")
+    //   .then((snapshot) => {
+    //     const fetchedCategories = firebaseLooper(snapshot);
 
-}
+    //     dispatch(fetchCategoriesSuccess(fetchedCategories));
+    //   })
+    //   .catch((err) => {
+    //     dispatch(fetchCategoriesError(err));
+    //   });
+  };
+};
 export const fetchCategoriesSuccess = (categories) => {
- 
   return {
     type: actionTypes.FETCH_CATEGORIES_SUCCESS,
     categories: categories,
@@ -31,7 +47,7 @@ export const fetchCategoriesSuccess = (categories) => {
 export const fetchCategoriesError = () => {
   return {
     type: actionTypes.FETCH_CATEGORIES_FAIL,
-    error: 'categories fetch error',
+    error: "categories fetch error",
   };
 };
 export const fetchCategoriesStart = () => {
@@ -40,20 +56,19 @@ export const fetchCategoriesStart = () => {
   };
 };
 
-export const fetchCategories = (num) => {
-  return (dispatch) => {
-    dispatch(fetchCategoriesStart());
-    firebaseShoppingLists
-      .orderByChild('name')
-      .once("value")
-      .then((snapshot) => {
-        const fetchedCategories = firebaseLooper(snapshot);
-        
-        dispatch(fetchCategoriesSuccess(fetchedCategories));
-      })
-      .catch((err) => {
-        dispatch(fetchCategoriesError(err));
-      });
-  };
-};
+// export const fetchCategories = (num) => {
+//   return (dispatch) => {
+//     dispatch(fetchCategoriesStart());
+//     firebaseShoppingLists
+//       .orderByChild('name')
+//       .once("value")
+//       .then((snapshot) => {
+//         const fetchedCategories = firebaseLooper(snapshot);
 
+//         dispatch(fetchCategoriesSuccess(fetchedCategories));
+//       })
+//       .catch((err) => {
+//         dispatch(fetchCategoriesError(err));
+//       });
+//   };
+// };
