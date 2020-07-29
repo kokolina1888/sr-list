@@ -46,7 +46,7 @@ export const auth = (data, isSignUp) => {
       .post(url, dataAuth)
       .then((response) => {
         const expirationDate = new Date(
-          new Date().getTime() + (+response.data.expiresIn)
+          new Date().getTime() + (+response.data.expiresIn)*1000
         );
         localStorage.setItem("token", response.data.idToken);
         localStorage.setItem("expirationDate", expirationDate);
@@ -81,12 +81,12 @@ export const authCheckState = () => {
 
   return (dispatch) => {
     const token = localStorage.getItem("token");
-    console.log(token)
     if (!token) {
-      // dispatch(logout());
+      dispatch(logout());
     } else {
       const expirationDate = new Date(localStorage.getItem("expirationDate"));
       if (expirationDate < new Date() || expirationDate === new Date()) {
+        console.log(1)
         dispatch(logout());
       } else {
         const userId = localStorage.getItem("userId");

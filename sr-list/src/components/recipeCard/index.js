@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import * as actions from '../../store/actions'
 
 import Link from "../UI/link";
 
@@ -10,7 +11,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 class RecipeCard extends Component {
-  addToFavoritesHandler = (event, recipeId) => {
+  addToShoppinglistHandler = (event) => {
+    event.preventDefault()
+    console.log('add to shopping list')
+  }
+  addToFavoritesHandler = (event) => {
     event.preventDefault();
     let recipeInFb = null;
     const data = {
@@ -27,11 +32,11 @@ class RecipeCard extends Component {
     axios
       .get("https://sr-list-ccafe.firebaseio.com/favorites.json" + queryParams)
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
         for (let key in res.data) {
           recipeInFb.push({ ...res.data[key], id: key });
-        }        
-        if (!recipeInFb) {          
+        }
+        if (!recipeInFb) {
           axios
             .post("https://sr-list-ccafe.firebaseio.com/favorites.json", data)
             .then((response) => {})
@@ -54,6 +59,7 @@ class RecipeCard extends Component {
               className={styles.plus}
               icon={faPlus}
               title="Add to shopping list!"
+              onClick={(event) => this.addToShoppinglistHandler(event)}
             />
           </Link>
           <Link
@@ -93,5 +99,10 @@ const mapsStateToProps = (state) => {
     userId: state.auth.userId,
   };
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddToShoppingList: (num) => dispatch(actions.addRecipeToShoppingList(num)),
+  };
+};
 
-export default connect(mapsStateToProps)(RecipeCard);
+export default connect(mapsStateToProps, mapDispatchToProps)(RecipeCard);
