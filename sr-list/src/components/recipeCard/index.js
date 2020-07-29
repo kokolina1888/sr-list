@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import * as actions from "../../store/actions";
 
 import Link from "../UI/link";
 
@@ -10,7 +11,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 class RecipeCard extends Component {
-  addToFavoritesHandler = (event, recipeId) => {
+  async addToShoppinglistHandler(event) {
+    event.preventDefault();
+    let recipeData = [];
+    //fetch recipe ingredients
+    let searchBy = this.props.recipeId;
+    const queryParams = '?orderBy="$key"&equalTo="' + searchBy + '"';
+    const result = await axios
+      .get("https://sr-list-ccafe.firebaseio.com/recipes.json" + queryParams)
+      .then((res) => {
+        for (let key in res.data) {
+          recipeData.push({ ...res.data[key], id: key });
+        }
+        return recipeData[0];
+      })
+      .catch((err) => {});
+    if (result) {
+      this.props.onAddToShoppingList(result, this.props.userId);
+    }
+  }
+
+  addToFavoritesHandler = (event) => {
     event.preventDefault();
     let recipeInFb = null;
     const data = {
@@ -20,18 +41,16 @@ class RecipeCard extends Component {
       image: this.props.image,
       userRecipe: this.props.userId + this.props.recipeId,
     };
-
     //check if recipe is alreay in firebase
     const searchBy = this.props.userId + this.props.recipeId;
     const queryParams = '?orderBy="userRecipe"&equalTo="' + searchBy + '"';
     axios
       .get("https://sr-list-ccafe.firebaseio.com/favorites.json" + queryParams)
       .then((res) => {
-        console.log(res.data)
         for (let key in res.data) {
           recipeInFb.push({ ...res.data[key], id: key });
-        }        
-        if (!recipeInFb) {          
+        }
+        if (!recipeInFb) {
           axios
             .post("https://sr-list-ccafe.firebaseio.com/favorites.json", data)
             .then((response) => {})
@@ -54,6 +73,7 @@ class RecipeCard extends Component {
               className={styles.plus}
               icon={faPlus}
               title="Add to shopping list!"
+              onClick={(event) => this.addToShoppinglistHandler(event)}
             />
           </Link>
           <Link
@@ -93,5 +113,11 @@ const mapsStateToProps = (state) => {
     userId: state.auth.userId,
   };
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddToShoppingList: (data, userId) =>
+      dispatch(actions.addRecipeToShoppingList(data, userId)),
+  };
+};
 
-export default connect(mapsStateToProps)(RecipeCard);
+export default connect(mapsStateToProps, mapDispatchToProps)(RecipeCard);

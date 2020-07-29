@@ -9,7 +9,8 @@ import recipesReducer from "./store/reducers/recipes";
 import productsReducer from "./store/reducers/products";
 import unitsReducer from "./store/reducers/units";
 import categoriesReducer from './store/reducers/categories'
-import authReducer from './store/reducers/auth'
+import authReducer from "./store/reducers/auth";
+import shoppingListReducer from './store/reducers/shoppingList'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   auth: authReducer,
   categories: categoriesReducer,
   units: unitsReducer,
-  products: productsReducer
+  products: productsReducer,
+  shoppingList: shoppingListReducer
 });
 
 const store = createStore(

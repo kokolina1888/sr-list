@@ -1,4 +1,5 @@
 export const firebaseLooper = (snapshot) => {
+ 
   let data = [];
   
   snapshot.forEach((childSnapshot) => {
@@ -28,4 +29,13 @@ export const plainObject = (actualArray) => {
   return newObj
  
 };
+
+export const plainObjectWithData = (actualArray) => {
+  let newObj = {};
+  for (let ind in actualArray) {
+    newObj[actualArray[ind].id] = actualArray[ind];
+  }
+  return newObj;
+};
+
 
