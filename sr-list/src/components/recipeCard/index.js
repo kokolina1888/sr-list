@@ -11,6 +11,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 class RecipeCard extends Component {
+  state = {
+    btnFav: false,
+    btnSL: false
+  }
   async addToShoppinglistHandler(event) {
     event.preventDefault();
     let recipeData = [];
@@ -28,12 +32,15 @@ class RecipeCard extends Component {
       .catch((err) => {});
     if (result) {
       this.props.onAddToShoppingList(result, this.props.userId);
+      alert("Recipe Has Been Added to Shopping List!");
     }
+
+   
   }
 
-  addToFavoritesHandler = (event) => {
+  async addToFavoritesHandler(event) {    
     event.preventDefault();
-    let recipeInFb = null;
+    console.log(event.target);
     const data = {
       userId: this.props.userId,
       recipeId: this.props.recipeId,
@@ -41,42 +48,47 @@ class RecipeCard extends Component {
       image: this.props.image,
       userRecipe: this.props.userId + this.props.recipeId,
     };
-    //check if recipe is alreay in firebase
-    const searchBy = this.props.userId + this.props.recipeId;
+    let recipeData = [];
+    //fetch recipe ingredients
+    let searchBy = this.props.userId + this.props.recipeId;
     const queryParams = '?orderBy="userRecipe"&equalTo="' + searchBy + '"';
-    axios
+    //check if recipe alredy in db
+    const result = await axios
       .get("https://sr-list-ccafe.firebaseio.com/favorites.json" + queryParams)
       .then((res) => {
         for (let key in res.data) {
-          recipeInFb.push({ ...res.data[key], id: key });
+          recipeData.push({ ...res.data[key], id: key });
         }
-        if (!recipeInFb) {
-          axios
-            .post("https://sr-list-ccafe.firebaseio.com/favorites.json", data)
-            .then((response) => {})
-            .catch((error) => {
-              console.log(error);
-            });
-          console.log("added to favorites - see favs count in nav bar!");
-        }
+        return recipeData[0];
       })
       .catch((err) => {});
-  };
+    // if not in db - add it
+    if (!result) {
+     
+        this.props.onAddToFavorites(data, this.props.userId);
+        alert('Recipe Has Been Added to Favorites List!')
+    
+    } else {
+        alert("Recipe Already Favorites List!");
+
+    }
+  }
 
   render() {
     let addToBtns = "";
     if (this.props.isAuth) {
       addToBtns = (
         <Fragment>
-          <Link href="/">
+          <Link href="/" >
             <FontAwesomeIcon
-              className={styles.plus}
+              className={styles.plus +" "+ this.state.btnSL.clicked}
               icon={faPlus}
               title="Add to shopping list!"
               onClick={(event) => this.addToShoppinglistHandler(event)}
             />
           </Link>
           <Link
+          type={this.state.btnFav ? 'clicked' : null}
             href="/"
             title="Add to favorites!"
             onClick={(event) => this.addToFavoritesHandler(event)}
@@ -117,6 +129,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onAddToShoppingList: (data, userId) =>
       dispatch(actions.addRecipeToShoppingList(data, userId)),
+    onAddToFavorites: (data, userId) =>
+      dispatch(actions.addToFavorites(data, userId)),
   };
 };
 
