@@ -62,40 +62,18 @@ export const getUserShoppingList = (userId) => {
         "https://sr-list-ccafe.firebaseio.com/shoppinglists.json" + queryParams
       )
       .then((res) => {
-        // console.log(res)
-        let shoppingList = {};        
-        for(let ind in res.data){
-          let currRecipe = res.data[ind].recipe
-          let ing = currRecipe.ingredients;
-          console.log(currRecipe)
-          if (shoppingList.recipes) {
-            if (!shoppingList.recipes[currRecipe.id]) {
-              shoppingList.recipes[currRecipe.id] = {};
-              shoppingList.recipes[currRecipe.id].name = currRecipe.name;
-            }
-          } else {
-            shoppingList.recipes = {};
-            shoppingList.recipes[currRecipe.id] = {};
-            shoppingList.recipes[currRecipe.id].name = currRecipe.name;
-          } 
-          if( shoppingList.products ){
-            for (let ind in ing) {
-              let curUnit = ing[ind].units;
-              console.log(ing[ind]);
-            }
-          } else {
-            shoppingList.products = {}
-            for( let ind in ing ){
-              let curUnit = ing[ind].units; //check if init in obj already, check if prod in obj already
-              shoppingList.products.curUnit = {}
-              shoppingList.products.curUnit[productName] = {};
-              shoppingList.products.curUnit[productName].quantity = ing[ind].quantity
-              console.log(ing[ind])
-            }
-          }       
-        } 
-        console.log(shoppingList);
+        //set shoppingList in state
+        dispatch(fetchShoppingListSuccess(res.data));
       })
-      .catch((err) => {});
+      .catch((err) => {
+        //set error in state
+      });
+  };
+};
+
+export const fetchShoppingListSuccess = (shoppingList) => {
+  return {
+    type: actionTypes.FETCH_SHOPPING_LIST_SUCCESS,
+    shoppingList: shoppingList,
   };
 };

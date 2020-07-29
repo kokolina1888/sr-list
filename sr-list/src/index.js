@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
   categories: categoriesReducer,
   units: unitsReducer,
   products: productsReducer,
-  shoppingLists: shoppingListReducer
+  shoppingList: shoppingListReducer
 });
 
 const store = createStore(

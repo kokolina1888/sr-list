@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import * as actions from '../../store/actions'
+import * as actions from "../../store/actions";
 
 import Link from "../UI/link";
 
@@ -11,29 +11,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 class RecipeCard extends Component {
-
- async addToShoppinglistHandler(event) {
-    event.preventDefault()
-    let recipeData = []    
+  async addToShoppinglistHandler(event) {
+    event.preventDefault();
+    let recipeData = [];
     //fetch recipe ingredients
-    let searchBy = this.props.recipeId
+    let searchBy = this.props.recipeId;
     const queryParams = '?orderBy="$key"&equalTo="' + searchBy + '"';
-    const result = await  axios
+    const result = await axios
       .get("https://sr-list-ccafe.firebaseio.com/recipes.json" + queryParams)
       .then((res) => {
         for (let key in res.data) {
           recipeData.push({ ...res.data[key], id: key });
         }
-        return (recipeData[0]);
+        return recipeData[0];
       })
       .catch((err) => {});
-      if(result){
-       this.props.onAddToShoppingList(result, this.props.userId);
-      }
-      
-      console.log('added to shopping list')
+    if (result) {
+      this.props.onAddToShoppingList(result, this.props.userId);
+    }
   }
-
 
   addToFavoritesHandler = (event) => {
     event.preventDefault();
@@ -50,7 +46,7 @@ class RecipeCard extends Component {
     const queryParams = '?orderBy="userRecipe"&equalTo="' + searchBy + '"';
     axios
       .get("https://sr-list-ccafe.firebaseio.com/favorites.json" + queryParams)
-      .then((res) => {       
+      .then((res) => {
         for (let key in res.data) {
           recipeInFb.push({ ...res.data[key], id: key });
         }
@@ -119,7 +115,8 @@ const mapsStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddToShoppingList: (data, userId) => dispatch(actions.addRecipeToShoppingList(data, userId))
+    onAddToShoppingList: (data, userId) =>
+      dispatch(actions.addRecipeToShoppingList(data, userId)),
   };
 };
 

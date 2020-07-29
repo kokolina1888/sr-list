@@ -30,3 +30,12 @@ export const plainObject = (actualArray) => {
  
 };
 
+export const plainObjectWithData = (actualArray) => {
+  let newObj = {};
+  for (let ind in actualArray) {
+    newObj[actualArray[ind].id] = actualArray[ind];
+  }
+  return newObj;
+};
+
+
