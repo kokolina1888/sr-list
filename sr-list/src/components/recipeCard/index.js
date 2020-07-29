@@ -11,6 +11,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 class RecipeCard extends Component {
+  state = {
+    btnFav: false,
+    btnSL: false
+  }
   async addToShoppinglistHandler(event) {
     event.preventDefault();
     let recipeData = [];
@@ -28,22 +32,25 @@ class RecipeCard extends Component {
       .catch((err) => {});
     if (result) {
       this.props.onAddToShoppingList(result, this.props.userId);
+      alert("Recipe Has Been Added to Shopping List!");
     }
+
+   
   }
 
-  async addToFavoritesHandler(event){
+  async addToFavoritesHandler(event) {    
     event.preventDefault();
+    console.log(event.target);
     const data = {
       userId: this.props.userId,
       recipeId: this.props.recipeId,
       name: this.props.title,
       image: this.props.image,
-      userRecipe: this.props.userId + this.props.recipeId
+      userRecipe: this.props.userId + this.props.recipeId,
     };
-    // this.props.onAddToFavorites(this.props.userId, this.props.recipeId, data);
     let recipeData = [];
     //fetch recipe ingredients
-    let searchBy = this.props.userId+this.props.recipeId;
+    let searchBy = this.props.userId + this.props.recipeId;
     const queryParams = '?orderBy="userRecipe"&equalTo="' + searchBy + '"';
     //check if recipe alredy in db
     const result = await axios
@@ -55,26 +62,33 @@ class RecipeCard extends Component {
         return recipeData[0];
       })
       .catch((err) => {});
-      // if not in db - add it
-    if ( !result.length ) {
-      this.props.onAddToFavorites(data, this.props.userId);
+    // if not in db - add it
+    if (!result) {
+     
+        this.props.onAddToFavorites(data, this.props.userId);
+        alert('Recipe Has Been Added to Favorites List!')
+    
+    } else {
+        alert("Recipe Already Favorites List!");
+
     }
-  };
+  }
 
   render() {
     let addToBtns = "";
     if (this.props.isAuth) {
       addToBtns = (
         <Fragment>
-          <Link href="/">
+          <Link href="/" >
             <FontAwesomeIcon
-              className={styles.plus}
+              className={styles.plus +" "+ this.state.btnSL.clicked}
               icon={faPlus}
               title="Add to shopping list!"
               onClick={(event) => this.addToShoppinglistHandler(event)}
             />
           </Link>
           <Link
+          type={this.state.btnFav ? 'clicked' : null}
             href="/"
             title="Add to favorites!"
             onClick={(event) => this.addToFavoritesHandler(event)}
