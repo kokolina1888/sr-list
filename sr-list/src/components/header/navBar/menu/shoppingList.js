@@ -54,7 +54,6 @@ export const countUserShoppingListRecipes = (userId) => {
       )
       .then((res) => {
         //set shoppingList in state
-        console.log(res.data.length)
         // dispatch(fetchShoppingListSuccess(res.data));
       })
       .catch((err) => {

@@ -14,7 +14,6 @@ class Recipe extends Component {
     recipe: null,
   };
   componentDidMount() {
-   console.log(this.props.match.params.recipe);
     firebaseRecipes
       .orderByKey()
       .startAt(this.props.match.params.recipe)
@@ -31,7 +30,6 @@ class Recipe extends Component {
         this.setState({
           recipe: data[0],
         });
-        console.log(data)
       })
       .catch((err) => {});
       
@@ -40,7 +38,6 @@ class Recipe extends Component {
     this.props.onFetchCategories();
   }
   render() {
-    console.log(this.state.recipe)
     const products = plainObject(this.props.products);   
     const units = plainObject(this.props.units);
     let recipeData = <Spinner />;

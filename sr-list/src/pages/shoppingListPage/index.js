@@ -28,7 +28,6 @@ class ShoppingList extends Component {
     for (let ind in list) {
       //current recipe
       let curData = list[ind];
-      // console.log(curData.recipe.ingredients);
       let ings = curData.recipe.ingredients;
       //filter unique recipes in list
       if (!recipes[curData.recipe.id]) {
@@ -86,7 +85,6 @@ class ShoppingList extends Component {
         arrProducts.push(products[ind][k]);
       }
     }
-    console.log(arrProducts);
     data.recipes = arrRecipes;
     data.products = arrProducts;
     return data;
@@ -123,8 +121,8 @@ class ShoppingList extends Component {
           let num = 1;
           productsData = shoppingListData.products.map((prod) => {
             return (
-              <tr key={num++}>
-                <td>1</td>
+              <tr key={num}>
+                <td>{num++}</td>
                 <td>{prod.prodName}</td>
                 <td>{prod.quantity}</td>
                 <td>{prod.unitName}</td>

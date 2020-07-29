@@ -31,36 +31,34 @@ class RecipeCard extends Component {
     }
   }
 
-  addToFavoritesHandler = (event) => {
+  async addToFavoritesHandler(event){
     event.preventDefault();
-    let recipeInFb = null;
     const data = {
       userId: this.props.userId,
       recipeId: this.props.recipeId,
       name: this.props.title,
       image: this.props.image,
-      userRecipe: this.props.userId + this.props.recipeId,
+      userRecipe: this.props.userId + this.props.recipeId
     };
-    //check if recipe is alreay in firebase
-    const searchBy = this.props.userId + this.props.recipeId;
+    // this.props.onAddToFavorites(this.props.userId, this.props.recipeId, data);
+    let recipeData = [];
+    //fetch recipe ingredients
+    let searchBy = this.props.userId+this.props.recipeId;
     const queryParams = '?orderBy="userRecipe"&equalTo="' + searchBy + '"';
-    axios
+    //check if recipe alredy in db
+    const result = await axios
       .get("https://sr-list-ccafe.firebaseio.com/favorites.json" + queryParams)
       .then((res) => {
         for (let key in res.data) {
-          recipeInFb.push({ ...res.data[key], id: key });
+          recipeData.push({ ...res.data[key], id: key });
         }
-        if (!recipeInFb) {
-          axios
-            .post("https://sr-list-ccafe.firebaseio.com/favorites.json", data)
-            .then((response) => {})
-            .catch((error) => {
-              console.log(error);
-            });
-          console.log("added to favorites - see favs count in nav bar!");
-        }
+        return recipeData[0];
       })
       .catch((err) => {});
+      // if not in db - add it
+    if ( !result.length ) {
+      this.props.onAddToFavorites(data, this.props.userId);
+    }
   };
 
   render() {
@@ -117,6 +115,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onAddToShoppingList: (data, userId) =>
       dispatch(actions.addRecipeToShoppingList(data, userId)),
+    onAddToFavorites: (data, userId) =>
+      dispatch(actions.addToFavorites(data, userId)),
   };
 };
 

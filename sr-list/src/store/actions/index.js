@@ -15,3 +15,5 @@ export {
   getUserShoppingList,
   countUserShoppingListRecipes,
 } from "./shoppingList";
+
+export { countUserFavoriteRecipes, addToFavorites } from "./favoriteRecipes";

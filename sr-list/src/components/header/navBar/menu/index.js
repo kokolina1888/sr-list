@@ -7,7 +7,8 @@ import { connect } from "react-redux";
 class Menu extends Component {
   componentDidMount(){
     if( this.props.isAuth ){
-      this.props.onCountUserRecipes(this.props.userId)
+      this.props.onCountUserShoppingListRecipes(this.props.userId);
+      this.props.onCountUserFavoriteRecipes(this.props.userId)
     }
   }
   render() {
@@ -29,7 +30,7 @@ class Menu extends Component {
                 <Link href="/shopping-list">Shopping List ({this.props.shoppingListRecipes})</Link>
               </li>
               <li className={styles["list-item"]}>
-                <Link href="/favorites">Favorites</Link>
+                <Link href="/favorites">Favorites ({this.props.favoriteRecipes})</Link>
               </li>
               <li className={styles["list-item"]}>
                 <Link href="/add-recipe">Add Recipe</Link>
@@ -45,12 +46,16 @@ const mapsStateToProps = (state) => {
   return {
     isAuth: state.auth.token !== null,
     userId: state.auth.userId,
-    shoppingListRecipes: state.shoppingList.recipesCount
+    shoppingListRecipes: state.shoppingList.recipesCount,
+    favoriteRecipes: state.favoriteRecipes.recipesCount
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    onCountUserRecipes: (userId) => dispatch(actions.countUserShoppingListRecipes(userId)),
+    onCountUserShoppingListRecipes: (userId) =>
+      dispatch(actions.countUserShoppingListRecipes(userId)),
+    onCountUserFavoriteRecipes: (userId) =>
+      dispatch(actions.countUserFavoriteRecipes(userId)),
   };
 };
 
