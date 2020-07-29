@@ -15,9 +15,6 @@ export const addRecipeToShoppingList = (data, userId) => {
       .then((response) => {
         dispatch(getUserShoppingList(userId));
       })
-      .then(res => {
-        dispatch(countUserShoppingListRecipes(userId));
-      })
       .catch((error) => {});
   };
 };
@@ -56,16 +53,9 @@ export const countUserShoppingListRecipes = (userId) => {
         "https://sr-list-ccafe.firebaseio.com/shoppinglists.json" + queryParams
       )
       .then((res) => {
-        let uniqueRecipes = []
-
-        for(let ind in res.data){
-          console.log(uniqueRecipes.indexOf(res.data[ind].recipe.id));
-          if (uniqueRecipes.indexOf( res.data[ind].recipe.id ) < 0) {
-            uniqueRecipes.push(res.data[ind].recipe.id);
-          }
-        }
-        
-        dispatch(setShoppingListRecipesCount(uniqueRecipes.length));
+        //set shoppingList in state
+        console.log(res.data.length)
+        // dispatch(fetchShoppingListSuccess(res.data));
       })
       .catch((err) => {
         //set error in state
