@@ -7,7 +7,9 @@ import { firebaseRecipes } from '../../../firebase';
 const Statistics = () => {
   const [data, setTotal ] = useState({
     total: 0,
-    salads: 0
+    salads: 0,
+    meal: 0,
+    dessert: 0
   })
   useEffect(() => {
     
@@ -17,7 +19,9 @@ const Statistics = () => {
         let fetchedRecipes = firebaseLooper(snapshot);
         setTotal({
         total: fetchedRecipes.length,
-        salads: 10
+        salads: 10, 
+        meals: 251,
+        desserts: 100
       }
         );
       })
@@ -36,10 +40,10 @@ const Statistics = () => {
           <StatisticsCard type="snacks" title="Salads" count={data.salads}/>
         </div>
         <div className="col-12 col-sm-6 col-lg-3">
-          <StatisticsCard type="rib" title="Meal" count="725"/>
+          <StatisticsCard type="rib" title="Meal" count={data.meals}/>
         </div>
         <div className="col-12 col-sm-6 col-lg-3">
-          <StatisticsCard type="pancake" title="Desserts" count="853"/>
+          <StatisticsCard type="pancake" title="Desserts" count={data.desserts}/>
         </div>        
       </div>
     );
