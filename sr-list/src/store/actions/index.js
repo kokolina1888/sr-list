@@ -5,6 +5,7 @@ export {
   fetchInitKey,
   fetchNextKey,
   fetchFilteredRecipesList,
+  fetchByNameRecipesList,
 } from "./recipes";
 
 export { setUserAuthType, auth, logout, authCheckState } from "./auth";

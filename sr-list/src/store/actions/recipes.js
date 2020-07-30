@@ -144,3 +144,20 @@ export const fetchFilteredRecipesList = (filterName, filterValue) => {
   };
 };
 
+export const fetchByNameRecipesList = (filterName, filterValue) => {
+         return (dispatch) => {
+           dispatch(fetchRecipesStart());
+           firebaseRecipes
+             .orderByChild(filterName)
+             .startAt(filterValue)
+             .once("value")
+             .then((snapshot) => {
+               let fetchedRecipes = firebaseLooper(snapshot);
+               dispatch(fetchRecipesSuccess(fetchedRecipes));
+             })
+             .catch((err) => {
+               dispatch(fetchRecipesError());
+             });
+         };
+       };
+
