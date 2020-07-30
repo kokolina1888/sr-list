@@ -3,7 +3,8 @@ export {
   fetchInitRecipesList,
   fetchNextRecipesList,
   fetchInitKey,
-  fetchNextKey
+  fetchNextKey,
+  fetchFilteredRecipesList,
 } from "./recipes";
 
 export { setUserAuthType, auth, logout, authCheckState } from "./auth";

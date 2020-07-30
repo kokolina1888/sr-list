@@ -127,3 +127,20 @@ export const fetchNextRecipesList = (num, lastKey) => {
   };
 };
 
+export const fetchFilteredRecipesList = (filterName, filterValue) => {
+  return (dispatch) => {
+    dispatch(fetchRecipesStart());
+    firebaseRecipes
+      .orderByChild(filterName)
+      .equalTo(filterValue)
+      .once("value")
+      .then((snapshot) => {
+        let fetchedRecipes = firebaseLooper(snapshot);
+        dispatch(fetchRecipesSuccess(fetchedRecipes));
+      })
+      .catch((err) => {
+        dispatch(fetchRecipesError());
+      });
+  };
+};
+

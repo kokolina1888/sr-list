@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import * as actions from '../../store/actions'
 
 import styles from "./index.module.css";
 import Input from '../UI/form/input';
@@ -6,37 +8,67 @@ import Select from '../UI/form/select';
 import Button from '../UI/button';
 
 class RecipeFiltersBlock extends Component {
-    render() {
-        return (
-          <div className={ styles['recipe-filters-block'] + " mb-80" }>
-            <div className="container">
-              <div className="row">
-                <div className="col-12 col-lg-4">
-                  <Select placeholder="Select a category" place="recipe-filter" ops={this.props.categories}/>
-                </div>
-                <div className="col-12 col-lg-2 text-right">
-                  <Button type="recipe-filter">
-                    Filter
-                  </Button>
-                </div>
-                <div className="col-12 col-lg-4">
-                  <Input
-                    type="text"
-                    name="search"
-                    placeholder="Search Recipes By Name"
-                    place="recipe-search"
-                  />
-                </div>
-                <div className="col-12 col-lg-2 text-right">
-                  <Button type="recipe-search">
-                    Search
-                  </Button>
-                </div>
-              </div>
+  state = {
+    select: {
+      value: null,
+    },
+  };
+
+  filterByCategoryHandler = (event) => {
+    this.setState({
+      select: {
+        value: event.target.value,
+      },
+    });
+    this.props.onFetchFilteredRecipesList("categoryName", event.target.value);
+  }
+
+  render() {
+    console.log(this.state.select)
+    return (
+      <div className={styles["recipe-filters-block"] + " mb-80"}>
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-lg-4">
+              <Select
+                placeholder="Select a category"
+                place="recipe-filter"
+                ops={this.props.categories}
+                value={this.state.select.value}
+                changed={(event) => {
+                  this.filterByCategoryHandler(event);
+                }}
+              />
+            </div>
+            <div className="col-12 col-lg-2 text-right">
+              <Button type="recipe-filter">Filter</Button>
+            </div>
+            <div className="col-12 col-lg-4">
+              <Input
+                type="text"
+                name="search"
+                placeholder="Search Recipes By Name"
+                place="recipe-search"
+              />
+            </div>
+            <div className="col-12 col-lg-2 text-right">
+              <Button type="recipe-search">Search</Button>
             </div>
           </div>
-        );
-    }
+        </div>
+      </div>
+    );
+  }
 }
 
-export default RecipeFiltersBlock;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFetchFilteredRecipesList: (filterName, filterValue) =>
+      dispatch(actions.fetchFilteredRecipesList(filterName, filterValue))
+  };
+};
+export default connect(
+  null,
+  mapDispatchToProps
+)(RecipeFiltersBlock);
