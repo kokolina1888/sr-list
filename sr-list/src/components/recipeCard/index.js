@@ -2,9 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import * as actions from "../../store/actions";
-
 import Link from "../UI/link";
-
 import styles from "./index.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -33,9 +31,7 @@ class RecipeCard extends Component {
     if (result) {
       this.props.onAddToShoppingList(result, this.props.userId);
       alert("Recipe Has Been Added to Shopping List!");
-    }
-
-   
+    }   
   }
 
   async addToFavoritesHandler(event) {    
@@ -63,14 +59,12 @@ class RecipeCard extends Component {
       })
       .catch((err) => {});
     // if not in db - add it
-    if (!result) {
-     
+    if (!result) {     
         this.props.onAddToFavorites(data, this.props.userId);
         alert('Recipe Has Been Added to Favorites List!')
     
     } else {
         alert("Recipe Already Favorites List!");
-
     }
   }
 
