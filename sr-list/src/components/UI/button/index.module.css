@@ -116,7 +116,7 @@
 
 .auth-login:disabled, .auth-register {
   cursor: not-allowed;
-} 
+}
 
 .add-ing {
   display: inline-block;
@@ -158,4 +158,42 @@
   text-transform: capitalize;
   background-color: #40ba37;
   width: 100%
+}
+
+.add-to-sl {
+  display: inline-block;
+  color: #ffffff;
+  border: none;
+  border-left-color: currentcolor;
+  border-left-style: none;
+  border-left-width: medium;
+  border-left: 3px solid #1c8314;
+  border-radius: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  text-transform: capitalize;
+  width: 100%;
+  background-color: #40ba37;
+}
+
+.add-to-fl {
+  display: inline-block;
+  color: #ffffff;
+  border: none;
+  border-left-color: currentcolor;
+  border-left-style: none;
+  border-left-width: medium;
+  border-left: 3px solid #1c8314;
+  border-radius: 0;
+  padding: 15px 0;
+  font-size: 16px;
+  font-weight: 600;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  text-transform: capitalize;
+  width: 100%;
+  background-color: #429de7;
 }

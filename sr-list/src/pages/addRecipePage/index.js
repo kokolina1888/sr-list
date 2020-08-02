@@ -282,6 +282,7 @@ class AddRecipe extends Component {
                   </table>
 
                   <Link
+                  to="/"
                     type="add-ing"
                     onClick={(event) => this.addIngredientInputsHandler(event)}
                   >

@@ -1,14 +1,19 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
+import axios from "axios";
 import UserLayout from "../../components/layouts/userLayout";
-
 import Breadcrumb from "../../components/breadcrumb";
 import Spinner from "../../components/UI/spinner";
+import Button from "../../components/UI/button";
 
 import styles from "./index.module.css";
 import { firebaseRecipes } from "../../firebase";
 import { plainObject } from "../../shared/index";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar, faHeart, faPlus } from "@fortawesome/free-solid-svg-icons";
+
 class Recipe extends Component {
   state = {
     recipe: null,
@@ -32,15 +37,83 @@ class Recipe extends Component {
         });
       })
       .catch((err) => {});
-      
+
     this.props.onFetchUnits();
     this.props.onFetchProducts();
     this.props.onFetchCategories();
   }
+
+  addRecipeToShoppingListHandler = () => {
+    let result = {};
+    result = this.state.recipe;
+    this.props.onAddToShoppingList(result, this.props.userId);
+    alert("Recipe Has Been Added to Shopping List!");
+  };
+  async addRecipeToFavoritesListHandler() {
+    const data = {
+      userId: this.props.userId,
+      recipeId: this.state.recipe.id,
+      name: this.state.recipe.name,
+      image: this.state.recipe.image,
+      userRecipe: this.props.userId + this.state.recipe.id,
+    };
+    let recipeData = [];
+    //fetch recipe
+    let searchBy = this.props.userId + this.props.recipeId;
+    const queryParams = '?orderBy="userRecipe"&equalTo="' + searchBy + '"';
+    //check if recipe alredy in db
+    const result = await axios
+      .get("https://sr-list-ccafe.firebaseio.com/favorites.json" + queryParams)
+      .then((res) => {
+        for (let key in res.data) {
+          recipeData.push({ ...res.data[key], id: key });
+        }
+        return recipeData[0];
+      })
+      .catch((err) => {});
+    // if not in db - add it
+    if (!result) {
+      this.props.onAddToFavorites(data, this.props.userId);
+      alert("Recipe Has Been Added to Favorites List!");
+    } else {
+      alert("Recipe Already in Favorites List!");
+    }
+  }
+
   render() {
-    const products = plainObject(this.props.products);   
+    const products = plainObject(this.props.products);
     const units = plainObject(this.props.units);
     let recipeData = <Spinner />;
+    let btnsGroup = "";
+    if (this.props.isAuth) {
+      btnsGroup = (
+        <div>
+          <div
+            className={styles["btn-container"]}
+            title="ADD TO SHOPPING LIST!"
+          >
+            <Button
+              type="add-to-sl"
+              clicked={() => this.addRecipeToShoppingListHandler()}
+            >
+              <FontAwesomeIcon
+                className={styles.plus}
+                icon={faPlus}
+                title="Add to shopping list!"
+              />
+            </Button>
+          </div>
+          <div className={styles["btn-container"]} title="ADD TO FAVORITES!">
+            <Button
+              type="add-to-fl"
+              clicked={() => this.addRecipeToFavoritesListHandler()}
+            >
+              <FontAwesomeIcon className={styles.fav} icon={faHeart} />
+            </Button>
+          </div>
+        </div>
+      );
+    }
     if (this.state.recipe) {
       const data = this.state.recipe;
       recipeData = (
@@ -62,6 +135,7 @@ class Recipe extends Component {
                   <h6>Prep: {data.prepTime} min</h6>
                   <h6>Servings: {data.servings} </h6>
                 </div>
+                { btnsGroup }
               </div>
               <div className="col-12">
                 <div className={styles.desc + " d-flex"}>
@@ -83,7 +157,8 @@ class Recipe extends Component {
                         className="custom-control-span"
                         htmlFor="customCheck1"
                       >
-                        {ing.productQuantity} {units[ing.units]} {products[ing.productName]}
+                        {ing.productQuantity} {units[ing.units]}{" "}
+                        {products[ing.productName]}
                       </span>
                     </div>
                   );
@@ -109,6 +184,8 @@ const mapsStateToProps = (state) => {
     units: state.units.units,
     products: state.products.products,
     categories: state.categories.categories,
+    isAuth: state.auth.token !== null,
+    userId: state.auth.userId,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -116,6 +193,10 @@ const mapDispatchToProps = (dispatch) => {
     onFetchUnits: () => dispatch(actions.fetchUnits()),
     onFetchProducts: () => dispatch(actions.fetchProducts()),
     onFetchCategories: () => dispatch(actions.fetchCategories()),
+    onAddToShoppingList: (data, userId) =>
+      dispatch(actions.addRecipeToShoppingList(data, userId)),
+    onAddToFavorites: (data, userId) =>
+      dispatch(actions.addToFavorites(data, userId)),
   };
 };
 export default connect(mapsStateToProps, mapDispatchToProps)(Recipe);
