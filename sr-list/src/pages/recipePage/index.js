@@ -44,8 +44,7 @@ class Recipe extends Component {
   }
 
   addRecipeToShoppingListHandler = () => {
-    console.log(this.state.recipe);
-    let result = {}
+    let result = {};
     result = this.state.recipe;
     this.props.onAddToShoppingList(result, this.props.userId);
     alert("Recipe Has Been Added to Shopping List!");
@@ -85,6 +84,36 @@ class Recipe extends Component {
     const products = plainObject(this.props.products);
     const units = plainObject(this.props.units);
     let recipeData = <Spinner />;
+    let btnsGroup = "";
+    if (this.props.isAuth) {
+      btnsGroup = (
+        <div>
+          <div
+            className={styles["btn-container"]}
+            title="ADD TO SHOPPING LIST!"
+          >
+            <Button
+              type="add-to-sl"
+              clicked={() => this.addRecipeToShoppingListHandler()}
+            >
+              <FontAwesomeIcon
+                className={styles.plus}
+                icon={faPlus}
+                title="Add to shopping list!"
+              />
+            </Button>
+          </div>
+          <div className={styles["btn-container"]} title="ADD TO FAVORITES!">
+            <Button
+              type="add-to-fl"
+              clicked={() => this.addRecipeToFavoritesListHandler()}
+            >
+              <FontAwesomeIcon className={styles.fav} icon={faHeart} />
+            </Button>
+          </div>
+        </div>
+      );
+    }
     if (this.state.recipe) {
       const data = this.state.recipe;
       recipeData = (
@@ -101,40 +130,12 @@ class Recipe extends Component {
               <div className={styles.info}>
                 <img className={styles.img} src={data.image} alt="" />
               </div>
-
               <div className={styles.info}>
                 <div className={styles.prep}>
                   <h6>Prep: {data.prepTime} min</h6>
                   <h6>Servings: {data.servings} </h6>
                 </div>
-                <div>
-                  <div
-                    className={styles["btn-container"]}
-                    title="ADD TO SHOPPING LIST!"
-                  >
-                    <Button
-                      type="add-to-sl"
-                      clicked={() => this.addRecipeToShoppingListHandler()}
-                    >
-                      <FontAwesomeIcon
-                        className={styles.plus}
-                        icon={faPlus}
-                        title="Add to shopping list!"
-                      />
-                    </Button>
-                  </div>
-                  <div
-                    className={styles["btn-container"]}
-                    title="ADD TO FAVORITES!"
-                  >
-                    <Button
-                      type="add-to-fl"
-                      clicked={() => this.addRecipeToFavoritesListHandler()}
-                    >
-                      <FontAwesomeIcon className={styles.fav} icon={faHeart} />
-                    </Button>
-                  </div>
-                </div>
+                { btnsGroup }
               </div>
               <div className="col-12">
                 <div className={styles.desc + " d-flex"}>
