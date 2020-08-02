@@ -36,7 +36,6 @@ class RecipeCard extends Component {
 
   async addToFavoritesHandler(event) {    
     event.preventDefault();
-    console.log(event.target);
     const data = {
       userId: this.props.userId,
       recipeId: this.props.recipeId,
@@ -64,7 +63,7 @@ class RecipeCard extends Component {
         alert('Recipe Has Been Added to Favorites List!')
     
     } else {
-        alert("Recipe Already Favorites List!");
+        alert("Recipe Already in Favorites List!");
     }
   }
 

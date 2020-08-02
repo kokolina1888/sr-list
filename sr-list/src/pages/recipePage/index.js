@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
+import axios from "axios";
 import UserLayout from "../../components/layouts/userLayout";
 import Breadcrumb from "../../components/breadcrumb";
 import Spinner from "../../components/UI/spinner";
@@ -44,14 +45,42 @@ class Recipe extends Component {
 
   addRecipeToShoppingListHandler = () => {
     console.log(this.state.recipe);
-    const result = "";
-    //recipe ingredients
-    // this.props.onAddToShoppingList(result, this.props.userId);
-    // alert("Recipe Has Been Added to Shopping List!");
+    let result = {}
+    result = this.state.recipe;
+    this.props.onAddToShoppingList(result, this.props.userId);
+    alert("Recipe Has Been Added to Shopping List!");
   };
-  addRecipeToFavoritesListHandler = () => {
-    console.log(this.state.recipe);
-  };
+  async addRecipeToFavoritesListHandler() {
+    const data = {
+      userId: this.props.userId,
+      recipeId: this.state.recipe.id,
+      name: this.state.recipe.name,
+      image: this.state.recipe.image,
+      userRecipe: this.props.userId + this.state.recipe.id,
+    };
+    let recipeData = [];
+    //fetch recipe
+    let searchBy = this.props.userId + this.props.recipeId;
+    const queryParams = '?orderBy="userRecipe"&equalTo="' + searchBy + '"';
+    //check if recipe alredy in db
+    const result = await axios
+      .get("https://sr-list-ccafe.firebaseio.com/favorites.json" + queryParams)
+      .then((res) => {
+        for (let key in res.data) {
+          recipeData.push({ ...res.data[key], id: key });
+        }
+        return recipeData[0];
+      })
+      .catch((err) => {});
+    // if not in db - add it
+    if (!result) {
+      this.props.onAddToFavorites(data, this.props.userId);
+      alert("Recipe Has Been Added to Favorites List!");
+    } else {
+      alert("Recipe Already in Favorites List!");
+    }
+  }
+
   render() {
     const products = plainObject(this.props.products);
     const units = plainObject(this.props.units);

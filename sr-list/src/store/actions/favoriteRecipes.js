@@ -33,8 +33,7 @@ export const setFavoriteRecipesCount = (recipesCount) => {
 
 export const addToFavorites = (data, userId) => {
   return (dispatch) => {
-    //check if recipe is alreay in firebase   
-    console.log(data)
+    //check if recipe is alreay in firebase  
     axios
       .post("https://sr-list-ccafe.firebaseio.com/favorites.json", data)
       .then((response) => {
