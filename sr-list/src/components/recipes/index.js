@@ -3,11 +3,10 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 
 import RecipeCard from "../recipeCard";
-
 import Spinner from "../UI/spinner";
-
 import styles from "./index.module.css";
 import Pagination from "../pagination";
+import Modal from '../UI/modal'
 
 class Recipes extends Component {
   componentDidMount() {
@@ -47,6 +46,10 @@ class Recipes extends Component {
         <Pagination onClick={(event) => this.handleLoadRecipesList(event)} />
       );
     }
+    let modal = ''
+    if(this.props.error){
+      modal = <Modal message={this.props.error} type="error" />;
+    }
     return (
       <section className={styles.latest}>
         <div className="container">
@@ -59,6 +62,7 @@ class Recipes extends Component {
           </div>
           <div className="row">{recipes}</div>
           {pagination}
+          {modal}
         </div>
       </section>
     );
