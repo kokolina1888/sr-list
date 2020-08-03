@@ -21,9 +21,12 @@
 .wrapper {
     width: 32%;
     height: 32%;
-    margin: 34% auto;
     background-color: #ccc;
     border: 1px solid rgb(105, 102, 102);
+    position: absolute;
+    top: 34%;
+    left: 34%;
+    z-index: 1;
 }
 
 .hidden-wrapper {

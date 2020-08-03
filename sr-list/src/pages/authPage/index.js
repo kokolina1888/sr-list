@@ -9,6 +9,7 @@ import Input from "../../components/UI/form/input";
 import styles from "./index.module.css";
 import Button from "../../components/UI/button";
 import Link from "../../components/UI/link";
+import Modal from '../../components/UI/modal'
 
 import {
   checkFormElementValidity
@@ -109,6 +110,10 @@ class Auth extends Component {
     this.setState({ controls: updatedControls });
   };
   render() {
+    let modal = '';
+    if( this.props.error ){
+      modal = <Modal type="error" message={this.props.error}/>
+    }
     let authRedirect = null;
     if (this.props.isAuth) {
       authRedirect = <Redirect to={this.props.redirectPath} />;
