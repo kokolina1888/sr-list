@@ -68,7 +68,6 @@ export const fetchInitKey = (num) => {
         dispatch(setLastKey(lastKey));
       })
       .catch(() => {
-        // dispatch(setLastKeyError());
       });
   };
 };

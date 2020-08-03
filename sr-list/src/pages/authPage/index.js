@@ -11,6 +11,8 @@ import Button from "../../components/UI/button";
 import Link from "../../components/UI/link";
 import Modal from '../../components/UI/modal'
 
+import {transformBackendErrorMessage} from '../../shared/validation'
+
 import {
   checkFormElementValidity
 } from "../../shared/validation";
@@ -110,143 +112,173 @@ class Auth extends Component {
     this.setState({ controls: updatedControls });
   };
   render() {
-    let modal = '';
-    if( this.props.error ){
-      modal = <Modal type="error" message={this.props.error}/>
-    }
-    let authRedirect = null;
-    if (this.props.isAuth) {
-      authRedirect = <Redirect to={this.props.redirectPath} />;
-    }
+             let modal = "";
+             if (this.props.error) {
+               let message = transformBackendErrorMessage(this.props.error);
+               modal = <Modal type="error" message={message} />;
+             }
+             let authRedirect = null;
+             if (this.props.isAuth) {
+               authRedirect = <Redirect to={this.props.redirectPath} />;
+             }
 
-    let loginClasses = styles["btn-container"];
-    let signUpClasses = styles["btn-container"];
-    let form = null;
-    if (this.props.isSignUp) {
-      signUpClasses += " " + styles.active;
-      form = (
-        <div className="delicious-tab-content">
-          <div className="col-12">
-            <form onSubmit={this.state.isValidForm ? this.submitHandler : null}>
-              <Input
-                place="auth"
-                type="email"
-                placeholder="Your email ..."
-                changed={(e) => this.inputChangedHandler(e, "email")}
-                isValid={this.state.controls.email.valid}
-                errorMessage={this.state.controls.email.errorMessage}
-                touched={this.state.controls.email.touched}
-                key="email"
-                blurred={this.checkIsValidForm}
-              />
+             let loginClasses = styles["btn-container"];
+             let signUpClasses = styles["btn-container"];
+             let form = null;
+             if (this.props.isSignUp) {
+               signUpClasses += " " + styles.active;
+               form = (
+                 <div className="delicious-tab-content">
+                   <div className="col-12">
+                     <form
+                       onSubmit={
+                         this.state.isValidForm ? this.submitHandler : null
+                       }
+                     >
+                       <Input
+                         place="auth"
+                         type="email"
+                         placeholder="Your email ..."
+                         changed={(e) => this.inputChangedHandler(e, "email")}
+                         isValid={this.state.controls.email.valid}
+                         errorMessage={this.state.controls.email.errorMessage}
+                         touched={this.state.controls.email.touched}
+                         key="email"
+                         blurred={this.checkIsValidForm}
+                       />
 
-              <Input
-                place="auth"
-                type="password"
-                placeholder="Your password ..."
-                changed={(e) => this.inputChangedHandler(e, "password")}
-                isValid={this.state.controls.password.valid}
-                errorMessage={this.state.controls.password.errorMessage}
-                touched={this.state.controls.password.touched}
-                key="password"
-                blurred={this.checkIsValidForm}
-              />
+                       <Input
+                         place="auth"
+                         type="password"
+                         placeholder="Your password ..."
+                         changed={(e) =>
+                           this.inputChangedHandler(e, "password")
+                         }
+                         isValid={this.state.controls.password.valid}
+                         errorMessage={
+                           this.state.controls.password.errorMessage
+                         }
+                         touched={this.state.controls.password.touched}
+                         key="password"
+                         blurred={this.checkIsValidForm}
+                       />
 
-              <Input
-                place="auth"
-                type="password"
-                placeholder="Repeat password ..."
-                changed={(e) => this.inputChangedHandler(e, "passwordConfirm")}
-                isValid={this.state.controls.passwordConfirm.valid}
-                errorMessage={this.state.controls.passwordConfirm.errorMessage}
-                touched={this.state.controls.passwordConfirm.touched}
-                key="passwordConfirm"
-                blurred={this.checkIsValidForm}
-              />
+                       <Input
+                         place="auth"
+                         type="password"
+                         placeholder="Repeat password ..."
+                         changed={(e) =>
+                           this.inputChangedHandler(e, "passwordConfirm")
+                         }
+                         isValid={this.state.controls.passwordConfirm.valid}
+                         errorMessage={
+                           this.state.controls.passwordConfirm.errorMessage
+                         }
+                         touched={this.state.controls.passwordConfirm.touched}
+                         key="passwordConfirm"
+                         blurred={this.checkIsValidForm}
+                       />
 
-              <Button type="auth-register" disabled={!this.state.isValidForm}>
-                Register
-              </Button>
-            </form>
-          </div>
-        </div>
-      );
-    } else {
-      loginClasses += " " + styles.active;
-      form = (
-        <div className="delicious-tab-content">
-          <div className="col-12">
-            <form onSubmit={this.state.isValidForm ? this.submitHandler : null}>
-              <Input
-                place="auth"
-                type="email"
-                placeholder="Your email ..."
-                changed={(e) => this.inputChangedHandler(e, "email")}
-                isValid={this.state.controls.email.valid}
-                errorMessage={this.state.controls.email.errorMessage}
-                touched={this.state.controls.email.touched}
-                key="email"
-                blurred={this.checkIsValidForm}
-              />
+                       <Button
+                         type="auth-register"
+                         disabled={!this.state.isValidForm}
+                       >
+                         Register
+                       </Button>
+                     </form>
+                   </div>
+                 </div>
+               );
+             } else {
+               loginClasses += " " + styles.active;
+               form = (
+                 <div className="delicious-tab-content">
+                   <div className="col-12">
+                     <form
+                       onSubmit={
+                         this.state.isValidForm ? this.submitHandler : null
+                       }
+                     >
+                       <Input
+                         place="auth"
+                         type="email"
+                         placeholder="Your email ..."
+                         changed={(e) => this.inputChangedHandler(e, "email")}
+                         isValid={this.state.controls.email.valid}
+                         errorMessage={this.state.controls.email.errorMessage}
+                         touched={this.state.controls.email.touched}
+                         key="email"
+                         blurred={this.checkIsValidForm}
+                       />
 
-              <Input
-                place="auth"
-                type="password"
-                placeholder="Your password ..."
-                changed={(e) => this.inputChangedHandler(e, "password")}
-                isValid={this.state.controls.password.valid}
-                errorMessage={this.state.controls.password.errorMessage}
-                touched={this.state.controls.password.touched}
-                key="password"
-                blurred={this.checkIsValidForm}
-              />
+                       <Input
+                         place="auth"
+                         type="password"
+                         placeholder="Your password ..."
+                         changed={(e) =>
+                           this.inputChangedHandler(e, "password")
+                         }
+                         isValid={this.state.controls.password.valid}
+                         errorMessage={
+                           this.state.controls.password.errorMessage
+                         }
+                         touched={this.state.controls.password.touched}
+                         key="password"
+                         blurred={this.checkIsValidForm}
+                       />
 
-              <Button type="auth-login" disabled={!this.state.isValidForm}>
-                Login
-              </Button>
-            </form>
-          </div>
-        </div>
-      );
-    }
-    let btns = (
-      <div className={styles["wrapper"]}>
-        <div className={loginClasses}>
-          <Link
-            href=""
-            type="auth"
-            action="login"
-            onClick={this.switchModeHandler}
-          >
-            Login
-          </Link>
-        </div>
-        <div className={signUpClasses}>
-          <Link
-            href="/"
-            type="auth"
-            action="signup"
-            onClick={this.switchModeHandler}
-          >
-            Register
-          </Link>
-        </div>
-      </div>
-    );
-    return (
-      <UserLayout>
-        <div className="container">
-          <div className="col-lg-8 offset-2">
-            <div className={styles["delicious-tabs-content"]}>
-              {authRedirect}
-              {btns}
-              {form}
-            </div>
-          </div>
-        </div>
-      </UserLayout>
-    );
-  }
+                       <Button
+                         type="auth-login"
+                         disabled={!this.state.isValidForm}
+                       >
+                         Login
+                       </Button>
+                     </form>
+                   </div>
+                 </div>
+               );
+             }
+             let btns = (
+               <div className={styles["wrapper"]}>
+                 <div className={loginClasses}>
+                   <Link
+                     href=""
+                     type="auth"
+                     action="login"
+                     onClick={this.switchModeHandler}
+                   >
+                     Login
+                   </Link>
+                 </div>
+                 <div className={signUpClasses}>
+                   <Link
+                     href="/"
+                     type="auth"
+                     action="signup"
+                     onClick={this.switchModeHandler}
+                   >
+                     Register
+                   </Link>
+                 </div>
+               </div>
+             );
+             // EMAIL_EXISTS;
+             //EMAIL_NOT_FOUND
+             return (
+               <UserLayout>
+                 <div className="container">
+                   <div className="col-lg-8 offset-2">
+                     <div className={styles["delicious-tabs-content"]}>
+                       {authRedirect}
+                       {btns}
+                       {form}
+                     </div>
+                   </div>
+                 </div>
+                 {modal}
+               </UserLayout>
+             );
+           }
 }
 const mapsStateToProps = (state) => {
   return {

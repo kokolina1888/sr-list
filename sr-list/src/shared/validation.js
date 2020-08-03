@@ -28,3 +28,7 @@ export const checkFormElementValidity = (value, rule) => {
       return validationResult;
   }
 };
+
+export const transformBackendErrorMessage = (message) => {
+  return message.replace(/_/g, " ");
+}

@@ -2,9 +2,8 @@
     width: 100%;
     height: 100%;
     text-align: center;
-    padding: 60px 0;
+    padding: 20px 0 40px;
     font-weight: bold;
-    border-radius: 2px;
 }
 
 .wrapper span {
@@ -20,10 +19,11 @@
 
 .wrapper {
     width: 32%;
-    height: 32%;
-    background-color: #ccc;
+    background-color: rgb(105, 102, 102, 0.2);
     border: 1px solid rgb(105, 102, 102);
     position: absolute;
+    border-radius: 2px;
+    font-size: 20px;
     top: 34%;
     left: 34%;
     z-index: 1;

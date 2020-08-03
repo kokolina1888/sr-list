@@ -14,7 +14,7 @@ export const fetchUnitsSuccess = (units) => {
 export const fetchUnitsError = () => {
   return {
     type: actionTypes.FETCH_UNITS_FAIL,
-    error: "units fetch error",
+    error: "Units fetch error",
   };
 };
 export const fetchUnitsStart = () => {
@@ -35,7 +35,7 @@ export const fetchUnits = (num) => {
         dispatch(fetchUnitsSuccess(fetchedUnits));
       })
       .catch((err) => {
-        dispatch(fetchUnitsError(err));
+        dispatch(fetchUnitsError());
       });
   };
 };
