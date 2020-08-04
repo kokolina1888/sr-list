@@ -4,21 +4,21 @@ const initialState = {
   shoppingList: null,
   recipesCount: 0,
   error: null,
-  loading: false
+  success: false
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_TO_SHOPPING_LIST_START:
-      return { ...state, loading: true };
+      return { ...state, success:false };
     case actionTypes.ADD_TO_SHOPPING_LIST_SUCCESS:
-      return { ...state, loading: false };
+      return { ...state, success: "Recipe added to Shopping List!" };
     case actionTypes.ADD_TO_SHOPPING_LIST_FAIL:
-      return { ...state, loading: false, error: action.error };
+      return { ...state, error: action.error };
     case actionTypes.FETCH_SHOPPING_LIST_START:
-      return { ...state, loading: true };
+      return { ...state, success: false };
     case actionTypes.FETCH_SHOPPING_LIST_SUCCESS:
-      return { ...state, loading: false, shoppingList: action.shoppingList };
+      return { ...state, shoppingList: action.shoppingList, success: 'Recipe added to Shopping List!' };
     case actionTypes.COUNT_SHOPPING_LIST_RECIPES:
       return { ...state, recipesCount: action.recipesCount };
     default:

@@ -47,8 +47,15 @@ class Recipes extends Component {
       );
     }
     let modal = ''
+    console.log(this.props.errorFL);
     if(this.props.error){
       modal = <Modal message={this.props.error} type="error" />;
+    } else if( this.props.successSL ){
+      modal = <Modal message={this.props.successSL} type="success" />;
+    } else if ( this.props.successFL ){
+      modal = <Modal message={this.props.successFL} type="success" />;
+    } else if (this.props.errorFL ){
+      modal = <Modal message={this.props.errorFL} type="warning" />;
     }
     return (
       <section className={styles.latest}>
@@ -76,7 +83,10 @@ const mapsStateToProps = (state) => {
     error: state.recipes.error,
     lastKey: state.recipes.lastKey,
     userId: state.auth.userId,
-    isAuth: state.auth.token !== null
+    isAuth: state.auth.token !== null,
+    successSL: state.shoppingList.success,
+    successFL: state.favoriteRecipes.success,
+    errorFL: state.favoriteRecipes.error
   };
 };
 const mapDispatchToProps = (dispatch) => {

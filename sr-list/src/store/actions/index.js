@@ -18,4 +18,8 @@ export {
   countUserShoppingListRecipes,
 } from "./shoppingList";
 
-export { countUserFavoriteRecipes, addToFavorites } from "./favoriteRecipes";
+export {
+  countUserFavoriteRecipes,
+  addToFavorites,
+  setAddToFavoritesFailedMessage,
+} from "./favoriteRecipes";

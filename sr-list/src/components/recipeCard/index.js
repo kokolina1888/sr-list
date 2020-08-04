@@ -11,8 +11,8 @@ import { faStar, faHeart, faPlus } from "@fortawesome/free-solid-svg-icons";
 class RecipeCard extends Component {
   state = {
     btnFav: false,
-    btnSL: false
-  }
+    btnSL: false,
+  };
   async addToShoppinglistHandler(event) {
     event.preventDefault();
     let recipeData = [];
@@ -30,11 +30,11 @@ class RecipeCard extends Component {
       .catch((err) => {});
     if (result) {
       this.props.onAddToShoppingList(result, this.props.userId);
-      alert("Recipe Has Been Added to Shopping List!");
-    }   
+      // alert("Recipe Has Been Added to Shopping List!");
+    }
   }
 
-  async addToFavoritesHandler(event) {    
+  async addToFavoritesHandler(event) {
     event.preventDefault();
     const data = {
       userId: this.props.userId,
@@ -58,12 +58,10 @@ class RecipeCard extends Component {
       })
       .catch((err) => {});
     // if not in db - add it
-    if (!result) {     
-        this.props.onAddToFavorites(data, this.props.userId);
-        alert('Recipe Has Been Added to Favorites List!')
-    
+    if (!result) {
+      this.props.onAddToFavorites(data, this.props.userId);
     } else {
-        alert("Recipe Already in Favorites List!");
+      this.props.onAddToFavoritesFail("Recipe Already in Favorites List!");
     }
   }
 
@@ -72,16 +70,16 @@ class RecipeCard extends Component {
     if (this.props.isAuth) {
       addToBtns = (
         <Fragment>
-          <Link href="/" >
+          <Link href="/">
             <FontAwesomeIcon
-              className={styles.plus +" "+ this.state.btnSL.clicked}
+              className={styles.plus + " " + this.state.btnSL.clicked}
               icon={faPlus}
               title="Add to shopping list!"
               onClick={(event) => this.addToShoppinglistHandler(event)}
             />
           </Link>
           <Link
-          type={this.state.btnFav ? 'clicked' : null}
+            type={this.state.btnFav ? "clicked" : null}
             href="/"
             title="Add to favorites!"
             onClick={(event) => this.addToFavoritesHandler(event)}
@@ -91,6 +89,7 @@ class RecipeCard extends Component {
         </Fragment>
       );
     }
+
     return (
       <div className={styles["recipe-container"]}>
         <img src={this.props.image} alt={this.props.title} />
@@ -124,6 +123,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.addRecipeToShoppingList(data, userId)),
     onAddToFavorites: (data, userId) =>
       dispatch(actions.addToFavorites(data, userId)),
+    onAddToFavoritesFail: (message) =>
+      dispatch(actions.setAddToFavoritesFailedMessage(message)),
   };
 };
 

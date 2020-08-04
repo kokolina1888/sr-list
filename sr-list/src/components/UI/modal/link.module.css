@@ -11,20 +11,31 @@
     width: 98%;
     text-align: right;
     margin-right: 20px;
+    cursor: pointer
 }
 
 .error {
     color: #f70808
 }
 
+.success {
+    background-color: #ffffff;
+    color: #19db07;
+}
+
+.warning {
+    background-color: #ffffff;
+    color: #f08623;
+}
+
 .wrapper {
     width: 32%;
-    background-color: rgb(105, 102, 102, 0.2);
+    background-color: rgb(221, 217, 217);
     border: 1px solid rgb(105, 102, 102);
-    position: absolute;
+    position: fixed;
     border-radius: 2px;
     font-size: 20px;
-    top: 34%;
+    top: 15%;
     left: 34%;
     z-index: 1;
 }
