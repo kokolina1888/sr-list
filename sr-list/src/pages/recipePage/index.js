@@ -12,7 +12,7 @@ import { firebaseRecipes } from "../../firebase";
 import { plainObject } from "../../shared/index";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faHeart, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 class Recipe extends Component {
   state = {

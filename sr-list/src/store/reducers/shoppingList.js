@@ -19,8 +19,6 @@ const reducer = (state = initialState, action) => {
       return { ...state, loading: true };
     case actionTypes.FETCH_SHOPPING_LIST_SUCCESS:
       return { ...state, loading: false, shoppingList: action.shoppingList };
-    case actionTypes.ADD_TO_SHOPPING_LIST_FAIL:
-      return { ...state, loading: false, error: action.error };
     case actionTypes.COUNT_SHOPPING_LIST_RECIPES:
       return { ...state, recipesCount: action.recipesCount };
     default:
