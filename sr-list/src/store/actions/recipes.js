@@ -163,38 +163,43 @@ export const fetchRecipesByCategory = () => {
   return (dispatch) => {
     dispatch(fetchRecipesByCategoryStart());
     let dataRecipes = [];
+    let categories = [];
     axios
       .get("https://sr-list-ccafe.firebaseio.com/categories.json")
       .then((response) => {
+        if(response){
+
+        }
         return response.data;
       })
-      .then((res) => {
-        console.log(res)
-        for (let ind in res) {
-          // console.log(res[ind]);
-          let currCategory = res[ind];
-          const queryParams = '?orderBy="categoryName"&equalTo="' + ind + '"';
-          axios
-            .get(
-              "https://sr-list-ccafe.firebaseio.com/recipes.json" + queryParams
-            )
-            .then((recipes) => {
-              // console.log(Object.keys(res.data).length);
-              return recipes.data;
-            })
-            .then((res) => {
-              dataRecipes.push({
-                categoryName: currCategory.name,
-                count: Object.keys(res).length,
-              });
-              console.log(dataRecipes)
-             dispatch(fetchRecipesByCategorySuccess(dataRecipes));
-            })
-            .catch((err) => {});
-          }       
-      })
+      console.log(categories)
+      // .then((res) => {
+      //   console.log(res)
+      //   for (let ind in res) {
+      //     // console.log(res[ind]);
+      //     let currCategory = res[ind];
+      //     const queryParams = '?orderBy="categoryName"&equalTo="' + ind + '"';
+      //     axios
+      //       .get(
+      //         "https://sr-list-ccafe.firebaseio.com/recipes.json" + queryParams
+      //       )
+      //       .then((recipes) => {
+      //         // console.log(Object.keys(res.data).length);
+      //         return recipes.data;
+      //       })
+      //       .then((res) => {
+      //         dataRecipes.push({
+      //           categoryName: currCategory.name,
+      //           count: Object.keys(res).length,
+      //         });
+      //         console.log(dataRecipes)
+      //        dispatch(fetchRecipesByCategorySuccess(dataRecipes));
+      //       })
+      //       .catch((err) => {});
+      //     }       
+      // })
      
-      .catch((err) => {});
+      // .catch((err) => {});
 
     
   };
