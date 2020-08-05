@@ -176,9 +176,7 @@ class Recipe extends Component {
       );
     }
     let modal = "";
-    console.log(this.props.successSL);
-    console.log(this.props.successFL);
-    console.log(this.props.errorFL);
+    
     if (this.props.successSL) {
       modal = (
         <Modal

@@ -6,7 +6,7 @@ import RecipeCard from "../recipeCard";
 import Spinner from "../UI/spinner";
 import styles from "./index.module.css";
 import Pagination from "../pagination";
-import Modal from '../UI/modal'
+import Modal from "../UI/modal";
 
 class Recipes extends Component {
   componentDidMount() {
@@ -31,12 +31,25 @@ class Recipes extends Component {
       this.props.onFetchNextKey(this.props.perPage, this.props.lastKey);
     }
   };
+  modalClickedHandler = (event, type) => {
+    if (type === "fl") {
+      this.props.onResetFLMessages();
+    }
+    if (type === "sl") {
+      this.props.onResetSLMessages();
+    }
+  };
+
   render() {
     let recipes = <Spinner />;
     if (!this.props.loading) {
       recipes = this.props.recipesList.map((recipe) => (
         <div key={recipe.id} className="col-12 col-sm-6 col-lg-4">
-          <RecipeCard title={recipe.name} image={recipe.image} recipeId={recipe.id}/>
+          <RecipeCard
+            title={recipe.name}
+            image={recipe.image}
+            recipeId={recipe.id}
+          />
         </div>
       ));
     }
@@ -46,16 +59,36 @@ class Recipes extends Component {
         <Pagination onClick={(event) => this.handleLoadRecipesList(event)} />
       );
     }
-    let modal = ''
-    if(this.props.error){
-      modal = <Modal message={this.props.error} type="error" />;
-    } else if( this.props.successSL ){
-      modal = <Modal message={this.props.successSL} type="success" />;
-    } else if ( this.props.successFL ){
-      modal = <Modal message={this.props.successFL} type="success" />;
-    } else if (this.props.errorFL ){
-      modal = <Modal message={this.props.errorFL} type="warning" />;
+    let modal = "";
+
+    if (this.props.successSL) {
+      modal = (
+        <Modal
+          message={this.props.successSL}
+          type="success"
+          clicked={(event) => this.modalClickedHandler(event, "sl")}
+        />
+      );
     }
+    if (this.props.successFL) {
+      modal = (
+        <Modal
+          message={this.props.successFL}
+          type="success"
+          clicked={(event) => this.modalClickedHandler(event, "fl")}
+        />
+      );
+    }
+    if (this.props.errorFL) {
+      modal = (
+        <Modal
+          message={this.props.errorFL}
+          type="warning"
+          clicked={(event) => this.modalClickedHandler(event, "fl")}
+        />
+      );
+    }
+
     return (
       <section className={styles.latest}>
         <div className="container">
@@ -85,7 +118,7 @@ const mapsStateToProps = (state) => {
     isAuth: state.auth.token !== null,
     successSL: state.shoppingList.success,
     successFL: state.favoriteRecipes.success,
-    errorFL: state.favoriteRecipes.error
+    errorFL: state.favoriteRecipes.error,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -99,6 +132,8 @@ const mapDispatchToProps = (dispatch) => {
     onFetchInitKey: (num) => dispatch(actions.fetchInitKey(num)),
     onFetchNextKey: (num, lastKey) =>
       dispatch(actions.fetchNextKey(num, lastKey)),
+    onResetFLMessages: () => dispatch(actions.resetFLMessages()),
+    onResetSLMessages: () => dispatch(actions.resetSLMessages()),
   };
 };
 export default connect(mapsStateToProps, mapDispatchToProps)(Recipes);
