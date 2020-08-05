@@ -26,7 +26,6 @@ class RecipeFiltersBlock extends Component {
     this.props.onFetchFilteredRecipesList("categoryName", event.target.value);
   };
   searchByRecipeNameHandler = (event) => {
-    console.log(this.state.search);
     this.props.onSearchByNameRecipesList('name', this.state.search.value)
   };
   inputChangedHandler = (event) => {
@@ -37,7 +36,6 @@ class RecipeFiltersBlock extends Component {
     })
   }
   render() {
-    console.log(this.state.search)
     return (
       <div className={styles["recipe-filters-block"] + " mb-80"}>
         <div className="container">

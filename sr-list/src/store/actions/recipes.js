@@ -13,7 +13,7 @@ export const fetchRecipesSuccess = (recipes) => {
 export const fetchRecipesError = () => {
   return {
     type: actionTypes.FETCH_RECIPES_FAIL,
-    error: 'recipes fetch error',
+    error: 'Fetch recipes error',
   };
 };
 export const fetchRecipesStart = () => {
@@ -68,7 +68,6 @@ export const fetchInitKey = (num) => {
         dispatch(setLastKey(lastKey));
       })
       .catch(() => {
-        dispatch(setLastKeyError());
       });
   };
 };
@@ -86,7 +85,7 @@ export const fetchLatestRecipes = (num) => {
         dispatch(fetchRecipesSuccess(revRecipes));
       })
       .catch((err) => {
-        dispatch(fetchRecipesError(err));
+        dispatch(fetchRecipesError());
       });
   };
 };
@@ -122,7 +121,7 @@ export const fetchNextRecipesList = (num, lastKey) => {
         dispatch(fetchRecipesSuccess(fetchedRecipes));
       })
       .catch((err) => {
-        dispatch(fetchRecipesError(err));
+        dispatch(fetchRecipesError());
       });
   };
 };

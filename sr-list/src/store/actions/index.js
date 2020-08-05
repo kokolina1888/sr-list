@@ -16,6 +16,12 @@ export {
   addRecipeToShoppingList,
   getUserShoppingList,
   countUserShoppingListRecipes,
+  resetSLMessages,
 } from "./shoppingList";
 
-export { countUserFavoriteRecipes, addToFavorites } from "./favoriteRecipes";
+export {
+  countUserFavoriteRecipes,
+  addToFavorites,
+  setAddToFavoritesFailedMessage,
+  resetFLMessages
+} from "./favoriteRecipes";

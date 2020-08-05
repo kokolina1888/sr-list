@@ -14,7 +14,7 @@ export const fetchCategoriesSuccess = (categories) => {
 export const fetchCategoriesError = () => {
   return {
     type: actionTypes.FETCH_CATEGORIES_FAIL,
-    error: 'categories fetch error',
+    error: 'Categories fetch error',
   };
 };
 export const fetchCategoriesStart = () => {
@@ -35,7 +35,7 @@ export const fetchCategories = (num) => {
         dispatch(fetchCategoriesSuccess(fetchedCategories));
       })
       .catch((err) => {
-        dispatch(fetchCategoriesError(err));
+        dispatch(fetchCategoriesError());
       });
   };
 };

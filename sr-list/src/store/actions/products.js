@@ -14,7 +14,7 @@ export const fetchProductsSuccess = (products) => {
 export const fetchProductsError = () => {
   return {
     type: actionTypes.FETCH_PRODUCTS_FAIL,
-    error: 'products fetch error',
+    error: 'Products fetch error',
   };
 };
 export const fetchProductsStart = () => {
@@ -35,7 +35,7 @@ export const fetchProducts = (num) => {
         dispatch(fetchProductsSuccess(fetchedProducts));
       })
       .catch((err) => {
-        dispatch(fetchProductsError(err));
+        dispatch(fetchProductsError());
       });
   };
 };

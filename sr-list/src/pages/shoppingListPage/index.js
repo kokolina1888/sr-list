@@ -5,7 +5,6 @@ import UserLayout from "../../components/layouts/userLayout";
 import Breadcrumb from "../../components/breadcrumb";
 import Link from "../../components/UI/link";
 import styles from "./index.module.css";
-import recipes from "../../components/recipes";
 import Spinner from "../../components/UI/spinner";
 import { plainObjectWithData } from "../../shared";
 
@@ -81,7 +80,6 @@ class ShoppingList extends Component {
     }
     for (let ind in products) {
       for (let k in products[ind]) {
-        // prodName: "sugar", quantity: 0.2, unitName: "kg"
         arrProducts.push(products[ind][k]);
       }
     }
