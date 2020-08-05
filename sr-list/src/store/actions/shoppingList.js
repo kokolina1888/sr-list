@@ -6,6 +6,17 @@ export const fetchShoppingListStart = () => {
     type: actionTypes.FETCH_SHOPPING_LIST_START
   };
 }
+export const resetSLMessages = () => {
+  return (dispatch) => {
+    dispatch(resetMessages())
+  }
+}
+
+export const resetMessages = () => {
+  return {
+    type: actionTypes.RESET_SL_MESSAGES,
+  };
+}
 export const addRecipeToShoppingList = (data, userId) => {
   const recipeData = {
     userId: userId,

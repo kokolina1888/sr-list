@@ -6,7 +6,7 @@ import UserLayout from "../../components/layouts/userLayout";
 import Breadcrumb from "../../components/breadcrumb";
 import Spinner from "../../components/UI/spinner";
 import Button from "../../components/UI/button";
-import Modal from '../../components/UI/modal'
+import Modal from "../../components/UI/modal";
 
 import styles from "./index.module.css";
 import { firebaseRecipes } from "../../firebase";
@@ -67,19 +67,25 @@ class Recipe extends Component {
       .then((res) => {
         for (let key in res.data) {
           recipeData.push({ ...res.data[key], id: key });
-        }        
+        }
         return recipeData[0];
-
       })
       .catch((err) => {});
     // if not in db - add it
     if (!result) {
       this.props.onAddToFavorites(data, this.props.userId);
     } else {
-       this.props.onAddToFavoritesFail("Recipe Already in Favorites List!");
+      this.props.onAddToFavoritesFail("Recipe Already in Favorites List!");
     }
   }
-
+  modalClickedHandler = (event, type) => {
+    if (type === "fl") {
+      this.props.onResetFLMessages();
+    }
+    if (type === "sl") {
+      this.props.onResetSLMessages();
+    }
+  };
   render() {
     const products = plainObject(this.props.products);
     const units = plainObject(this.props.units);
@@ -135,7 +141,7 @@ class Recipe extends Component {
                   <h6>Prep: {data.prepTime} min</h6>
                   <h6>Servings: {data.servings} </h6>
                 </div>
-                { btnsGroup }
+                {btnsGroup}
               </div>
               <div className="col-12">
                 <div className={styles.desc + " d-flex"}>
@@ -169,18 +175,38 @@ class Recipe extends Component {
         </Fragment>
       );
     }
-     let modal = "";
-     
-     if (this.props.successSL) {
-       modal = <Modal message={this.props.successSL} type="success" />;
-     } 
-     if (this.props.successFL) {
-       modal = <Modal message={this.props.successFL} type="success" />;
-     } 
-     if (this.props.errorFL) {
-       modal = <Modal message={this.props.errorFL} type="warning" />;
-     }
-     
+    let modal = "";
+    console.log(this.props.successSL);
+    console.log(this.props.successFL);
+    console.log(this.props.errorFL);
+    if (this.props.successSL) {
+      modal = (
+        <Modal
+          message={this.props.successSL}
+          type="success"
+          clicked={(event) => this.modalClickedHandler(event, "sl")}
+        />
+      );
+    }
+    if (this.props.successFL) {
+      modal = (
+        <Modal
+          message={this.props.successFL}
+          type="success"
+          clicked={(event) => this.modalClickedHandler(event, "fl")}
+        />
+      );
+    }
+    if (this.props.errorFL) {
+      modal = (
+        <Modal
+          message={this.props.errorFL}
+          type="warning"
+          clicked={(event) => this.modalClickedHandler(event, "fl")}
+        />
+      );
+    }
+
     return (
       <UserLayout>
         <Breadcrumb>Recipe</Breadcrumb>
@@ -215,6 +241,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.addToFavorites(data, userId)),
     onAddToFavoritesFail: (message) =>
       dispatch(actions.setAddToFavoritesFailedMessage(message)),
+    onResetFLMessages: () => dispatch(actions.resetFLMessages()),
+    onResetSLMessages: () => dispatch(actions.resetSLMessages()),
   };
 };
 export default connect(mapsStateToProps, mapDispatchToProps)(Recipe);

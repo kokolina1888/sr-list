@@ -65,5 +65,15 @@ export const addToFavoritesFail = (message) => {
     error: message,
   };
 };
+export const resetFLMessages = () => {
+  return (dispatch) => {
+    dispatch(resetMessages());
+  };
+};
+export const resetMessages = () => {
+  return {
+     type: actionTypes.RESET_FL_MESSAGES,
+  }
+}
 
 //TO DO - ADD TO FAVORITES FAIL - TO HANDLE ERRORS, SIMILAR AS SUCCESS, BUT SETS ERROR TO  TRUE, WRITES IN LIG FILE, ETC

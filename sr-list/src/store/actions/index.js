@@ -16,10 +16,12 @@ export {
   addRecipeToShoppingList,
   getUserShoppingList,
   countUserShoppingListRecipes,
+  resetSLMessages,
 } from "./shoppingList";
 
 export {
   countUserFavoriteRecipes,
   addToFavorites,
   setAddToFavoritesFailedMessage,
+  resetFLMessages
 } from "./favoriteRecipes";

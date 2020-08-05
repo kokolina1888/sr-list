@@ -25,7 +25,7 @@ const Modal = (props) => {
         wrapperStyle = styles["hidden-wrapper"]
     }
     return (
-      <div className={wrapperStyle}>
+      <div className={wrapperStyle} onClick={props.clicked}>
         <span onClick={onClickHandler}>x</span>
         <div className={modalStyle}>
           <div className={styles.message + " " + styles[type]}>
