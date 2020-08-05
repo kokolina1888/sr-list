@@ -6,6 +6,7 @@ import UserLayout from "../../components/layouts/userLayout";
 import Breadcrumb from "../../components/breadcrumb";
 import Spinner from "../../components/UI/spinner";
 import Button from "../../components/UI/button";
+import Modal from '../../components/UI/modal'
 
 import styles from "./index.module.css";
 import { firebaseRecipes } from "../../firebase";
@@ -47,7 +48,6 @@ class Recipe extends Component {
     let result = {};
     result = this.state.recipe;
     this.props.onAddToShoppingList(result, this.props.userId);
-    alert("Recipe Has Been Added to Shopping List!");
   };
   async addRecipeToFavoritesListHandler() {
     const data = {
@@ -59,7 +59,7 @@ class Recipe extends Component {
     };
     let recipeData = [];
     //fetch recipe
-    let searchBy = this.props.userId + this.props.recipeId;
+    let searchBy = this.props.userId + this.state.recipe.id;
     const queryParams = '?orderBy="userRecipe"&equalTo="' + searchBy + '"';
     //check if recipe alredy in db
     const result = await axios
@@ -67,16 +67,16 @@ class Recipe extends Component {
       .then((res) => {
         for (let key in res.data) {
           recipeData.push({ ...res.data[key], id: key });
-        }
+        }        
         return recipeData[0];
+
       })
       .catch((err) => {});
     // if not in db - add it
     if (!result) {
       this.props.onAddToFavorites(data, this.props.userId);
-      alert("Recipe Has Been Added to Favorites List!");
     } else {
-      alert("Recipe Already in Favorites List!");
+       this.props.onAddToFavoritesFail("Recipe Already in Favorites List!");
     }
   }
 
@@ -169,12 +169,25 @@ class Recipe extends Component {
         </Fragment>
       );
     }
+     let modal = "";
+     
+     if (this.props.successSL) {
+       modal = <Modal message={this.props.successSL} type="success" />;
+     } 
+     if (this.props.successFL) {
+       modal = <Modal message={this.props.successFL} type="success" />;
+     } 
+     if (this.props.errorFL) {
+       modal = <Modal message={this.props.errorFL} type="warning" />;
+     }
+     
     return (
       <UserLayout>
         <Breadcrumb>Recipe</Breadcrumb>
         <div className="receipe-content-area">
           <div className="container">{recipeData}</div>
         </div>
+        {modal}
       </UserLayout>
     );
   }
@@ -186,6 +199,9 @@ const mapsStateToProps = (state) => {
     categories: state.categories.categories,
     isAuth: state.auth.token !== null,
     userId: state.auth.userId,
+    successSL: state.shoppingList.success,
+    successFL: state.favoriteRecipes.success,
+    errorFL: state.favoriteRecipes.error,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -197,6 +213,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.addRecipeToShoppingList(data, userId)),
     onAddToFavorites: (data, userId) =>
       dispatch(actions.addToFavorites(data, userId)),
+    onAddToFavoritesFail: (message) =>
+      dispatch(actions.setAddToFavoritesFailedMessage(message)),
   };
 };
 export default connect(mapsStateToProps, mapDispatchToProps)(Recipe);

@@ -47,7 +47,6 @@ class Recipes extends Component {
       );
     }
     let modal = ''
-    console.log(this.props.errorFL);
     if(this.props.error){
       modal = <Modal message={this.props.error} type="error" />;
     } else if( this.props.successSL ){

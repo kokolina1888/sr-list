@@ -77,8 +77,7 @@ export const countUserShoppingListRecipes = (userId) => {
           if (uniqueRecipes.indexOf( res.data[ind].recipe.id ) < 0) {
             uniqueRecipes.push(res.data[ind].recipe.id);
           }
-        }
-        
+        }        
         dispatch(setShoppingListRecipesCount(uniqueRecipes.length));
       })
       .catch((err) => {
