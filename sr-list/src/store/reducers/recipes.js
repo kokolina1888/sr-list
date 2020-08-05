@@ -5,6 +5,8 @@ const initialState = {
   error: false,
   loading: false,
   lastKey: null,
+  recipesByCategory: null,
+  totalRecipes: 0,
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,7 +21,28 @@ const reducer = (state = initialState, action) => {
       return { ...state, lastKey: action.lastKey };
     case actionTypes.SET_KEY_ERROR:
       return { ...state, error: action.error };
-
+    case actionTypes.FETCH_RECIPES_BY_CATEGORY_START:
+      return { ...state, error: false, loading: true };
+    case actionTypes.FETCH_RECIPES_BY_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        error: false,
+        loading: false,
+        recipesByCategory: action.recipesByCategory,
+      };
+    case actionTypes.FETCH_RECIPES_BY_CATEGORY_FAIL:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
+    case actionTypes.COUNT_TOTAL_RECIPES:
+      return {
+        ...state,
+        error: false,
+        loading: false,
+        totalRecipes: action.totalRecipes,
+      };
     default:
       return state;
   }

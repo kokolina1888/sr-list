@@ -9,6 +9,7 @@
     position: relative;
     text-align: center;
     z-index: 1;
+    margin-top: 45px
 }
 
 .headline {
@@ -20,24 +21,54 @@
     background-image: url(../../../images/core/salad.png);
     height: 82px;
     width: 82px;
-    margin: 0 auto
+    margin: 20px auto 0
 }
 
-.snacks {
-    background-image: url(../../../images/core/hamburger.png);
+.salads {
+    background-image: url(../../../images/core/salad.png);
     height: 82px;
-    width: 66px;
-    margin: 0 auto
+    width: 82px;
+    margin: 20px auto 0
 }
-.rib {
+
+.main-dishes {
     background-image: url(../../../images/core/rib.png);
     height: 82px;
     width: 82px;
-    margin: 0 auto
+    margin: 20px auto 0
 }
-.pancake {
+
+.desserts {
     background-image: url(../../../images/core/pancake.png);
     height: 82px;
     width: 82px;
-    margin: 0 auto
+    margin: 20px auto 0
+}
+
+.pastry {
+    background-image: url(../../../images/core/pancake.png);
+    height: 82px;
+    width: 82px;
+    margin: 20px auto 0
+}
+
+.pasta {
+    background-image: url(../../../images/core/pancake.png);
+    height: 82px;
+    width: 82px;
+    margin: 20px auto 0
+}
+
+.cocktails {
+    background-image: url(../../../images/core/hamburger.png);
+    height: 82px;
+    width: 66px;
+    margin: 20px auto 0
+}
+
+.soups {
+    background-image: url(../../../images/core/hamburger.png);
+    height: 82px;
+    width: 66px;
+    margin: 20px auto 0
 }
