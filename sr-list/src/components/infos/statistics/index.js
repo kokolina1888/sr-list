@@ -1,52 +1,112 @@
-import React, { useEffect, useState } from 'react';
-import StatisticsCard from '../statisticsCard';
-import {firebaseLooper} from '../../../shared'
+import React, { Component } from "react";
+import StatisticsCard from "../statisticsCard";
+import axios from "axios";
 import styles from "./index.module.css";
-import { firebaseRecipes } from '../../../firebase';
+import { firebaseRecipes } from "../../../firebase";
+import Spinner from "../../UI/spinner";
+class Statistics extends Component {
+  
+  state = {
+    dataRecipe: null,
+    total: 0
+  }
+  componentDidMount() {
+    this.onFetchRecipesByCategory();
+    this.countTotalRecipes()
+  }
 
-const Statistics = () => {
-  const [data, setTotal ] = useState({
-    total: 0,
-    salads: 0,
-    meal: 0,
-    dessert: 0
-  })
-  useEffect(() => {
-    
-    firebaseRecipes      
+  async countTotalRecipes() {
+    const total = await firebaseRecipes
+      .orderByKey()
       .once("value")
       .then((snapshot) => {
-        let fetchedRecipes = firebaseLooper(snapshot);
-        setTotal({
-        total: fetchedRecipes.length,
-        salads: 10, 
-        meals: 251,
-        desserts: 100
-      }
-        );
+        return snapshot.numChildren()
       })
       .catch((err) => {
+        //dispatch method for setting error in state
       });
-  }, [data])
+      this.setState({
+       total: total,
+      });
+  }
+  async onFetchRecipesByCategory() {
+    let recipeData = [];
+    const categories = await axios
+      .get("https://sr-list-ccafe.firebaseio.com/categories.json")
+      .then((response) => {
+        return response.data;
+      });
+    
+    for (let ind in categories) {
+      let currCategory = categories[ind];
+      const queryParams = '?orderBy="categoryName"&equalTo="' + ind + '"';
+      let currentData = await axios
+        .get("https://sr-list-ccafe.firebaseio.com/recipes.json" + queryParams)
+        .then((recipes) => {
+          // console.log(Object.keys(res.data).length);
+          return recipes.data;
+        })
+        .then((res) => {
+          return {
+            categoryName: currCategory.name,
+            count: Object.keys(res).length,
+          };
+        })
+        .catch((err) => {});
 
+        recipeData.push(currentData)
+        
+    }
+    this.setState({
+      dataRecipe: recipeData
+    })
+    console.log(recipeData)
+  }
 
- 
+  render() {
+    let statistics = <Spinner />;
+    let statisticsTotal = <Spinner />;
+    if (this.state.total) {
+      statisticsTotal = (
+        <div className="col-12 col-sm-6 col-lg-3">
+          <StatisticsCard
+            type="total"
+            title="Total"
+            count={this.state.total}
+          />
+        </div>
+      );
+    }
+
+    let recipes = [];
+    if (this.state.dataRecipe) {
+     
+      recipes = this.state.dataRecipe;
+      console.log(recipes);
+      //TO DO CHECK IF RECIPES.LENGTH IS EQUAL TO CATEGORY LENGTH
+
+      let num = 1;
+      statistics = recipes.map((r) => {
+        return (
+          <div className="col-12 col-sm-6 col-lg-3" key={num++}>
+            <StatisticsCard
+              type={r.categoryName}
+              title={r.categoryName}
+              count={r.count}
+            />
+          </div>
+        );
+      });
+    }
+    console.log(this.state.dataRecipe)
     return (
       <div className={styles.container + " row"}>
-        <div className="col-12 col-sm-6 col-lg-3">
-          <StatisticsCard type="total" title="Total" count={data.total}/>
-        </div>
-        <div className="col-12 col-sm-6 col-lg-3">
-          <StatisticsCard type="snacks" title="Salads" count={data.salads}/>
-        </div>
-        <div className="col-12 col-sm-6 col-lg-3">
-          <StatisticsCard type="rib" title="Meal" count={data.meals}/>
-        </div>
-        <div className="col-12 col-sm-6 col-lg-3">
-          <StatisticsCard type="pancake" title="Desserts" count={data.desserts}/>
-        </div>        
+        {statisticsTotal}
+        {statistics}
       </div>
     );
-};
+  }
+}
+
 
 export default Statistics;
