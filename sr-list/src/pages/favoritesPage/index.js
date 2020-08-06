@@ -1,10 +1,14 @@
+import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
-
-import UserLayout from "../../components/layouts/userLayout";
 import Breadcrumb from "../../components/breadcrumb";
+import UserLayout from "../../components/layouts/userLayout";
 import Link from "../../components/UI/link";
+import Modal from "../../components/UI/modal";
+
+import * as actions from "../../store/actions";
 import styles from "./index.module.css";
 
 class FavoritesPage extends Component {
@@ -12,38 +16,90 @@ class FavoritesPage extends Component {
     recipes: null,
   };
   componentDidMount() {
+    this.props.onFetchUserRecipes(this.props.userId);
+  }
+  async fetchUserRecipes(params) {
     const userId = this.props.userId;
     const queryParams = '?orderBy="userId"&equalTo="' + userId + '"';
-    axios
+    const userRecipes = await axios
       .get("https://sr-list-ccafe.firebaseio.com/favorites.json" + queryParams)
       .then((res) => {
         const fetchedRecipes = [];
         for (let key in res.data) {
           fetchedRecipes.push({ ...res.data[key], id: key });
         }
-        this.setState({ recipes: fetchedRecipes });
+        return fetchedRecipes;
       })
       .catch((err) => {});
+
+    this.setState({
+      recipes: userRecipes,
+    });
   }
+  removeFromFavoritesHandler = (event, favId) => {
+    event.preventDefault();
+    this.props.onRemoveFromFavorites(favId, this.props.userId);
+  };
+  modalClickedHandler = () => {
+    this.props.onResetFLMessages();
+  };
   render() {
     let favorites = "No result!";
-    if (this.state.recipes) {
-      favorites = this.state.recipes.map((fav) => {
+    if (this.props.recipes) {
+      console.log(this.props.recipes);
+      favorites = this.props.recipes.map((fav) => {
+        console.log(fav);
         return (
           <div key={fav.id} className="col-12 col-lg-4">
             <div className="col-12 col-lg-12">
-              <img src={fav.image} className={styles.image} alt="{fav.name}"/>
+              <img src={fav.image} className={styles.image} alt="{fav.name}" />
             </div>
             <div className={styles.favtitle}>
               {fav.name}
-              <Link href={"/recipe/" + fav.recipeId} type="shopping-list">
-                See recipe...
-              </Link>
+              <div className={styles.btns}>
+                <Link
+                  href={"/recipe/" + fav.recipeId}
+                  type="shopping-list"
+                  title="See recipe"
+                >
+                  <FontAwesomeIcon className={styles.fav} icon={faEye} />
+                </Link>
+                <Link
+                  href="#"
+                  type="remove"
+                  onClick={(event) =>
+                    this.removeFromFavoritesHandler(event, fav.id)
+                  }
+                  title="Remove from Favorites"
+                >
+                  <FontAwesomeIcon className={styles.fav} icon={faTrash} />
+                </Link>
+              </div>
             </div>
           </div>
         );
       });
     }
+    let modal = ''
+    if (this.props.successFL) {
+      modal = (
+        <Modal
+          message={this.props.successFL}
+          type="success"
+          clicked={(event) => this.modalClickedHandler(event, "fl")}
+        />
+      );
+    }
+    if (this.props.errorFL) {
+      modal = (
+        <Modal
+          message={this.props.errorFL}
+          type="warning"
+          clicked={(event) => this.modalClickedHandler(event, "fl")}
+        />
+      );
+    }
+
     return (
       <UserLayout>
         <Breadcrumb>Shopping List</Breadcrumb>
@@ -52,6 +108,7 @@ class FavoritesPage extends Component {
             <div className="row">{favorites}</div>
           </div>
         </div>
+        {modal}
       </UserLayout>
     );
   }
@@ -59,7 +116,18 @@ class FavoritesPage extends Component {
 const mapsStateToProps = (state) => {
   return {
     userId: state.auth.userId,
+    recipes: state.favoriteRecipes.recipes,
+    successFL: state.favoriteRecipes.success,
+    errorFL: state.favoriteRecipes.error,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRemoveFromFavorites: (favId, userId) =>
+      dispatch(actions.removeFromFavorites(favId, userId)),
+    onFetchUserRecipes: (userId) => dispatch(actions.fetchUserRecipes(userId)),
+    onResetFLMessages: () => dispatch(actions.resetFLMessages()),
   };
 };
 
-export default connect(mapsStateToProps)(FavoritesPage);
+export default connect(mapsStateToProps, mapDispatchToProps)(FavoritesPage);

@@ -1,6 +1,67 @@
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
+import { firebaseDB } from "../../firebase";
 
+export const removeFromFavorites = (favId, userId) => {
+  return (dispatch) => {
+    dispatch(removeFromFavoritesStart());
+
+    let firebaseFav = firebaseDB.ref("favorites/" + favId);
+    firebaseFav
+      .remove()
+      .then((res) => {
+        dispatch(countUserFavoriteRecipes(userId));
+        dispatch(fetchUserRecipes(userId))
+        dispatch(removeFromFavoritesSuccess())
+      })
+      .catch((err) => {
+        dispatch(removeFromFavoritesFail());
+      });
+  };
+};
+export const fetchUserRecipes = (userId) => {
+  // const userId = this.props.userId;
+  const queryParams = '?orderBy="userId"&equalTo="' + userId + '"';
+  return (dispatch) => {
+    dispatch(removeFromFavoritesStart());
+  axios
+    .get("https://sr-list-ccafe.firebaseio.com/favorites.json" + queryParams)
+    .then((res) => {
+      const fetchedRecipes = [];
+      for (let key in res.data) {
+        fetchedRecipes.push({ ...res.data[key], id: key });
+      }
+      
+      dispatch(fetchFavoritesListSuccess(fetchedRecipes));
+    })
+    .catch((err) => {});
+    
+  }
+
+}
+export const fetchFavoritesListSuccess = (recipes) => {
+return {
+    type: actionTypes.FETCH_FAVORITES_SUCCESS,
+    recipes: recipes
+  };
+}
+export const removeFromFavoritesStart = () => {
+  return {
+    type: actionTypes.REMOVE_FROM_FAVORITES_START,
+  };
+};
+export const removeFromFavoritesSuccess = () => {
+  return {
+    type: actionTypes.REMOVE_FROM_FAVORITES_SUCCESS,
+  };
+};
+
+export const removeFromFavoritesFail = () => {
+  return {
+    type: actionTypes.REMOVE_FROM_FAVORITES_FAIL,
+    error: "REMOVE FROM FAVORITES FAILED!",
+  };
+};
 export const addToFavorites = (data, userId) => {
   return (dispatch) => {
     dispatch(fetchFavoritesListStart());
@@ -57,8 +118,8 @@ export const setAddToFavoritesFailedMessage = (message) => {
   return (dispatch) => {
     dispatch(fetchFavoritesListStart());
     dispatch(addToFavoritesFail(message));
-  }
-}
+  };
+};
 export const addToFavoritesFail = (message) => {
   return {
     type: actionTypes.ADD_TO_FAVORITES_FAIL,
@@ -72,8 +133,8 @@ export const resetFLMessages = () => {
 };
 export const resetMessages = () => {
   return {
-     type: actionTypes.RESET_FL_MESSAGES,
-  }
-}
+    type: actionTypes.RESET_FL_MESSAGES,
+  };
+};
 
 //TO DO - ADD TO FAVORITES FAIL - TO HANDLE ERRORS, SIMILAR AS SUCCESS, BUT SETS ERROR TO  TRUE, WRITES IN LIG FILE, ETC
