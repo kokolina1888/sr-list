@@ -30,7 +30,6 @@ class RecipeCard extends Component {
       .catch((err) => {});
     if (result) {
       this.props.onAddToShoppingList(result, this.props.userId);
-      // alert("Recipe Has Been Added to Shopping List!");
     }
   }
 

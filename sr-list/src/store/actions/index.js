@@ -23,5 +23,7 @@ export {
   countUserFavoriteRecipes,
   addToFavorites,
   setAddToFavoritesFailedMessage,
-  resetFLMessages
+  resetFLMessages,
+  removeFromFavorites,
+  fetchUserRecipes
 } from "./favoriteRecipes";

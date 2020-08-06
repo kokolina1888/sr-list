@@ -9,12 +9,10 @@ const Button = (props) => {
   }
   return (
     <Fragment>
-      <button className={styles[addClass]} disabled={props.disabled} onClick={props.clicked}>
+      <button className={styles[addClass]} disabled={props.disabled} onClick={props.clicked} title={props.title}>
         {props.children}
       </button>
-      {/* <button className={styles.btn + " " + styles[addClass]}> */}
-        {/* {props.children} */}
-      {/* </button> */}
+     
     </Fragment>
   );
  
