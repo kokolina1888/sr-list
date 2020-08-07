@@ -6,6 +6,9 @@ import Breadcrumb from "../../components/breadcrumb";
 import Link from "../../components/UI/link";
 import styles from "./index.module.css";
 import Spinner from "../../components/UI/spinner";
+import Modal from '../../components/UI/modal'
+import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { plainObjectWithData } from "../../shared";
 
 class ShoppingList extends Component {
@@ -18,6 +21,7 @@ class ShoppingList extends Component {
     this.props.onFetchUnits();
     this.props.onFetchProducts();
   }
+
   createShoppingList = (list, dataProducts, units) => {
     let data = {};
     let recipes = {};
@@ -87,6 +91,14 @@ class ShoppingList extends Component {
     data.products = arrProducts;
     return data;
   };
+
+  removeFromShoppingListHandler = (event, recipeId) => {
+    event.preventDefault();
+    this.props.onRemoveFromShoppingList(recipeId, this.props.userId);
+  };
+  modalClickedHandler = () => {
+    this.props.onResetSLMessages();
+  };
   render() {
     let shoppingListData = "";
 
@@ -104,14 +116,31 @@ class ShoppingList extends Component {
         let num = 1;
         recipesData = shoppingListData.recipes.map((recipe) => {
           return (
-            <div key={recipe.id} className="single-preparation-step d-flex">
+            <div
+              key={recipe.id}
+              className={styles["single-preparation-step"] + " d-flex"}
+            >
               <span className={styles.recipe}>{num++}.</span>
-              <p>
+              <div>
                 {recipe.name}
-                <Link href={"/recipe/" + recipe.id} type="shopping-list">
-                  See recipe...
+                <Link
+                  href={"/recipe/" + recipe.id}
+                  type="shopping-list"
+                  title="See Recipe!"
+                >
+                  <FontAwesomeIcon className={styles.fav} icon={faEye} />
                 </Link>
-              </p>
+                <Link
+                  href="#"
+                  type="remove"
+                  onClick={(event) =>
+                    this.removeFromShoppingListHandler(event, recipe.id)
+                  }
+                  title="Remove from Shopping List"
+                >
+                  <FontAwesomeIcon className={styles.fav} icon={faTrash} />
+                </Link>
+              </div>
             </div>
           );
         });
@@ -130,6 +159,18 @@ class ShoppingList extends Component {
         }
       }
     }
+    console.log(this.props.successSL);
+    let modal = "";
+    if (this.props.successSL) {
+      modal = (
+        <Modal
+          message={this.props.successSL}
+          type="success"
+          clicked={this.modalClickedHandler}
+        />
+      );
+    }
+
     return (
       <UserLayout>
         <Breadcrumb>Shopping List</Breadcrumb>
@@ -148,14 +189,13 @@ class ShoppingList extends Component {
                       <td>Units</td>
                     </tr>
                   </thead>
-                  <tbody>
-                   {productsData}
-                  </tbody>
+                  <tbody>{productsData}</tbody>
                 </table>
               </div>
             </div>
           </div>
         </div>
+        {modal}
       </UserLayout>
     );
   }
@@ -167,6 +207,7 @@ const mapsStateToProps = (state) => {
     products: state.products.products,
     shoppingList: state.shoppingList.shoppingList,
     userId: state.auth.userId,
+    successSL: state.shoppingList.success
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -175,6 +216,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.getUserShoppingList(userId)),
     onFetchUnits: () => dispatch(actions.fetchUnits()),
     onFetchProducts: () => dispatch(actions.fetchProducts()),
+    onRemoveFromShoppingList: (recipeId, userId) =>
+      dispatch(actions.removeRecipeFromShoppingList(recipeId, userId)),
+
+    onResetSLMessages: () => dispatch(actions.resetSLMessages()),
   };
 };
 

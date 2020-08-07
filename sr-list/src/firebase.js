@@ -20,7 +20,7 @@ const firebaseRecipes = firebaseDB.ref("recipes");
 const firebaseUnits = firebaseDB.ref("units");
 const firebaseCategories = firebaseDB.ref("categories");
 const firebaseProducts = firebaseDB.ref("products");
-const firebaseShoppingLists = firebaseDB.ref("shoppingLists");
+const firebaseShoppingLists = firebaseDB.ref("shoppinglists");
 const firebaseFavorites = firebaseDB.ref("favorites");
 // const firebaseUsers = firebaseDB.ref("users");
 

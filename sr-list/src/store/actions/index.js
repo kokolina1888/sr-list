@@ -17,6 +17,7 @@ export {
   getUserShoppingList,
   countUserShoppingListRecipes,
   resetSLMessages,
+  removeRecipeFromShoppingList
 } from "./shoppingList";
 
 export {
