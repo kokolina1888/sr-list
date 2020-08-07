@@ -5,7 +5,6 @@ import { firebaseDB } from "../../firebase";
 export const removeFromFavorites = (favId, userId) => {
   return (dispatch) => {
     dispatch(removeFromFavoritesStart());
-
     let firebaseFav = firebaseDB.ref("favorites/" + favId);
     firebaseFav
       .remove()
