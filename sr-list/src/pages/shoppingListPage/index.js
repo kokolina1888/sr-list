@@ -34,7 +34,11 @@ class ShoppingList extends Component {
       let ings = curData.recipe.ingredients;
       //filter unique recipes in list
       if (!recipes[curData.recipe.id]) {
-        recipes[curData.recipe.id] = curData.recipe;
+        recipes[curData.recipe.id] = {}
+        recipes[curData.recipe.id].data = curData.recipe;
+        recipes[curData.recipe.id].count = 1;
+      } else {
+        recipes[curData.recipe.id].count += 1
       }
 
       //sum up recipe products
@@ -122,9 +126,9 @@ class ShoppingList extends Component {
             >
               <span className={styles.recipe}>{num++}.</span>
               <div>
-                {recipe.name}
+                {recipe.data.name} ({recipe.count})
                 <Link
-                  href={"/recipe/" + recipe.id}
+                  href={"/recipe/" + recipe.data.id}
                   type="shopping-list"
                   title="See Recipe!"
                 >
@@ -134,7 +138,7 @@ class ShoppingList extends Component {
                   href="#"
                   type="remove"
                   onClick={(event) =>
-                    this.removeFromShoppingListHandler(event, recipe.id)
+                    this.removeFromShoppingListHandler(event, recipe.data.id)
                   }
                   title="Remove from Shopping List"
                 >

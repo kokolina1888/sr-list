@@ -134,6 +134,7 @@ export const removeRecipeFromShoppingList = (recipeId, userId) => {
        snapshot.forEach(function (childSnapshot) {
          if (childSnapshot.val().recipe.id === recipeId) {
            firebaseShoppingLists.child(childSnapshot.key).remove();
+           
          }
        });
      })
