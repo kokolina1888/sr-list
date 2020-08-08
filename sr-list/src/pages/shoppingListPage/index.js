@@ -7,6 +7,7 @@ import Link from "../../components/UI/link";
 import styles from "./index.module.css";
 import Spinner from "../../components/UI/spinner";
 import Modal from '../../components/UI/modal'
+import Table from '../../components/UI/table'
 import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { plainObjectWithData } from "../../shared";
@@ -113,15 +114,17 @@ class ShoppingList extends Component {
         this.props.units
       );
     }
+
     let recipesData = <Spinner />;
     let productsData = <Spinner />;
+    let shoppingListContent = (<div className={styles['empty-list']}>Your Shopping List is Empty!</div>);
     if (shoppingListData) {
       if (shoppingListData.recipes) {
         let num = 1;
         recipesData = shoppingListData.recipes.map((recipe) => {
           return (
             <div
-              key={recipe.id}
+              key={recipe.data.id}
               className={styles["single-preparation-step"] + " d-flex"}
             >
               <span className={styles.recipe}>{num++}.</span>
@@ -148,7 +151,16 @@ class ShoppingList extends Component {
             </div>
           );
         });
-        if (shoppingListData.products) {
+        console.log(shoppingListData.products.length);
+        if (shoppingListData.products.length) {
+          const thead = (
+            <tr>
+              <td>#</td>
+              <td>Product</td>
+              <td>Quantity</td>
+              <td>Units</td>
+            </tr>
+          );
           let num = 1;
           productsData = shoppingListData.products.map((prod) => {
             return (
@@ -160,10 +172,11 @@ class ShoppingList extends Component {
               </tr>
             );
           });
+          shoppingListContent = <Table thead={thead} tbody={productsData} />;
         }
       }
     }
-    console.log(this.props.successSL);
+    
     let modal = "";
     if (this.props.successSL) {
       modal = (
@@ -184,17 +197,7 @@ class ShoppingList extends Component {
               <div className="col-12 col-lg-4">{recipesData}</div>
               <div className={styles["container"] + " col-12 col-lg-8"}>
                 <h4 className={styles.title}>Shopping List</h4>
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <td>#</td>
-                      <td>Product</td>
-                      <td>Quantity</td>
-                      <td>Units</td>
-                    </tr>
-                  </thead>
-                  <tbody>{productsData}</tbody>
-                </table>
+                {shoppingListContent}
               </div>
             </div>
           </div>
