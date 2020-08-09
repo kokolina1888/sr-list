@@ -46,9 +46,7 @@ class FavoritesPage extends Component {
   render() {
     let favorites = "No result!";
     if (this.props.recipes) {
-      console.log(this.props.recipes);
       favorites = this.props.recipes.map((fav) => {
-        console.log(fav);
         return (
           <div key={fav.id} className="col-12 col-lg-4">
             <div className="col-12 col-lg-12">

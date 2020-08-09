@@ -37,8 +37,7 @@ const Statistics = (props) => {
       const queryParams = '?orderBy="categoryName"&equalTo="' + ind + '"';
       let currentData = await axios
         .get("https://sr-list-ccafe.firebaseio.com/recipes.json" + queryParams)
-        .then((recipes) => {
-          // console.log(Object.keys(res.data).length);
+        .then((recipes) => {          
           return recipes.data;
         })
         .then((res) => {

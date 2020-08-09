@@ -43,7 +43,6 @@ class Statistics extends Component {
       let currentData = await axios
         .get("https://sr-list-ccafe.firebaseio.com/recipes.json" + queryParams)
         .then((recipes) => {
-          // console.log(Object.keys(res.data).length);
           return recipes.data;
         })
         .then((res) => {
@@ -59,8 +58,7 @@ class Statistics extends Component {
     }
     this.setState({
       dataRecipe: recipeData
-    })
-    console.log(recipeData)
+    })    
   }
 
   render() {
@@ -82,9 +80,6 @@ class Statistics extends Component {
     if (this.state.dataRecipe) {
      
       recipes = this.state.dataRecipe;
-      console.log(recipes);
-      //TO DO CHECK IF RECIPES.LENGTH IS EQUAL TO CATEGORY LENGTH
-
       let num = 1;
       statistics = recipes.map((r) => {
         return (
@@ -98,7 +93,6 @@ class Statistics extends Component {
         );
       });
     }
-    console.log(this.state.dataRecipe)
     return (
       <div className={styles.container + " row"}>
         {statisticsTotal}

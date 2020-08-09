@@ -151,7 +151,6 @@ class ShoppingList extends Component {
             </div>
           );
         });
-        console.log(shoppingListData.products.length);
         if (shoppingListData.products.length) {
           const thead = (
             <tr>
