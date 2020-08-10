@@ -1,4 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SHOPPING RECIPE LIST /SR-LIST/
+
+The Idea: Mark your favorites recipes - add them to Your Favorite List and later or directly add them to Your Shopping List to get a summarised list of products you need to buy to prepare the recipes ...
+
+How To Use The App: 
+Pages available to both Registered and Guest Users -
+Home Page with the Latest Recipes
+Info Page about the project and the maintainance team with dynamic statistic about all recipes and recipes by category /the numbers are retrieved from the database on page load/
+Recipes Page where users can look through a set of recipes, load next set, search recipes by name or filter by recipe category
+
+Pages and Functionalities Available to only Registered users
+
+This project is available on live server: https://sr-list-ccafe.web.app/
+
+Steps to run the project locally: 
+
+Steps to deploy the project to Firebase Hosting
+1. Build and optimise the project - run in the project root directory
+npm run build 
+2. Follow the instructions on Firebase Hosting Tab
+- install firebase tools run - npm install -g firebase-tools
+- sign in to Google run - firebase login /Note: Do not use GitBash is incorrectly identified as non-interactive mode by the firebase command line tool/
+- initiate the project run - firebase init
+    - after confirming mark HOSTING
+    - select existing project
+    - point that you want to use as a public directory the build folder of your project /to upload all files from the build directory/
+    - confirm to configure as a single page app
+    - answer No to if to overwrite the existing index.html file
+
+    The project folder got .firebaserc and firebase.json hosting configuration files
+- deploy the project run - firebase deploy
+
+- add the static files to the deply directory - the default is public
+  deploy the website run - firebase deploy
 
 ## Available Scripts
 
