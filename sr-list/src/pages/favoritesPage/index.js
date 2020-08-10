@@ -7,6 +7,7 @@ import Breadcrumb from "../../components/breadcrumb";
 import UserLayout from "../../components/layouts/userLayout";
 import Link from "../../components/UI/link";
 import Modal from "../../components/UI/modal";
+import image from "../../images/core/placeholder-image.png";
 
 import * as actions from "../../store/actions";
 import styles from "./index.module.css";
@@ -47,35 +48,47 @@ class FavoritesPage extends Component {
     let favorites = "No result!";
     if (this.props.recipes) {
       favorites = this.props.recipes.map((fav) => {
-        return (
-          <div key={fav.id} className="col-12 col-lg-4">
-            <div className="col-12 col-lg-12">
-              <img src={fav.image} className={styles.image} alt="{fav.name}" />
-            </div>
-            <div className={styles.favtitle}>
-              {fav.name}
-              <div className={styles.btns}>
-                <Link
-                  href={"/recipe/" + fav.recipeId}
-                  type="shopping-list"
-                  title="See recipe"
-                >
-                  <FontAwesomeIcon className={styles.fav} icon={faEye} />
-                </Link>
-                <Link
-                  href="#"
-                  type="remove"
-                  onClick={(event) =>
-                    this.removeFromFavoritesHandler(event, fav.id)
-                  }
-                  title="Remove from Favorites"
-                >
-                  <FontAwesomeIcon className={styles.fav} icon={faTrash} />
-                </Link>
+        let imgSrc = image 
+        let recipeTitle = "Default Recipe Title"
+        if (fav.image ){
+          imgSrc = fav.image
+        }
+        if (fav.name){
+          recipeTitle = fav.name
+        }
+          return (
+            <div key={fav.id} className="col-12 col-lg-4">
+              <div className="col-12 col-lg-12">
+                <img
+                  src={imgSrc}
+                  className={styles.image}
+                  alt={recipeTitle}
+                />
+              </div>
+              <div className={styles.favtitle}>
+                {recipeTitle}
+                <div className={styles.btns}>
+                  <Link
+                    href={"/recipe/" + fav.recipeId}
+                    type="shopping-list"
+                    title="See recipe"
+                  >
+                    <FontAwesomeIcon className={styles.fav} icon={faEye} />
+                  </Link>
+                  <Link
+                    href="#"
+                    type="remove"
+                    onClick={(event) =>
+                      this.removeFromFavoritesHandler(event, fav.id)
+                    }
+                    title="Remove from Favorites"
+                  >
+                    <FontAwesomeIcon className={styles.fav} icon={faTrash} />
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        );
+          );
       });
     }
     let modal = ''
