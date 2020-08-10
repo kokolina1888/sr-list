@@ -93,15 +93,17 @@ class RecipeCard extends Component {
     if( this.props.image ){
       imageSrc = this.props.image
     }
-    console.log(imageSrc)
-
+    let recipeTitle = 'Default Recipe Title';
+    if( this.props.title ){
+      recipeTitle = this.props.title;
+    }
     return (
       <div className={styles["recipe-container"]}>
         <img src={imageSrc} alt={this.props.title} />
         <div className={styles.btn}>{addToBtns}</div>
         <div className={styles["recipe-content"]}>
           <Link href={"/recipe/" + this.props.recipeId} type="recipe">
-            <h5>{this.props.title}</h5>
+            <h5>{recipeTitle}</h5>
           </Link>
           <div className={styles["rating-container"]}>
             <FontAwesomeIcon className={styles.ratings} icon={faStar} />
