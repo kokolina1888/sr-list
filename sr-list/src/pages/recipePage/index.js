@@ -7,6 +7,7 @@ import Breadcrumb from "../../components/breadcrumb";
 import Spinner from "../../components/UI/spinner";
 import Button from "../../components/UI/button";
 import Modal from "../../components/UI/modal";
+import image from "../../images/core/placeholder-image.png";
 
 import styles from "./index.module.css";
 import { firebaseRecipes } from "../../firebase";
@@ -122,19 +123,28 @@ class Recipe extends Component {
     }
     if (this.state.recipe) {
       const data = this.state.recipe;
+      let imageSrc = image;
+      if( data.image ){
+        imageSrc = data.image
+      }
+
+      let recipeTitle = "Default Recipe Title"
+      if( data.name ){
+        recipeTitle = data.name
+      }
       recipeData = (
         <Fragment>
           <div className="row">
             <div className="col-12 col-md-12">
               <div className={styles.headline + " my-5"}>
-                <h2>{data.name}</h2>
+                <h2>{recipeTitle}</h2>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-8 col-md-8">
               <div className={styles.info}>
-                <img className={styles.img} src={data.image} alt="" />
+                <img className={styles.img} src={imageSrc} alt="" />
               </div>
               <div className={styles.info}>
                 <div className={styles.prep}>
