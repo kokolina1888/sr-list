@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import * as actions from "../../store/actions";
 import Link from "../UI/link";
+import image from "../../images/core/placeholder-image.png";
 import styles from "./index.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -88,10 +89,15 @@ class RecipeCard extends Component {
         </Fragment>
       );
     }
+    let imageSrc = image
+    if( this.props.image ){
+      imageSrc = this.props.image
+    }
+    console.log(imageSrc)
 
     return (
       <div className={styles["recipe-container"]}>
-        <img src={this.props.image} alt={this.props.title} />
+        <img src={imageSrc} alt={this.props.title} />
         <div className={styles.btn}>{addToBtns}</div>
         <div className={styles["recipe-content"]}>
           <Link href={"/recipe/" + this.props.recipeId} type="recipe">
