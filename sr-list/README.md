@@ -8,11 +8,49 @@ Home Page with the Latest Recipes
 Info Page about the project and the maintainance team with dynamic statistic about all recipes and recipes by category /the numbers are retrieved from the database on page load/
 Recipes Page where users can look through a set of recipes, load next set, search recipes by name or filter by recipe category
 
-Pages and Functionalities Available to only Registered users
+Pages and Functionalities Available to only Registered users:
+List of pages and ponit out functionalities here
+
+Brief functionality description: 
+User Login/Register
+Recips Statistics /Info Page/
+Latest Recipes /Home Page/
+Add to Shopping list
+Add to Favorites
+Add Recipe
+
+Static /non functional elements/:
+Social buttons share
+Rating
+See Recipe /Home page Banner/
+
+Further Project Development:
+
+Set auth rules to write in Firebase Database
+Error handling on each action
+Edit recipe
+User can delete own recipes
+Increase/decrease number of times the recipe been added to shopping list
+Set Price for each product an calculate approximate cost of the shopping list
+
+Admin dashboard for 
+    - managing users
+    - products
+    
+
+Techical Documentation:
+DataBase, Backend API, Hosting: Firebase
+Global State management - Redux /redux, react-redux/
+Routing - 
+Auth - firebase auth ...
+list here all react libraries imported
+
+Steps to run the project locally:
+run from the project root - npm start
 
 This project is available on live server: https://sr-list-ccafe.web.app/
 
-Steps to run the project locally: 
+ 
 
 Steps to deploy the project to Firebase Hosting
 1. Build and optimise the project - run in the project root directory
