@@ -34,13 +34,14 @@ Recipes Page where users can look through a set of recipes, load next set, searc
 ## Brief functionality description
 - [**User Login and Register**, Login/Register Page](#user-login-and-register)
 - [**Recipes Statistics**, Info Page](#recipes-statistics)
-- [**Latest Recipes**, Home Page]
+- [**Latest Recipes**, Home Page](#latest-recipes)
 - [**Add to Shopping list**](#add-to-shopping-list)
 - [**Add to Favorites**](#add-to-favorites)
 
 
 ### User Login/Register
 /Login/Register Page/
+
 Uses Firebase Auth Api which authenticates users with email and pasword
 The input fields in **Login** and **Register** forms are validated against required, valid email, password string length, password must be repeated in a second input field and must match the string in the first field.
 User receives error messages if email alredy exists/when trying to register/ or not found /on login attempt/.
@@ -52,11 +53,13 @@ User Token and Id are stored in the browser\`s local storage. This allows on pag
 
 ### Recipes Statistics
 /Info Page/
+
 The content on that page is static except for the numbers showing total recipes available in the App and the numbers of recipes for each category in The App.
 
 ### Latest Recipes 
 /Home Page/
-Last 9 recipes are displayed on this page - latest recipes are first.
+
+Shows the last 9 recipes - latest recipes are first.
 The rest of the content is static.
 
 ### Add to Shopping list
