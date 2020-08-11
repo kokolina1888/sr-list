@@ -1,8 +1,9 @@
-#SHOPPING RECIPE LIST /SR-LIST/
+# SHOPPING RECIPE LIST /SR-LIST/
 
-The Idea: Mark your favorites recipes - add them to Your Favorite List and later or directly add them to Your Shopping List to get a summarised list of products you need to buy to prepare the recipes ...
+## The Idea
+Mark your favorites recipes - add them to Your Favorite List and later or directly add them to Your Shopping List to get a summarised list of products you need to buy to prepare the recipes ...
 
-Table of Contents
+### Table of Contents
 
 How To Use The App: 
 Pages available to both Registered and Guest Users -
