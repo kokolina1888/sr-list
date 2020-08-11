@@ -64,8 +64,10 @@ The rest of the content is static.
 
 ### Add to Shopping list
 For logged in users each recipe in the recipes list /Home and Recipes Page/ has a button **+** for adding the recipe to the **shopping list**.
-After a recipe is added to shopping list, its products appear on the right in the Shopping list page. Recipe name is added to the left list on the Shopping list page.
+
+After a recipe is added to the shopping list, its products appear on the right in the Shopping list page. Recipe name is added to the left list on the Shopping list page.
 If a recipe is added again to the Shopping list, its name does not appear again in the left list, but the products for the recipe are added again /their quantities/ to the product quantities on the right.
+
 If different recipes in the Shopping list require same products - the required quantities are **transformed to parent units** if needed and then summed up. Every unit is either a parent unit or has a parent unit and a transformation coefficient.
 
 ### Add to Favorites
