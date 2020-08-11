@@ -5,7 +5,7 @@ Mark your favorites recipes - add them to Your Favorite List and later or direct
 
 ### Table of Contents
 - [How To Use The App](##how-to-use-the-app)
-- App Pages
+- [App Pages](##app-pages)
 - Brief functionality description
 - Further Project Development
 - Techical Documentation
@@ -16,7 +16,11 @@ Home Page with the Latest Recipes
 Info Page about the project and the maintainance team with dynamic statistic about all recipes and recipes by category /the numbers are retrieved from the database on page load/
 Recipes Page where users can look through a set of recipes, load next set, search recipes by name or filter by recipe category
 
-Pages and Functionalities Available to only Registered users:
+## App Pages
+
+### Guest Pages
+
+### Registered users pages
 List of pages and ponit out functionalities here
 
 Brief functionality description: 
