@@ -4,9 +4,9 @@
 Mark your favorites recipes - add them to Your Favorite List and later or directly, add them to Your Shopping List to get a summarised list of products you need to buy to prepare the recipes ...
 
 ### Table of Contents
-- [How To Use The App](##how-to-use-the-app)
-- [App Pages](##app-pages)
-- Brief functionality description
+- [How To Use The App](#how-to-use-the-app)
+- [App Pages](#app-pages)
+- [Brief functionality description](#brief-functionality-description)
 - Further Project Development
 - Techical Documentation
 
@@ -23,7 +23,7 @@ Recipes Page where users can look through a set of recipes, load next set, searc
 ### Registered users pages
 List of pages and ponit out functionalities here
 
-Brief functionality description: 
+## Brief functionality description
 User Login/Register
 Recips Statistics /Info Page/
 Latest Recipes /Home Page/
@@ -36,21 +36,22 @@ Social buttons share
 Rating
 See Recipe /Home page Banner/
 
-Further Project Development:
+## Further Project Development
 
-Set auth rules to write in Firebase Database
-Error handling on each action
-Edit recipe
-User can delete own recipes
-Increase/decrease number of times the recipe been added to shopping list
-Set Price for each product an calculate approximate cost of the shopping list
+### Current project version do not cover
+- Set auth rules to write in Firebase Database
+- Full Error handling /on each action in the app/
+- User can edit own recipes
+- User can delete own recipes
+- User can increase/decrease number of times the recipe has been added to shopping list
+- User can set price for each product an calculate approximate cost of the shopping list
 
-Admin dashboard for 
+- Admin dashboard for 
     - managing users
     - products
     
 
-Techical Documentation:
+## Techical Documentation:
 DataBase, Backend API, Hosting: Firebase
 Global State management - Redux /redux, react-redux/
 Routing - 
