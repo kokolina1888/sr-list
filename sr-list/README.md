@@ -18,18 +18,66 @@ Recipes Page where users can look through a set of recipes, load next set, searc
 
 ## App Pages
 
-### Guest Pages
+### Guest and LoggedIn Users Pages
+- Home
+- Info
+- Recipes
+- Login/Register
+- Recipe /accesed by clicking on recipe name in recipes list in both Home and Recipes Pages/
 
-### Registered users pages
-List of pages and ponit out functionalities here
+### LoggedIn Users Only Pages
+- Shopping List
+- Favorites
+- Add Recipe
+
 
 ## Brief functionality description
-User Login/Register
-Recips Statistics /Info Page/
-Latest Recipes /Home Page/
-Add to Shopping list
-Add to Favorites
-Add Recipe
+- [**User Login and Register**, Login/Register Page](#user-login-and-register)
+- [**Recipes Statistics**, Info Page](#recipes-statistics)
+- [**Latest Recipes**, Home Page]
+- [**Add to Shopping list**](#add-to-shopping-list)
+- [**Add to Favorites**](#add-to-favorites)
+
+
+### User Login/Register
+/Login/Register Page/
+Uses Firebase Auth Api which authenticates users with email and pasword
+The input fields in **Login** and **Register** forms are validated against required, valid email, password string length, password must be repeated in a second input field and must match the string in the first field.
+User receives error messages if email alredy exists/when trying to register/ or not found /on login attempt/.
+
+Registered users are loggedin in the App.
+Logged in users can Logout or will be loggedout after 60 minutes after the token recived from Firebase Auth expires.
+
+User Token and Id are stored in the browser\`s local storage. This allows on page refresh user to stay logged in.
+
+### Recipes Statistics
+/Info Page/
+The content on that page is static except for the numbers showing total recipes available in the App and the numbers of recipes for each category in The App.
+
+### Latest Recipes 
+/Home Page/
+Last 9 recipes are displayed on this page - latest recipes are first.
+The rest of the content is static.
+
+### Add to Shopping list
+For logged in users each recipe in the recipes list /Home and Recipes Page/ has a button **+** for adding the recipe to the **shopping list**.
+After a recipe is added to shopping list, its products appear on the right in the Shopping list page. Recipe name is added to the left list on the Shopping list page.
+If a recipe is added again to the Shopping list, its name does not appear again in the left list, but the products for the recipe are added again /their quantities/ to the product quantities on the right.
+If different recipes in the Shopping list require same products - the required quantities are **transformed to parent units** if needed and then summed up. Every unit is either a parent unit or has a parent unit and a transformation coefficient.
+
+### Add to Favorites
+For logged in users each recipe in the recipes list /Home and Recipes Page/ has a button **heart sign** for adding the recipe to the **favorites list**.
+
+The above two Buttons are available for only **loggedin users** on recipe page also /page that shows information for a single recipe.
+
+remove from shopping list
+remove from favorites
+
+Number of Recipes in Shopping list /in navigation Shopping list button/ are updated each time the user adds/removes a recipes from the list
+Number of Recipes in Favoriets /in navigation Favorites button/ are updated each time the user adds/removes a recipes from the list
+
+Add Recipe /also adds the recipe to user favorites list
+
 
 Static /non functional elements/:
 Social buttons share
@@ -38,7 +86,7 @@ See Recipe /Home page Banner/
 
 ## Further Project Development
 
-### Current project version do not cover
+### Current project version does not cover
 - Set auth rules to write in Firebase Database
 - Full Error handling /on each action in the app/
 - User can edit own recipes
