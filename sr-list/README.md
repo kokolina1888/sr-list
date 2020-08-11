@@ -4,13 +4,13 @@
 Mark your favorites recipes - add them to Your Favorite List and later or directly, add them to Your Shopping List to get a summarised list of products you need to buy to prepare the recipes ...
 
 ### Table of Contents
-- How To Use The App
+- [How To Use The App](##how-to-use-the-app)
 - App Pages
 - Brief functionality description
 - Further Project Development
 - Techical Documentation
 
-How To Use The App: 
+##How To Use The App: 
 Pages available to both Registered and Guest Users -
 Home Page with the Latest Recipes
 Info Page about the project and the maintainance team with dynamic statistic about all recipes and recipes by category /the numbers are retrieved from the database on page load/
