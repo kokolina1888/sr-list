@@ -10,7 +10,7 @@ Mark your favorites recipes - add them to Your Favorite List and later or direct
 - Further Project Development
 - Techical Documentation
 
-##How To Use The App: 
+## How To Use The App: 
 Pages available to both Registered and Guest Users -
 Home Page with the Latest Recipes
 Info Page about the project and the maintainance team with dynamic statistic about all recipes and recipes by category /the numbers are retrieved from the database on page load/
