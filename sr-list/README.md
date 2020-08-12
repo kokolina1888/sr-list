@@ -37,6 +37,8 @@ Recipes Page where users can look through a set of recipes, load next set, searc
 - [**Latest Recipes**, Home Page](#latest-recipes)
 - [**Add to Shopping list**](#add-to-shopping-list)
 - [**Add to Favorites**](#add-to-favorites)
+- [**Remove from Shopping list**](#remove-from-shopping-list)
+- [**Remove from Favorites**](#remove-from-favorites)
 
 
 ### User Login/Register
@@ -52,30 +54,32 @@ Logged in users can Logout or will be loggedout after 60 minutes after the token
 User Token and Id are stored in the browser\`s local storage. This allows on page refresh user to stay logged in.
 
 ### Recipes Statistics
-/Info Page/
+**Info Page**
 
 The content on that page is static except for the numbers showing total recipes available in the App and the numbers of recipes for each category in The App.
 
 ### Latest Recipes 
-/Home Page/
+**Home Page**
 
-Shows the last 9 recipes - latest recipes are first.
+Shows/gets from database the last 9 recipes - latest recipes are first.
 The rest of the content is static.
 
 ### Add to Shopping list
 For logged in users each recipe in the recipes list /Home and Recipes Page/ has a button **+** for adding the recipe to the **shopping list**.
 
-After a recipe is added to the shopping list, its products appear on the right in the Shopping list page. Recipe name is added to the left list on the Shopping list page.
-If a recipe is added again to the Shopping list, its name does not appear again in the left list, but the products for the recipe are added again /their quantities/ to the product quantities on the right.
+After a recipe has been added to the shopping list, its products appear on the right of the Shopping list page. Recipe name is added to list on the left side of the Shopping list page.
+If a recipe is added again to the Shopping list, its name does not appear again in the left list, but the products for the recipe are added again /their quantities/ to the product quantities in the product shopping list.
 
 If different recipes in the Shopping list require same products - the required quantities are **transformed to parent units** if needed and then summed up. Every unit is either a parent unit or has a parent unit and a transformation coefficient.
 
 ### Add to Favorites
 For logged in users each recipe in the recipes list /Home and Recipes Page/ has a button **heart sign** for adding the recipe to the **favorites list**.
 
-The above two Buttons are available for only **loggedin users** on recipe page also /page that shows information for a single recipe.
+**Note** The above two Buttons are available for only **loggedin users** on **recipe page** also /page that shows information for a single recipe.
 
-remove from shopping list
+## Remove from Shopping List
+**Shopping List Page**
+
 remove from favorites
 
 Number of Recipes in Shopping list /in navigation Shopping list button/ are updated each time the user adds/removes a recipes from the list
