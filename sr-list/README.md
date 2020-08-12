@@ -8,6 +8,7 @@ Mark your favorites recipes - add them to Your Favorite List and later or direct
 - [App Pages](#app-pages)
 - [Brief functionality description](#brief-functionality-description)
 - Further Project Development
+- Design
 - Techical Documentation
 
 ## How To Use The App: 
@@ -39,7 +40,9 @@ Recipes Page where users can look through a set of recipes, load next set, searc
 - [**Add to Favorites**](#add-to-favorites)
 - [**Remove from Shopping list**](#remove-from-shopping-list)
 - [**Remove from Favorites**](#remove-from-favorites)
-
+- [**The Number of Recipes in The Shopping list or Favorites**](#the-number-of-recipes-in-the-shopping-list-or-favorites)
+- [**Add Recipe](#add-recipe)
+- [**See A Recipe](see-a-recipe)
 
 ### User Login/Register
 /Login/Register Page/
@@ -77,21 +80,37 @@ For logged in users each recipe in the recipes list /Home and Recipes Page/ has 
 
 **Note** The above two Buttons are available for only **loggedin users** on **recipe page** also /page that shows information for a single recipe.
 
-## Remove from Shopping List
+### Remove from Shopping List
 **Shopping List Page**
+Logged in users can remove a recipe from the shopping list and all product its products by clicking the trash button available next to each recipe name. If other recipes need same products, the quantities for the products of the deleted recipe are subtracted.
 
-remove from favorites
+### Remove from favorites
+**Favorites Page**
+Logged in users can remove a recipe from the Favorites list by clicking the trash button available under each recipe name.
 
-Number of Recipes in Shopping list /in navigation Shopping list button/ are updated each time the user adds/removes a recipes from the list
-Number of Recipes in Favoriets /in navigation Favorites button/ are updated each time the user adds/removes a recipes from the list
+### The Number of Recipes in The Shopping list or Favorites
+**in navigation Shopping list/Favorites button**
 
-Add Recipe /also adds the recipe to user favorites list
+The number of recipes are being updated each time the logged in user adds/removes a recipe from the corresponding list.
 
+**Add Recipe** also adds the recipe to user favorites list and thus updates the number next to Favorites button in the navigation
 
-Static /non functional elements/:
-Social buttons share
-Rating
-See Recipe /Home page Banner/
+### Add Recipe
+**Add Recipe Page**
+
+Logged in user can add data for a recipe by entering recipe name, time for preparation, number of serving, uploading a picture/if a picture is missing a default placeholder is placed when displaying the recipe). User can add the products for the recipe - by clicking the + button can display as many inputs as needed for the recipe. User can add a recipe preparation procedure also.
+
+### See A Recipe
+**Single Recipe Page**
+
+Every recipe in every recipe list /recipes, latest, favorites, shopping list/ has an **eye button**. Clicking the **eye button** leads to the selected the page of the selected recipe where the information for this recipe is displayed.
+
+### Static elements
+**elements as a part of the design only**
+
+- Social buttons share
+- Rating
+- See Recipe /Home page Banner/
 
 ## Further Project Development
 
