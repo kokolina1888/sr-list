@@ -127,7 +127,7 @@ Every recipe in every recipe list /recipes, latest, favorites, shopping list/ ha
     - managing products
     - managing recipes
  ## Design
- This project uses A Cololib template - **Delicious**
+ This project uses A Cololib template - [**Delicious**](https://colorlib.com/wp/template/delicious/)
     
 
 ## Techical Documentation:
