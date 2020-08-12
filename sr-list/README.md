@@ -6,10 +6,10 @@ Mark your favorites recipes - add them to Your Favorite List and later or direct
 ### Table of Contents
 - [How To Use The App](#how-to-use-the-app)
 - [App Pages](#app-pages)
-- [Brief functionality description](#brief-functionality-description)
+- [Overview of functionality description](#overview-of-functionality-description)
 - [Further Project Development](#further-project-development)
 - [Design](#design)
-- Techical Documentation
+- [Techical Documentation](#technical-documentation)
 
 ## How To Use The App: 
 Pages available to both Registered and Guest Users -
@@ -32,7 +32,7 @@ Recipes Page where users can look through a set of recipes, load next set, searc
 - Add Recipe
 
 
-## Brief functionality description
+## Overview of functionality description
 - [**User Login and Register**, Login/Register Page](#user-login-and-register)
 - [**Recipes Statistics**, Info Page](#recipes-statistics)
 - [**Latest Recipes**, Home Page](#latest-recipes)
@@ -131,101 +131,108 @@ Every recipe in every recipe list /recipes, latest, favorites, shopping list/ ha
     
 
 ## Techical Documentation:
-DataBase, Backend API, Hosting: Firebase
-Global State management - Redux /redux, react-redux/
-Routing - 
-Auth - firebase auth ...
-list here all react libraries imported
+* [**Project setup**](#project-setup)
+* [**Run the project locally**](#run-the-project-locally)
+* [**Deploy to live server**](#deploy-to-live-server)
+* [**Backend**](#backend**)
 
-Steps to run the project locally:
-run from the project root - npm start
 
-This project is available on live server: https://sr-list-ccafe.web.app/
+### Project setup
+This project has been set up with **create-react-app**
 
- 
-
-Steps to deploy the project to Firebase Hosting
-1. Build and optimise the project - run in the project root directory
-npm run build 
-2. Follow the instructions on Firebase Hosting Tab
-- install firebase tools run - npm install -g firebase-tools
-- sign in to Google run - firebase login /Note: Do not use GitBash is incorrectly identified as non-interactive mode by the firebase command line tool/
-- initiate the project run - firebase init
-    - after confirming mark HOSTING
-    - select existing project
-    - point that you want to use as a public directory the build folder of your project /to upload all files from the build directory/
-    - confirm to configure as a single page app
-    - answer No to if to overwrite the existing index.html file
-
-    The project folder got .firebaserc and firebase.json hosting configuration files
-- deploy the project run - firebase deploy
-
-- add the static files to the deply directory - the default is public
-  deploy the website run - firebase deploy
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
+### Run the project locally
+**`npm start`**
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
+### Deploy to live server
+This project is available on live server: https://sr-list-ccafe.web.app/
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Steps to deploy the project to Firebase Hosting**
 
-### `npm run build`
+1. Build and optimise the project - run in the project root directory
 
+**npm run build**
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
-
 The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Can be run to update the hosted project release.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Follow the instructions on Firebase Hosting Tab
+- install firebase tools run - npm install -g firebase-tools
+- sign in to Google run - firebase login /Note: Do not use GitBash is incorrectly identified as non-interactive mode by the firebase command line tool/
+- initiate the project run - **firebase init**
+    - after confirming mark **HOSTING**
+    - select existing project
+    - point that you want to use as a public directory the build folder of your project /to upload all files from the build directory/
+    - confirm to configure as a **single page app**
+    - answer No to question if to overwrite the existing index.html file<br/>
 
-### `npm run eject`
+    The project folder gets .firebaserc and firebase.json hosting configuration files
+- to deploy the project run - **firebase deploy**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- add the static files to the deploy directory - the default is public
+- to deploy the website run - **firebase deploy**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Backend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This project uses 
+- managing project data - 
+* [Firebase Realtime Database](https://firebase.google.com/products/realtime-database?gclid=CjwKCAjwps75BRAcEiwAEiACMRGJHNsml65EN5VROSQ8ljcqIuLoAF6VAe8TmdoSMFl9HhMDSJjndRoCHnEQAvD_BwE)
+* [**Firebase Database Service**](https://firebase.google.com/docs/reference/js/firebase.database) 
+* [**axios**](https://www.digitalocean.com/community/tutorials/react-axios-react)
+- Authenticating isers
+* [Firebase Auth REST API](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc)
+** [Sign up with email / password](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc#section-create-email-password)
+** [Sign in with email / password](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc#section-sign-in-email-password)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Routing
 
-## Learn More
+Implemented with BrowserRouter, Switch, Route, Redirect from `react-router-dom`
+Routes are differentiated for authenticated and guest users in routing.js
+In sr-list\src\components\header\navBar\menu\ auth routes are guarded via global state property **isAuth**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Global State management  
+Implemented via **Redux** - `redux`, `react-redux`, `redux-thunk` - EXPLAIN PURPOSE OF THIS LIBRARIES
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The Redux store is initialized in index.js. It consist of 7 slices of state - 
+* recipes, 
+* auth,   
+* categories,
+* units,
+* products,
+* shoppingList,
+* favoriteRecipe
 
-### Code Splitting
+**Redux Dev Tools** are set up via the **const composeEnhancers**, which is to be removed before deploying the project /but left here for presentational purposes/
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Project Functionality Implementation
+### User Auth Flow
+### Add A Recipe Flow
+### Latest Recipe
+### Recipes List, Filter, Search Recipes
+### Add Recipe To Shopping List, Remove Recipe From SL
+### Current User's recipes in SL
+### Current User's recipes in FL
+### Add Recipe To Favorites, Remove Recipe From Favorites
+### See Recipe
 
-### Analyzing the Bundle Size
+## Components
+### Elements
+### Pages 
+## Shared functionality
+## Store
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+  
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
+Auth - firebase auth ...
+list here all react libraries imported
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
