@@ -7,8 +7,8 @@ Mark your favorites recipes - add them to Your Favorite List and later or direct
 - [How To Use The App](#how-to-use-the-app)
 - [App Pages](#app-pages)
 - [Brief functionality description](#brief-functionality-description)
-- Further Project Development
-- Design
+- [Further Project Development](#further-project-development)
+- [Design](#design)
 - Techical Documentation
 
 ## How To Use The App: 
@@ -41,8 +41,8 @@ Recipes Page where users can look through a set of recipes, load next set, searc
 - [**Remove from Shopping list**](#remove-from-shopping-list)
 - [**Remove from Favorites**](#remove-from-favorites)
 - [**The Number of Recipes in The Shopping list or Favorites**](#the-number-of-recipes-in-the-shopping-list-or-favorites)
-- [**Add Recipe](#add-recipe)
-- [**See A Recipe](see-a-recipe)
+- [**Add Recipe, Add Recipe Page**](#add-recipe)
+- [**See A Recipe, See A Recipe Page**](see-a-recipe)
 
 ### User Login/Register
 /Login/Register Page/
@@ -124,7 +124,10 @@ Every recipe in every recipe list /recipes, latest, favorites, shopping list/ ha
 
 - Admin dashboard for 
     - managing users
-    - products
+    - managing products
+    - managing recipes
+ ## Design
+ This project uses A Cololib template - **Delicious**
     
 
 ## Techical Documentation:
