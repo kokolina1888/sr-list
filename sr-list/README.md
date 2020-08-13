@@ -195,9 +195,14 @@ Routes are differentiated for authenticated and guest users in routing.js
 In sr-list\src\components\header\navBar\menu\ auth routes are guarded via global state property **isAuth**
 
 ### Global State management  
-Implemented via **Redux** - `redux`, `react-redux`, `redux-thunk` - EXPLAIN PURPOSE OF THIS LIBRARIES
+Implemented via **Redux** - 
+`redux`, 
+`react-redux`
+**`redux-thunk`** 
+With a plain basic Redux store, you can only do simple synchronous updates by dispatching an action. Middleware extends the store's abilities, and lets you write async logic that interacts with the store.
+Thunks are the recommended middleware for basic Redux side effects logic, including complex synchronous logic that needs access to the store, and simple async logic like AJAX requests.
 
-The Redux store is initialized in index.js. It consist of 7 slices of state - 
+The Redux store is **initialized** in index.js. It consist of 7 slices of state - 
 * recipes, 
 * auth,   
 * categories,
@@ -209,8 +214,42 @@ The Redux store is initialized in index.js. It consist of 7 slices of state -
 **Redux Dev Tools** are set up via the **const composeEnhancers**, which is to be removed before deploying the project /but left here for presentational purposes/
 
 ## Project Functionality Implementation
+* [**User Auth Flow**](#user-auth-flow)
+* [**Add A Recipe Flow**](#add-a-recipe-flow)
+* [**Latest Recipes**](#latest-recipes)
+
 ### User Auth Flow
+Starts from - src\pages\authPage\index.js
+- **authPage** - a class component
+- local state for form elements and form valid state - control enabling/disabling form submit button
+- methods -  
+    -   inputChangedHandler - validates and sets data in state on input. Calls the shared method - checkFormElementValidity
+    -   checkIsValidForm - validates form inputs against required fields and enables/disables submit button by controlling local state prperty isValidForm,
+    -   switchModeHandler - switches between login and signUp, sets in global state action type in order to select the proper URL for sending the auth request, 
+    -   submitHandler - gets validated form data and dispatches the auth request which is handled by the global state - auth method. The auth method on success saves in the local storage user's id, token and token's expiration date, used for reauthorizing the user.
+ **Auth reducer** methods
+ - setUserAuthType
+ - authStart
+ - authSuccess
+ - authFail
+ - setAuthRedirectPath - redirects to the Home page on success
+ - authCheckState calls checkAuthTimeout - called in Routing component's componentDidMount - for user to stay loggedin after page refresh/reload if token did not expired
+ - logout - removes token, userId, expirationDate from the local storage
+ 
+ 
 ### Add A Recipe Flow
+- Starts from src\pages\addRecipePage\index.js
+- **AddRecipe** - a class component
+- local state keeps the form elements data. **Note** the form is not validated
+- componentDidMount dispatches method for fetching categories and setting category data in the global categories state.
+- inputChangedHandler, productDataChangedHandler - set in state form input data
+- addIngredientInputsHandler - sets new ingredient in local state. An ingredients input row is displayed for each ingredient in the local state. Component AddIngredient is used to display ingredient input group.
+- widgetOpen - uses the Cloudinary service for storing the recipe image
+- submitFormHandler - adds recipe data in database - in recipes.json and favorites.json/as a current loggedin user's recipe/ and on success redirects to the home page
+**Global state for addRecipe component**
+- fetching categories 
+- in child component - addIngredient - to fetch units and products
+
 ### Latest Recipe
 ### Recipes List, Filter, Search Recipes
 ### Add Recipe To Shopping List, Remove Recipe From SL
