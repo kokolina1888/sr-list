@@ -135,7 +135,12 @@ Every recipe in every recipe list /recipes, latest, favorites, shopping list/ ha
 * [**Run the project locally**](#run-the-project-locally)
 * [**Deploy to live server**](#deploy-to-live-server)
 * [**Backend**](#backend)
-
+* [**Routing**](#routing)
+* [**Global State management**](#global-state-management)
+* [**Project Functionality Implementation**](#project-functionallity-implementation)
+* [**Components List](#components-list)
+* [**Shared functionality**](#shared-functionality)
+* [**Redux Store**](#redux-store)
 
 ### Project setup
 This project has been set up with **create-react-app**
@@ -221,6 +226,7 @@ The Redux store is **initialized** in index.js. It consist of 7 slices of state 
 * [**Add and Remove Recipe From Shopping List](#add-and-remove-recipe-from-shopping-list)
 * [**Add and Remove Recipe From Favorites**](#add-and-remove-recipe-from-favorites)
 * [**Current User recipes in Favorites List**](#current-user-recipes-in-favorites-list)
+* [**See Recipe**](#see-recipe)
 
 ### User Auth Flow
 Starts from - src\pages\authPage\index.js
@@ -328,9 +334,53 @@ and are fetched after the component did mounted /in componentDidMount method/
     for which the modal appeared and on modal close we are to clear this value from state for the next message to be able to appear/
     
 ### See Recipe
-
-## Components
+- implemented in /sr-list/src/pages/recipePage/index.js
+- local state waits for the value of recipe data to be set
+- on componentDidMount 
+        - recipe data is fetched and set in the local state
+        - units, products, categories data are set in the globals state
+- addRecipeToShoppingListHandler, addRecipeToFavoritesListHandler, modalClickedHandler - **see Add to Shopping list and Add to Favorites List** description
+- on component rendering /and rerendirng/
+    -   product and unit data are transformed in the needed format
+    -   component renders Spinner while recipe data is fetched ans set in the state
+    -   Global auth state is checked whether there is a logged in user to load buttons that add the recipe to shopping and favorites list
+    -   Modal component listen for the global state success and error properties of favoriteRecepices and shoppingList layers to appear.
+    
+## Components List
 ### Elements
+* [UI](#https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/UI)
+ - button
+ - [form](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/UI/form) 
+    - input
+    - select
+    - textarea
+- LinkComponent
+- Modal - **uses React Hooks** to handle component visibility
+- Search
+- Social 
+- Spinner - widely used in the project to be loaded while awaiting data to be fetched and set in the current state
+- Table
+* [AddIngredient](https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/addIngredient/index.js)
+* [Banner](#https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/banner/index.js)
+* [Breadcrumb](#https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/breadcrumb/index.js)
+* [Footer](https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/footer/index.js)
+* [Header](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/header)
+ - NavBar
+    - Menu
+ - TopHeader
+* [InfoPage](#https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/infos)
+**Note** To be removed to pages folder
+    - [Statistics](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/infos)
+    **Note** - this components is made as a [class](#https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/infos/statistics/indexClassBased.js) and as a [functional component](#https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/infos/statistics/index.js). <br/>In the last the state is managed with hooks.
+    - StatisticsCard
+* Layouts
+ - UserLayout
+* Pagination
+* RecipeBlock
+* RecipeFiltersBlock
+* Recipes
+* RecipesList
+ 
 ### Pages 
 ## Shared functionality
 ## Store
@@ -342,7 +392,4 @@ and are fetched after the component did mounted /in componentDidMount method/
 
 
 
-
-Auth - firebase auth ...
-list here all react libraries imported
 
