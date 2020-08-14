@@ -95,6 +95,7 @@ class AddRecipe extends Component {
     updatedIngredients[id][controlName] = event.target.value;
     this.setState({ ingredient: updatedIngredients });
   };
+
   addIngredientInputsHandler = (event) => {
     let ingredients = [...this.state.ingredients];
     let newId = this.state.lastIngId + 1;
@@ -122,6 +123,7 @@ class AddRecipe extends Component {
     );
     widget.open();
   };
+
   submitFormHandler = (event) => {
     event.preventDefault();
     const recipeData = {
@@ -163,16 +165,8 @@ class AddRecipe extends Component {
         
       });
   };
+  
 
-  addRecipeToRecipesList = (data) => {
-    axios
-      .post("https://sr-list-ccafe.firebaseio.com/recipes.json", data)
-      //  .post("/recipes.json?auth=" + this.props.token, recipeData)
-      .then((response) => {})
-      .catch((error) => {
-        
-      });
-  };
   addRecipeToFavoritesList = (data) => {};
   render() {
     let categoriesSelect = <Input placeholder="Select a category ..." />;

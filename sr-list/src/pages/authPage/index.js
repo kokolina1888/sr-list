@@ -47,6 +47,7 @@ class Auth extends Component {
     },
     isValidForm: false,
   };
+
   checkIsValidForm = () => {
     //check if form is valid to enable submit button
     let valid = true;
@@ -69,6 +70,7 @@ class Auth extends Component {
       this.setState({ isValidForm: false });
     }
   };
+
   switchModeHandler = (e) => {
     e.preventDefault();
     this.props.onSwitchAuthModeHandler(!this.props.isSignUp);
@@ -111,6 +113,7 @@ class Auth extends Component {
     };
     this.setState({ controls: updatedControls });
   };
+  
   render() {
              let modal = "";
              if (this.props.error) {
