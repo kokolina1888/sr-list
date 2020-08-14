@@ -223,7 +223,7 @@ The Redux store is **initialized** in index.js. It consist of 7 slices of state 
 * [**Add A Recipe Flow**](#add-a-recipe-flow)
 * [**Latest Recipes**](#latest-recipes)
 * [**Recipes List Filter and Search Recipes**](#recipes-list-filter-and-search-recipes)
-* [**Add and Remove Recipe From Shopping List](#add-and-remove-recipe-from-shopping-list)
+* [**Add and Remove Recipe From Shopping List**](#add-and-remove-recipe-from-shopping-list)
 * [**Add and Remove Recipe From Favorites**](#add-and-remove-recipe-from-favorites)
 * [**Current User recipes in Favorites List**](#current-user-recipes-in-favorites-list)
 * [**See Recipe**](#see-recipe)
@@ -348,7 +348,7 @@ and are fetched after the component did mounted /in componentDidMount method/
     
 ## Components List
 ### Elements
-* [UI](#https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/UI)
+* [UI](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/UI)
  - button
  - [form](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/UI/form) 
     - input
@@ -371,7 +371,8 @@ and are fetched after the component did mounted /in componentDidMount method/
 * [InfoPage](#https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/infos)
 **Note** To be removed to pages folder
     - [Statistics](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/infos)
-    **Note** - this components is made as a [class](#https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/infos/statistics/indexClassBased.js) and as a [functional component](#https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/infos/statistics/index.js). <br/>In the last the state is managed with hooks.
+    **Note** - this components is made as a [class](#https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/infos/statistics/indexClassBased.js) and as a [functional component](#https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/infos/statistics/index.js). <br/>
+    In the last - the state is managed useing React hooks.
     - StatisticsCard
 * Layouts
  - UserLayout
