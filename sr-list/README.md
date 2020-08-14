@@ -217,6 +217,7 @@ The Redux store is **initialized** in index.js. It consist of 7 slices of state 
 * [**User Auth Flow**](#user-auth-flow)
 * [**Add A Recipe Flow**](#add-a-recipe-flow)
 * [**Latest Recipes**](#latest-recipes)
+* [**Recipes List Filter and Search Recipes**](#recipes-list-filter-and-search-recipes)
 
 ### User Auth Flow
 Starts from - src\pages\authPage\index.js
@@ -250,8 +251,34 @@ Starts from - src\pages\authPage\index.js
 - fetching categories 
 - in child component - addIngredient - to fetch units and products
 
-### Latest Recipe
-### Recipes List, Filter, Search Recipes
+### Latest Recipes
+- starts in sr-list\src\pages\homePage\index.js
+- HomePage is a functional/stateless/ component
+- It calls the **Recipes class based component**.
+**Recipes component**
+-   componentDidMount -  The logic in Recipes is split based on the value of of **type property**
+-   onFetchLatestRecipes - uses **global Recipes state** to get the latest recipes in descending order. <br/>
+    Number of recipes fetched is controlled by local **perPage property** 
+-   Fetched recipes are displayed by calling **RecipeCard component** /has propteries - title, image, recipeId/
+-   modalClickedHandler - resets modal message which appears after adding to Shopping or favorites list
+
+### Recipes List Filter and Search Recipes
+- starts in sr-list\src\pages\recipesPage\index.js
+-  **Recipes Page** is set as a class based component. <br/>
+    At this point of development has no local state.<br/>
+    Uses **RecipesList** component to perform **load-more** type pagination.<br/>
+    The page/set of recipes to displayed is controlled by **page property** of RecipesList component.
+    **Global categories state** is used to fetched the categories for **categories property** of RecipesList component.
+    
+    **RecipesList component**
+   Calls  **RecipeFiltersBlock** component.
+   -  filterByCategoryHandler - saves in **local state** current filter value and dispatches **Global recipes state's** method fetchFilteredRecipesList(filterName, filterValue)
+   **Note** Since Recipes list component gets recipes by rendering **Recipes component** which in turn gets recipes to be loaded from the global recipes state and when recipes are being filtered the method fetchFilteredRecipesList sets in global state the value of the global recipe property - the button FILTER is useless, since after a category to filter recipes is selected, recipes are displayed instantly.
+   -  searchByRecipeNameHandler - dispatches **Global recipes state's** method fetchByNameRecipesList(filterName, filterValue)
+   -  inputChangedHandler - saves in lical state current search value
+    
+    
+    
 ### Add Recipe To Shopping List, Remove Recipe From SL
 ### Current User's recipes in SL
 ### Current User's recipes in FL
