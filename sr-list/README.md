@@ -134,7 +134,7 @@ Every recipe in every recipe list /recipes, latest, favorites, shopping list/ ha
 * [**Project setup**](#project-setup)
 * [**Run the project locally**](#run-the-project-locally)
 * [**Deploy to live server**](#deploy-to-live-server)
-* [**Backend**](#backend**)
+* [**Backend**](#backend)
 
 
 ### Project setup
@@ -183,7 +183,7 @@ This project uses
 * [Firebase Realtime Database](https://firebase.google.com/products/realtime-database?gclid=CjwKCAjwps75BRAcEiwAEiACMRGJHNsml65EN5VROSQ8ljcqIuLoAF6VAe8TmdoSMFl9HhMDSJjndRoCHnEQAvD_BwE)
 * [**Firebase Database Service**](https://firebase.google.com/docs/reference/js/firebase.database) 
 * [**axios**](https://www.digitalocean.com/community/tutorials/react-axios-react)
-- Authenticating isers
+* [**Authenticating isers**](#authenticating-users)
 * [Firebase Auth REST API](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc)
 ** [Sign up with email / password](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc#section-create-email-password)
 ** [Sign in with email / password](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc#section-sign-in-email-password)
@@ -218,6 +218,7 @@ The Redux store is **initialized** in index.js. It consist of 7 slices of state 
 * [**Add A Recipe Flow**](#add-a-recipe-flow)
 * [**Latest Recipes**](#latest-recipes)
 * [**Recipes List Filter and Search Recipes**](#recipes-list-filter-and-search-recipes)
+* [**Add and Remove Recipe From Shopping List](#add-and-remove-recipe-from-shopping-list)
 
 ### User Auth Flow
 Starts from - src\pages\authPage\index.js
@@ -275,14 +276,40 @@ Starts from - src\pages\authPage\index.js
    -  filterByCategoryHandler - saves in **local state** current filter value and dispatches **Global recipes state's** method fetchFilteredRecipesList(filterName, filterValue)
    **Note** Since Recipes list component gets recipes by rendering **Recipes component** which in turn gets recipes to be loaded from the global recipes state and when recipes are being filtered the method fetchFilteredRecipesList sets in global state the value of the global recipe property - the button FILTER is useless, since after a category to filter recipes is selected, recipes are displayed instantly.
    -  searchByRecipeNameHandler - dispatches **Global recipes state's** method fetchByNameRecipesList(filterName, filterValue)
-   -  inputChangedHandler - saves in lical state current search value
+   -  inputChangedHandler - saves in lical state current search value   
     
     
-    
-### Add Recipe To Shopping List, Remove Recipe From SL
+### Add and Recipe From Shopping List
+**Add Recipe**
+- implemented in src\components\recipeCard\index.js and sr-list\src\pages\recipePage\index.js
+ - addRecipeToShoppingListHandler - dispatches **global shopping list state's method** addRecipeToShoppingList
+        - on success this method dispatches     - addToShoppingListSuccess() - to set success message
+                                                - countUserShoppingListRecipes(userId) - to update number of recipes in tha nav tab
+**Remove Recipe** - see **Current User's recipes in SL**
+
 ### Current User's recipes in SL
-### Current User's recipes in FL
+sr-list\src\pages\shoppingListPage\index.js
+**Shopping List** class based component
+- componentDidMount 
+    - gets user's recipes by global state method - getUserShoppingList
+    - gets units and product from the global state
+
+- createShoppingList - 
+      - receives user's shopping list, units, products as parameters
+      - returns data object consisted of two prperties/type of array/ - unique recipes/arrRecipes/ and unique products/arrProducts/ from the recipes with their data
+    
+  removeFromShoppingListHandler - dispatches globals state method - removeRecipeFromShoppingList 
+  
+  modalClickedHandler - closes modal message and resets message. Since messages are retrieved from the global state.
+  
+  **shoppingListData** is created after all needed data is set in state - the shoppingList, the products, the units
+  **createShoppingList** method is called - reduces the data to Recipes and Products arrays
+  While the reduced data object is created user sees **Spinner** /stateless component/
+  
+
 ### Add Recipe To Favorites, Remove Recipe From Favorites
+
+### Current User's recipes in FL
 ### See Recipe
 
 ## Components
