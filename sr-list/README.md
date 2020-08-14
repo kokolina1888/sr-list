@@ -6,7 +6,7 @@ Browse recipes or add your own. Mark them as Favorites List and later or directl
 ### Table of Contents
 - [How To Use The App](#how-to-use-the-app)
 - [App Pages](#app-pages)
-- [Overview of functionality description](#overview-of-functionality-description)
+- [Functionality description](#functionality-description)
 - [Further Project Development](#further-project-development)
 - [Design](#design)
 - [Techical Documentation](#technical-documentation)
@@ -32,7 +32,7 @@ Recipes Page where users can look through a set of recipes, load next set, searc
 - Add Recipe
 
 
-## Overview of functionality description
+## Functionality description
 - [**User Login and Register**, Login/Register Page](#user-login-and-register)
 - [**Recipes Statistics**, Info Page](#recipes-statistics)
 - [**Latest Recipes**, Home Page](#latest-recipes)
