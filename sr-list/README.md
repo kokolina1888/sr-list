@@ -117,6 +117,7 @@ Every recipe in every recipe list /recipes, latest, favorites, shopping list/ ha
 ### Current project version does not cover
 - Set auth rules to write in Firebase Database
 - Full Error handling /on each action in the app/
+- User can remove products from the recipe, when entering recipe data
 - User can edit own recipes
 - User can delete own recipes
 - User can increase/decrease number of times the recipe has been added to shopping list
