@@ -347,7 +347,8 @@ and are fetched after the component did mounted /in componentDidMount method/
     -   Modal component listen for the global state success and error properties of favoriteRecepices and shoppingList layers to appear.
     
 ## Components List
-### Elements
+### Components
+
 * [UI](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/UI)
  - button
  - [form](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/UI/form) 
@@ -382,7 +383,7 @@ and are fetched after the component did mounted /in componentDidMount method/
 * Recipes
 * RecipesList
  
-### Pages 
+### Pages Components
 * addRecipePage
 * authPage
 * favoritesPage
