@@ -219,6 +219,8 @@ The Redux store is **initialized** in index.js. It consist of 7 slices of state 
 * [**Latest Recipes**](#latest-recipes)
 * [**Recipes List Filter and Search Recipes**](#recipes-list-filter-and-search-recipes)
 * [**Add and Remove Recipe From Shopping List](#add-and-remove-recipe-from-shopping-list)
+* [**Add and Remove Recipe From Favorites**](#add-and-remove-recipe-from-favorites)
+* [**Current User recipes in Favorites List**](#current-user-recipes-in-favorites-list)
 
 ### User Auth Flow
 Starts from - src\pages\authPage\index.js
@@ -285,7 +287,7 @@ Starts from - src\pages\authPage\index.js
  - addRecipeToShoppingListHandler - dispatches **global shopping list state's method** addRecipeToShoppingList
         - on success this method dispatches     - addToShoppingListSuccess() - to set success message
                                                 - countUserShoppingListRecipes(userId) - to update number of recipes in tha nav tab
-**Remove Recipe** - see **Current User's recipes in SL**
+**Remove Recipe** - see **Current User's recipes in Shopping List**
 
 ### Current User's recipes in SL
 sr-list\src\pages\shoppingListPage\index.js
@@ -307,9 +309,24 @@ sr-list\src\pages\shoppingListPage\index.js
   While the reduced data object is created user sees **Spinner** /stateless component/
   
 
-### Add Recipe To Favorites, Remove Recipe From Favorites
+### Add and Remove Recipe From Favorites
+**Add Recipe**
+- implemented in src\components\recipeCard\index.js and sr-list\src\pages\recipePage\index.js
+- addToFavoritesHandler method checks if this recipe is alsready in the Favorites if not dispatches **global favortes list state** method addToFavorites, else dispatches **global favortes list state** method setAddToFavoritesFailedMessage
+    
 
-### Current User's recipes in FL
+**Remove Recipe** - see **Current User's recipes in Favorites**
+
+### Current User recipes in Favorites List
+- implemented in sr-list/src/pages/favoritesPage/index.js
+- The component has in the local state recipes value, and a method fetchUserRecipes - which are to be removed
+- The User's favorite recipes are fetched by the global state - favoriteRecipes layer <br/>
+and are fetched after the component did mounted /in componentDidMount method/
+- removeFromFavoritesHandler - dispatches global state method - removeFromFavorites
+- modalClickedHandler -  on closing the message modal dispatches global state method resetFLMessages<br/>
+    that clears aout the message value in the global state./FL - since here we've added message to FL state <br/>
+    for which the modal appeared and on modal close we are to clear this value from state for the next message to be able to appear/
+    
 ### See Recipe
 
 ## Components
