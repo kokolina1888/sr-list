@@ -138,7 +138,7 @@ Every recipe in every recipe list /recipes, latest, favorites, shopping list/ ha
 * [**Routing**](#routing)
 * [**Global State management**](#global-state-management)
 * [**Project Functionality Implementation**](#project-functionallity-implementation)
-* [**Components List](#components-list)
+* [**Components List**](#components-list)
 * [**Shared functionality**](#shared-functionality)
 * [**Redux Store**](#redux-store)
 
@@ -185,7 +185,7 @@ Can be run to update the hosted project release.
 
 This project uses 
 - managing project data - 
-* [Firebase Realtime Database](https://firebase.google.com/products/realtime-database?gclid=CjwKCAjwps75BRAcEiwAEiACMRGJHNsml65EN5VROSQ8ljcqIuLoAF6VAe8TmdoSMFl9HhMDSJjndRoCHnEQAvD_BwE)
+* [**Firebase Realtime Database**](https://firebase.google.com/products/realtime-database?gclid=CjwKCAjwps75BRAcEiwAEiACMRGJHNsml65EN5VROSQ8ljcqIuLoAF6VAe8TmdoSMFl9HhMDSJjndRoCHnEQAvD_BwE)
 * [**Firebase Database Service**](https://firebase.google.com/docs/reference/js/firebase.database) 
 * [**axios**](https://www.digitalocean.com/community/tutorials/react-axios-react)
 * [**Authenticating isers**](#authenticating-users)
