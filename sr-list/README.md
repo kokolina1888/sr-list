@@ -382,8 +382,37 @@ and are fetched after the component did mounted /in componentDidMount method/
 * RecipesList
  
 ### Pages 
-## Shared functionality
-## Store
+* addRecipePage
+* authPage
+* favoritesPage
+* homePage
+* infoPage
+* recipePage
+* recipesPage
+* shoppingListPage
+
+## [Shared functionality](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/shared)
+- index.js
+    firebaseLooper - transforms to array the data fetched from the Firebase
+    reversedArray - receives array and reverses it - last elements become first
+    plainObject - receives array and transforms it to object whith property:value pairs equal to id:name got from each array element
+    plainObjectWithData - receives array and transforms it to object with property:value pairs equal to id:(extended data) got from each array element
+- validation.js
+    checkFormElementValidity - receives value and rule to validate ta value against
+        available rules handled in this method - email, minLength
+    transformBackendErrorMessage - receives error message from the backend service /Firebase/ and removes the "_" to be user readable.
+
+## [Store](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/store/reducers)
+    reducers
+        auth
+        categories
+        favoriteRecipes
+        products
+        recipes
+        shoppingList
+        units
+   
+   
 
   
 
