@@ -415,11 +415,4 @@ and are fetched after the component did mounted /in componentDidMount method/
    
    
 
-  
-
-
-
-
-
-
 
