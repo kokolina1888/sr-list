@@ -184,9 +184,9 @@ This project uses
 * [**Firebase Database Service**](https://firebase.google.com/docs/reference/js/firebase.database) 
 * [**axios**](https://www.digitalocean.com/community/tutorials/react-axios-react)
 * [**Authenticating isers**](#authenticating-users)
-* [Firebase Auth REST API](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc)
-** [Sign up with email / password](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc#section-create-email-password)
-** [Sign in with email / password](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc#section-sign-in-email-password)
+* [**Firebase Auth REST API**](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc)
+* [**Sign up with email / password**](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc#section-create-email-password)
+* [**Sign in with email / password**](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc#section-sign-in-email-password)
 
 ### Routing
 
