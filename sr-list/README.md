@@ -1,7 +1,7 @@
 # SHOPPING RECIPE LIST /[SR-LIST](https://sr-list-ccafe.web.app/)/
 
 ## The Idea
-Mark your favorites recipes - add them to Your Favorite List and later or directly, add them to Your Shopping List to get a summarised list of products you need to buy to prepare the recipes ...
+Browse recipes or add your own. Mark them as Favorites List and later or directly, add them to Your Shopping List to get a summarised list of products you need to buy to prepare the recipes ...
 
 ### Table of Contents
 - [How To Use The App](#how-to-use-the-app)
