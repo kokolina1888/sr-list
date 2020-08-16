@@ -12,10 +12,10 @@ Browse recipes or add your own. Mark them as Favorites and later or directly, ad
 - [Techical Documentation](#technical-documentation)
 
 ## How To Use The App: 
-Pages available for both Registered and Guest Users -
-Home Page with the Latest Recipes
-Info Page about the project and the maintainance team with dynamic statistic about all recipes and recipes by category /the numbers are retrieved from the database on page load/
-Recipes Page where users can look through a set of recipes, load next set, search recipes by name or filter by recipe category
+Pages available for both Registered and Guest Users -<br/>
+Home Page with the Latest Recipes<br/>
+Info Page about the project and the maintainance team with dynamic statistic about all recipes and recipes by category /the numbers are retrieved from the database on page load/<br/>
+Recipes Page where users can look through a set of recipes, load next set, search recipes by name or filter by recipe category<br/>
 
 ## App Pages
 
