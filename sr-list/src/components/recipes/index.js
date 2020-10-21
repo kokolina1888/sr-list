@@ -9,6 +9,7 @@ import Pagination from "../pagination";
 import Modal from "../UI/modal";
 
 class Recipes extends Component {
+  
   componentDidMount() {
     switch (this.props.type) {
       case "latest":
@@ -39,7 +40,7 @@ class Recipes extends Component {
       this.props.onResetSLMessages();
     }
   };
-
+  
   render() {
     let recipes = <Spinner />;
     if (!this.props.loading) {

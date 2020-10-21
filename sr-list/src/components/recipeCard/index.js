@@ -67,7 +67,7 @@ class RecipeCard extends Component {
 
   render() {
     let addToBtns = "";
-    if (this.props.isAuth) {
+    if ( this.props.isAuth ) {
       addToBtns = (
         <Fragment>
           <Link href="/">

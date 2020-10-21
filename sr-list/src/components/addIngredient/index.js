@@ -10,11 +10,12 @@ import { render } from "react-dom";
 
 
 class AddIngredient extends Component {
- componentDidMount(){
-   
+
+ componentDidMount(){   
     this.props.onFetchUnits();
     this.props.onFetchProducts();
   }
+
   render(){
   let productSelect = <Spinner/>
   if(this.props.products){

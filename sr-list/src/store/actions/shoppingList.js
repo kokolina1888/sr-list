@@ -103,7 +103,6 @@ export const countUserShoppingListRecipes = (userId) => {
       )
       .then((res) => {
         let uniqueRecipes = [];
-
         for (let ind in res.data) {
           if (uniqueRecipes.indexOf(res.data[ind].recipe.id) < 0) {
             uniqueRecipes.push(res.data[ind].recipe.id);

@@ -13,6 +13,7 @@ import FavoritesPage from './pages/favoritesPage'
 import * as actions from "./store/actions/index";
 
 class Routing extends Component {
+  
   componentDidMount() {
     this.props.onTryAutoSignup();
   }
