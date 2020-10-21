@@ -1,21 +1,21 @@
 # SHOPPING RECIPE LIST /[SR-LIST](https://sr-list-ccafe.web.app/)/
 
 ## The Idea
-Mark your favorites recipes - add them to Your Favorite List and later or directly, add them to Your Shopping List to get a summarised list of products you need to buy to prepare the recipes ...
+Browse recipes or add your own. Mark them as Favorites and later or directly, add them to Your Shopping List to get a summarised list of products you need to buy to prepare the recipes ...
 
 ### Table of Contents
 - [How To Use The App](#how-to-use-the-app)
 - [App Pages](#app-pages)
-- [Overview of functionality description](#overview-of-functionality-description)
+- [Functionality description](#functionality-description)
 - [Further Project Development](#further-project-development)
 - [Design](#design)
 - [Techical Documentation](#technical-documentation)
 
 ## How To Use The App: 
-Pages available to both Registered and Guest Users -
-Home Page with the Latest Recipes
-Info Page about the project and the maintainance team with dynamic statistic about all recipes and recipes by category /the numbers are retrieved from the database on page load/
-Recipes Page where users can look through a set of recipes, load next set, search recipes by name or filter by recipe category
+Pages available for both Registered and Guest Users -<br/>
+Home Page with the Latest Recipes<br/>
+Info Page about the project and the maintainance team with dynamic statistic about all recipes and recipes by category /the numbers are retrieved from the database on page load/<br/>
+Recipes Page where users can look through a set of recipes, load next set, search recipes by name or filter by recipe category<br/>
 
 ## App Pages
 
@@ -32,7 +32,7 @@ Recipes Page where users can look through a set of recipes, load next set, searc
 - Add Recipe
 
 
-## Overview of functionality description
+## Functionality description
 - [**User Login and Register**, Login/Register Page](#user-login-and-register)
 - [**Recipes Statistics**, Info Page](#recipes-statistics)
 - [**Latest Recipes**, Home Page](#latest-recipes)
@@ -117,6 +117,7 @@ Every recipe in every recipe list /recipes, latest, favorites, shopping list/ ha
 ### Current project version does not cover
 - Set auth rules to write in Firebase Database
 - Full Error handling /on each action in the app/
+- User can remove products from the recipe, when entering recipe data
 - User can edit own recipes
 - User can delete own recipes
 - User can increase/decrease number of times the recipe has been added to shopping list
@@ -134,8 +135,13 @@ Every recipe in every recipe list /recipes, latest, favorites, shopping list/ ha
 * [**Project setup**](#project-setup)
 * [**Run the project locally**](#run-the-project-locally)
 * [**Deploy to live server**](#deploy-to-live-server)
-* [**Backend**](#backend**)
-
+* [**Backend**](#backend)
+* [**Routing**](#routing)
+* [**Global State management**](#global-state-management)
+* [**Project Functionality Implementation**](#project-functionallity-implementation)
+* [**Components List**](#components-list)
+* [**Shared functionality**](#shared-functionality)
+* [**Redux Store**](#redux-store)
 
 ### Project setup
 This project has been set up with **create-react-app**
@@ -180,13 +186,13 @@ Can be run to update the hosted project release.
 
 This project uses 
 - managing project data - 
-* [Firebase Realtime Database](https://firebase.google.com/products/realtime-database?gclid=CjwKCAjwps75BRAcEiwAEiACMRGJHNsml65EN5VROSQ8ljcqIuLoAF6VAe8TmdoSMFl9HhMDSJjndRoCHnEQAvD_BwE)
+* [**Firebase Realtime Database**](https://firebase.google.com/products/realtime-database?gclid=CjwKCAjwps75BRAcEiwAEiACMRGJHNsml65EN5VROSQ8ljcqIuLoAF6VAe8TmdoSMFl9HhMDSJjndRoCHnEQAvD_BwE)
 * [**Firebase Database Service**](https://firebase.google.com/docs/reference/js/firebase.database) 
 * [**axios**](https://www.digitalocean.com/community/tutorials/react-axios-react)
-- Authenticating isers
-* [Firebase Auth REST API](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc)
-** [Sign up with email / password](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc#section-create-email-password)
-** [Sign in with email / password](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc#section-sign-in-email-password)
+* [**Authenticating isers**](#authenticating-users)
+* [**Firebase Auth REST API**](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc)
+* [**Sign up with email / password**](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc#section-create-email-password)
+* [**Sign in with email / password**](https://firebase.google.com/docs/reference/rest/auth?fbclid=IwAR1i7htQyToqcqR_RDr7gbNysgWv4FWZnNVrVumTvQ9x-nfquijlSqgCRZc#section-sign-in-email-password)
 
 ### Routing
 
@@ -217,6 +223,11 @@ The Redux store is **initialized** in index.js. It consist of 7 slices of state 
 * [**User Auth Flow**](#user-auth-flow)
 * [**Add A Recipe Flow**](#add-a-recipe-flow)
 * [**Latest Recipes**](#latest-recipes)
+* [**Recipes List Filter and Search Recipes**](#recipes-list-filter-and-search-recipes)
+* [**Add and Remove Recipe From Shopping List**](#add-and-remove-recipe-from-shopping-list)
+* [**Add and Remove Recipe From Favorites**](#add-and-remove-recipe-from-favorites)
+* [**Current User recipes in Favorites List**](#current-user-recipes-in-favorites-list)
+* [**See Recipe**](#see-recipe)
 
 ### User Auth Flow
 Starts from - src\pages\authPage\index.js
@@ -250,28 +261,160 @@ Starts from - src\pages\authPage\index.js
 - fetching categories 
 - in child component - addIngredient - to fetch units and products
 
-### Latest Recipe
-### Recipes List, Filter, Search Recipes
-### Add Recipe To Shopping List, Remove Recipe From SL
+### Latest Recipes
+- starts in sr-list\src\pages\homePage\index.js
+- HomePage is a functional/stateless/ component
+- It calls the **Recipes class based component**.
+**Recipes component**
+-   componentDidMount -  The logic in Recipes is split based on the value of of **type property**
+-   onFetchLatestRecipes - uses **global Recipes state** to get the latest recipes in descending order. <br/>
+    Number of recipes fetched is controlled by local **perPage property** 
+-   Fetched recipes are displayed by calling **RecipeCard component** /has propteries - title, image, recipeId/
+-   modalClickedHandler - resets modal message which appears after adding to Shopping or favorites list
+
+### Recipes List Filter and Search Recipes
+- starts in sr-list\src\pages\recipesPage\index.js
+-  **Recipes Page** is set as a class based component. <br/>
+    At this point of development has no local state.<br/>
+    Uses **RecipesList** component to perform **load-more** type pagination.<br/>
+    The page/set of recipes to displayed is controlled by **page property** of RecipesList component.
+    **Global categories state** is used to fetched the categories for **categories property** of RecipesList component.
+    
+    **RecipesList component**
+   Calls  **RecipeFiltersBlock** component.
+   -  filterByCategoryHandler - saves in **local state** current filter value and dispatches **Global recipes state's** method fetchFilteredRecipesList(filterName, filterValue)
+   **Note** Since Recipes list component gets recipes by rendering **Recipes component** which in turn gets recipes to be loaded from the global recipes state and when recipes are being filtered the method fetchFilteredRecipesList sets in global state the value of the global recipe property - the button FILTER is useless, since after a category to filter recipes is selected, recipes are displayed instantly.
+   -  searchByRecipeNameHandler - dispatches **Global recipes state's** method fetchByNameRecipesList(filterName, filterValue)
+   -  inputChangedHandler - saves in lical state current search value   
+    
+    
+### Add and Recipe From Shopping List
+**Add Recipe**
+- implemented in src\components\recipeCard\index.js and sr-list\src\pages\recipePage\index.js
+ - addRecipeToShoppingListHandler - dispatches **global shopping list state's method** addRecipeToShoppingList
+        - on success this method dispatches     - addToShoppingListSuccess() - to set success message
+                                                - countUserShoppingListRecipes(userId) - to update number of recipes in tha nav tab
+**Remove Recipe** - see **Current User's recipes in Shopping List**
+
 ### Current User's recipes in SL
-### Current User's recipes in FL
-### Add Recipe To Favorites, Remove Recipe From Favorites
-### See Recipe
+sr-list\src\pages\shoppingListPage\index.js
+**Shopping List** class based component
+- componentDidMount 
+    - gets user's recipes by global state method - getUserShoppingList
+    - gets units and product from the global state
 
-## Components
-### Elements
-### Pages 
-## Shared functionality
-## Store
-
+- createShoppingList - 
+      - receives user's shopping list, units, products as parameters
+      - returns data object consisted of two prperties/type of array/ - unique recipes/arrRecipes/ and unique products/arrProducts/ from the recipes with their data
+    
+  removeFromShoppingListHandler - dispatches globals state method - removeRecipeFromShoppingList 
+  
+  modalClickedHandler - closes modal message and resets message. Since messages are retrieved from the global state.
+  
+  **shoppingListData** is created after all needed data is set in state - the shoppingList, the products, the units
+  **createShoppingList** method is called - reduces the data to Recipes and Products arrays
+  While the reduced data object is created user sees **Spinner** /stateless component/
   
 
+### Add and Remove Recipe From Favorites
+**Add Recipe**
+- implemented in src\components\recipeCard\index.js and sr-list\src\pages\recipePage\index.js
+- addToFavoritesHandler method checks if this recipe is alsready in the Favorites if not dispatches **global favortes list state** method addToFavorites, else dispatches **global favortes list state** method setAddToFavoritesFailedMessage
+    
 
+**Remove Recipe** - see **Current User's recipes in Favorites**
 
+### Current User recipes in Favorites List
+- implemented in sr-list/src/pages/favoritesPage/index.js
+- The component has in the local state recipes value, and a method fetchUserRecipes - which are to be removed
+- The User's favorite recipes are fetched by the global state - favoriteRecipes layer <br/>
+and are fetched after the component did mounted /in componentDidMount method/
+- removeFromFavoritesHandler - dispatches global state method - removeFromFavorites
+- modalClickedHandler -  on closing the message modal dispatches global state method resetFLMessages<br/>
+    that clears aout the message value in the global state./FL - since here we've added message to FL state <br/>
+    for which the modal appeared and on modal close we are to clear this value from state for the next message to be able to appear/
+    
+### See Recipe
+- implemented in /sr-list/src/pages/recipePage/index.js
+- local state waits for the value of recipe data to be set
+- on componentDidMount 
+        - recipe data is fetched and set in the local state
+        - units, products, categories data are set in the globals state
+- addRecipeToShoppingListHandler, addRecipeToFavoritesListHandler, modalClickedHandler - **see Add to Shopping list and Add to Favorites List** description
+- on component rendering /and rerendirng/
+    -   product and unit data are transformed in the needed format
+    -   component renders Spinner while recipe data is fetched ans set in the state
+    -   Global auth state is checked whether there is a logged in user to load buttons that add the recipe to shopping and favorites list
+    -   Modal component listen for the global state success and error properties of favoriteRecepices and shoppingList layers to appear.
+    
+## Components List
+### Components
 
+* [UI](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/UI)
+ - button
+ - [form](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/UI/form) 
+    - input
+    - select
+    - textarea
+- LinkComponent
+- Modal - **uses React Hooks** to handle component visibility
+- Search
+- Social 
+- Spinner - widely used in the project to be loaded while awaiting data to be fetched and set in the current state
+- Table
+* [AddIngredient](https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/addIngredient/index.js)
+* [Banner](#https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/banner/index.js)
+* [Breadcrumb](#https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/breadcrumb/index.js)
+* [Footer](https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/footer/index.js)
+* [Header](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/header)
+ - NavBar
+    - Menu
+ - TopHeader
+* [InfoPage](#https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/infos)
+**Note** To be removed to pages folder
+    - [Statistics](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/components/infos)
+    **Note** - this components is made as a [class](#https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/infos/statistics/indexClassBased.js) and as a [functional component](#https://github.com/kokolina1888/sr-list/blob/master/sr-list/src/components/infos/statistics/index.js). <br/>
+    In the last - the state is managed useing React hooks.
+    - StatisticsCard
+* Layouts
+ - UserLayout
+* Pagination
+* RecipeBlock
+* RecipeFiltersBlock
+* Recipes
+* RecipesList
+ 
+### Pages Components
+* addRecipePage
+* authPage
+* favoritesPage
+* homePage
+* infoPage
+* recipePage
+* recipesPage
+* shoppingListPage
 
+## [Shared functionality](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/shared)
+- index.js
+    firebaseLooper - transforms to array the data fetched from the Firebase
+    reversedArray - receives array and reverses it - last elements become first
+    plainObject - receives array and transforms it to object whith property:value pairs equal to id:name got from each array element
+    plainObjectWithData - receives array and transforms it to object with property:value pairs equal to id:(extended data) got from each array element
+- validation.js
+    checkFormElementValidity - receives value and rule to validate ta value against
+        available rules handled in this method - email, minLength
+    transformBackendErrorMessage - receives error message from the backend service /Firebase/ and removes the "_" to be user readable.
 
+## [Store](https://github.com/kokolina1888/sr-list/tree/master/sr-list/src/store/reducers)
+    reducers
+        auth
+        categories
+        favoriteRecipes
+        products
+        recipes
+        shoppingList
+        units
+   
+   
 
-Auth - firebase auth ...
-list here all react libraries imported
 
