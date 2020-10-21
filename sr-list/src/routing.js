@@ -15,6 +15,7 @@ import * as actions from "./store/actions/index";
 class Routing extends Component {
   
   componentDidMount() {
+    console.log('test')
     this.props.onTryAutoSignup();
   }
 
